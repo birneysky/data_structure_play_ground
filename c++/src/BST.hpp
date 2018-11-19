@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-export template <typename E>
+template <typename E>
 class BST {
     
 protected:
@@ -30,34 +30,62 @@ protected:
 private:
     Node* root;
     int size;
+private:
+    void add(Node node, E e);
 public:
     BST();
     ~BST();
     int getSize();
     bool isEmpty();
-    
+    void add(E e);
     
 };
 
-template<typename T>
-BST<T>::BST() {
+template<typename E>
+BST<E>::BST() {
     root = nullptr;
     size = 0;
 }
-template<typename T>
-BST<T>::~BST() {
+template<typename E>
+BST<E>::~BST() {
     
 }
 
-template<typename T>
-int BST<T>::getSize() {
+template<typename E>
+int BST<E>::getSize() {
     return size;
 }
-template<typename T>
-bool BST<T>::isEmpty() {
+
+template<typename E>
+bool BST<E>::isEmpty() {
     return size == 0;
 }
 
 
+/**
+ 向二分搜索树中添加元素e
+
+ @param e 元素e
+ */
+template <typename E>
+void BST<E>::add(E e) {
+    if (nullptr == root) {
+        root = new Node(e);
+        size++;
+    } else {
+        add(root, e);
+    }
+}
+
+/**
+ 向以node为根的二分搜索树中添加元素e，递归算法
+ 
+ @param node 根节点
+ @param e 元素e
+ */
+template <typename E>
+void BST<E>::add(Node node, E e) {
+    
+}
 
 #endif /* BST_hpp */
