@@ -7,19 +7,46 @@
 //
 
 #include <iostream>
+#include <vector>
+#include <sstream>
 #include "BST.hpp"
+
+struct student {
+    std::string name;
+    int age;
+    float scores;
+    friend std::ostream& operator <<(std::ostream& os, const student& student){
+        std::stringstream stream;
+        stream << "{ name:" << student.name << ",age:" << student.age << ",socre:" << student.scores << " }";
+        os << stream.str();
+        return os;
+    }
+};
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    /* 二分搜索树
-            每个节点的值大于其左子树所有节点值
-            每个节点的值小于其右子树所有节点值
-            其每一棵子树也是二分搜索树
-        */
+
+    int a[] = {50,30,70,60,20,35,75,18,55,25,68,63,100};
+    std::vector<int> va(a,a+sizeof(a)/sizeof(int));
     
-    BST<int> a = BST<int>();
+    BST<int> bst = BST<int>();
+    for (std::vector<int>::const_iterator it = va.begin(); it != va.end(); it++) {
+        bst.add_0(*it);
+    }
+    BST<int> bst1 = BST<int>();
+    std::for_each(va.begin(), va.end(), [&bst1](const int& value) {
+        std::cout << "std::for_each:" << value << std::endl;
+        bst1.add(value);
+    });
     
     std::cout << "Hello, BST!\n";
-    std::cout << a.getSize() << a.isEmpty() << std::endl;
+    std::cout << bst.getSize() << bst.isEmpty() << std::endl;
+    
+    student stu;
+    stu.age = 30;
+    stu.name = "hanmeimei";
+    stu.scores = 500;
+    std::cout << stu << std::endl;
+    
     return 0;
 }
