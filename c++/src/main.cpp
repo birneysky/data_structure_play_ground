@@ -48,5 +48,5 @@ int main(int argc, const char * argv[]) {
     stu.scores = 500;
     std::cout << stu << std::endl;
     
-    return 0;
+    return EXIT_SUCCESS;
 }
