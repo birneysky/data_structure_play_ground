@@ -6,15 +6,21 @@
 template<typename T>
 std::ostream& operator<<(std::ostream& out,std::vector<T> vec) {
 	std::stringstream stream;
-	std::vector<T>::iterator it = vec.begin();
-	stream << "[" << *vec.begin();
-
-	for(int i = 0; i < vec.size(); i++) {
-		stream << "," << vec[i];
-	}
-	stream << "]";
-	out << stream.str();
-	return out;
+    typename std::vector<T>::iterator begin = vec.begin();
+    typename std::vector<T>::iterator end = vec.end();
+    if (begin != end) {
+        stream << "[" << *begin;
+        begin ++;
+    } else {
+        stream << "[";
+    }
+    
+    std::for_each(begin, end, [&stream](T& value) {
+        stream << "," << value;
+    });
+    stream << "]";
+    out << stream.str();
+    return out;
 }
 
 int main (int argc, char* argv[]) {

@@ -106,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				B22AA55721AFFE540017DAB1 /* solution.cpp */,
-				B22AA55821AFFE540017DAB1 /* main.cpp */,
 				B22AA55921AFFE540017DAB1 /* solution.hpp */,
+				B22AA55821AFFE540017DAB1 /* main.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
