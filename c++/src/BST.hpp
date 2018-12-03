@@ -9,7 +9,7 @@
 #ifndef BST_hpp
 #define BST_hpp
 
-#include <stdio.h>
+#include <iostream>
 
 /* 二分搜索树
  每个节点的值大于其左子树所有节点值
@@ -37,14 +37,25 @@ private:
     int size;
 private:
     void add_0(Node* node, E e);
+public:
+    void add_0(E e);
+private:
     Node* add(Node* node, E e);
+    bool containts(Node* node, E e);
+    void preOrder(Node* node);
+    void inOrder(Node* node);
+    void postOrder(Node* node);
 public:
     BST();
     ~BST();
     int getSize();
     bool isEmpty();
-    void add_0(E e);
     void add(E e);
+    bool containts(E e);
+    void preOrder();
+    void inOrder();
+    void postOrder();
+    void levelOrder();
 };
 
 
@@ -139,6 +150,104 @@ typename BST<E>::Node* BST<E>::add(Node *node, E e) {
 template <typename E>
 void BST<E>::add(E e) {
     root = add(root, e);
+}
+
+
+/**
+ 二分搜索树中是否包含元素e
+
+ @param e 元素
+ @return 包含返回 true ，否则 返回 false
+ */
+template <typename E>
+bool BST<E>::containts(E e) {
+    return containts(root, e);
+}
+
+
+/**
+ 以node 为根的二分搜索树中是否包含元素e
+
+ @param node 节点指针
+ @param e 元素
+ @return 包含返回 true ，否则 返回 false
+ */
+template <typename E>
+bool BST<E>::containts(Node* node, E e) {
+    if (nullptr == node) {
+        return false;
+    }
+    
+    if (e == node->e) {
+        return true;
+    } else if (e > node->e) {
+        return containts(node->right, e);
+    } else {
+        return containts(node->left, e);
+    }
+}
+
+template <typename E>
+void  BST<E>::preOrder() {
+    preOrder(root);
+}
+
+
+/**
+ 以node 为根的搜索树进行前序遍历
+
+ @param node 节点指针
+ */
+template <typename E>
+void BST<E>::preOrder(Node* node) {
+    if (nullptr == node) {
+        return;
+    }
+    std::cout << node->e << ' ';
+    preOrder(node->left);
+    preOrder(node->right);
+}
+
+
+/**
+ 中序遍历
+ */
+template <typename E>
+void BST<E>::inOrder() {
+    inOrder(root);
+}
+
+template <typename E>
+void BST<E>::inOrder(Node* node) {
+    if (nullptr == node) {
+        return;
+    }
+    inOrder(node->left);
+    std::cout << node->e << ' ';
+    inOrder(node->right);
+}
+
+/**
+ 后序遍历
+ */
+template <typename E>
+void BST<E>::postOrder() {
+    postOrder(root);
+}
+
+template <typename E>
+void BST<E>::postOrder(Node* node) {
+    if (nullptr == node) {
+        return;
+    }
+    postOrder(node->left);
+    postOrder(node->right);
+    std::cout << node->e << ' ';
+}
+
+template <typename E>
+void BST<E>::levelOrder() {
+    
 }
 
 #endif /* BST_hpp */
