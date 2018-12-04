@@ -12,9 +12,9 @@
 #include "BST.hpp"
 
 struct student {
-    std::string name;
-    int age;
-    float scores;
+    std::string name = "liuhua";
+    int age = 0;
+    float scores = 3;
     friend std::ostream& operator <<(std::ostream& os, const student& student){
         std::stringstream stream;
         stream << "{ name:" << student.name << ",age:" << student.age << ",socre:" << student.scores << " }";
@@ -30,6 +30,9 @@ int main(int argc, const char * argv[]) {
     stu.name = "hanmeimei";
     stu.scores = 500;
     std::cout << stu << std::endl;
+    
+    student ttt;
+    std::cout << ttt << std::endl;
     
     return EXIT_SUCCESS;
 }
