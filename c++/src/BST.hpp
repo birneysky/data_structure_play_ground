@@ -10,7 +10,7 @@
 #define BST_hpp
 
 #include <iostream>
-
+#include <queue>
 /* 二分搜索树
  每个节点的值大于其左子树所有节点值
  每个节点的值小于其右子树所有节点值
@@ -45,6 +45,7 @@ private:
     void preOrder(Node* node);
     void inOrder(Node* node);
     void postOrder(Node* node);
+    void levelOrder(Node* node);
 public:
     BST();
     ~BST();
@@ -244,10 +245,32 @@ void BST<E>::postOrder(Node* node) {
     postOrder(node->right);
     std::cout << node->e << ' ';
 }
-
+/**
+ 层序遍历，广度优先遍历
+ */
 template <typename E>
 void BST<E>::levelOrder() {
-    
+    levelOrder(root);
+}
+
+template <typename E>
+void BST<E>::levelOrder(Node* node) {
+    if (nullptr == node) {
+        return;
+    }
+    std::queue<Node*> queue;
+    queue.push(node);
+    while (!queue.empty()) {
+        Node* node =  queue.front();
+        queue.pop();
+        std::cout << node->e << ' ';
+        if (node->left) {
+            queue.push(node->left);
+        }
+        if (node->right) {
+            queue.push(node->right);
+        }
+    }
 }
 
 #endif /* BST_hpp */

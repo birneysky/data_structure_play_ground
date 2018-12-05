@@ -18,10 +18,10 @@ int main(int argc, const char * argv[]) {
 *                      /                   \
 *                      30                   70
 *                  /       \             /      \
-*                 20       35           60        75
+*                 20       35        60        75
 *              /     \                /    \        \
-*             18      25             55     68      100
-*                                                 /
+*             18      25         55     68      100
+*                                                  /
 *                                               63
 */
     
@@ -59,6 +59,9 @@ int main(int argc, const char * argv[]) {
     bst1.postOrder();
     std::cout << std::endl;
 
+    std::cout << "bst levelOrder: ";
+    bst.levelOrder();
+    std::cout << std::endl;
     std::cout << "Hello, BST!\n";
     std::cout << bst.getSize() << bst.isEmpty() << std::endl;
     return EXIT_SUCCESS;
