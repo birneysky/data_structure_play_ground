@@ -9,7 +9,7 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
-#include "SolutionTest.hpp"
+#include "solution_test.hpp"
 #include "solution.hpp"
 
 
@@ -76,6 +76,24 @@ void SolutionTest::test_addTwoNumbers() {
     std::cout << "list1+list2: " <<  *result << std::endl;
     
     std::cout << "#### case2: " << std::endl;
+    std::vector<int> v3 {2,4,3,7,5};
+    std::vector<int> v4 {5,6,4,3,4};
+    Solution::ListNode* list3 = generateList(v3);
+    Solution::ListNode* list4 =  generateList(v4);
+    std::cout << "list3: "<< *list3 << std::endl;
+    std::cout << "list4: " << *list4 << std::endl;
+    Solution::ListNode* result1 =  s.addTwoNumbers(list3,list4);
+    std::cout << "list3+list4: " <<  *result1 << std::endl;
+    
+    std::cout << "#### case3: " << std::endl;
+    std::vector<int> v5 {9};
+    std::vector<int> v6 {9};
+    Solution::ListNode* list5 = generateList(v5);
+    Solution::ListNode* list6 =  generateList(v6);
+    std::cout << "list5: "<< *list5 << std::endl;
+    std::cout << "list6: " << *list6 << std::endl;
+    Solution::ListNode* result2 =  s.addTwoNumbers(list5,list6);
+    std::cout << "list5+list6: " <<  *result2 << std::endl;
     
 }
 void SolutionTest::test_lengthOfLongestSubstring() {

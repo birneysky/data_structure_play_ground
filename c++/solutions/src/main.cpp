@@ -1,4 +1,4 @@
-#include "SolutionTest.hpp"
+#include "solution_test.hpp"
 #include <iostream>
 #include <ostream>
 #include <sstream>
