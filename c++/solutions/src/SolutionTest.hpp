@@ -14,6 +14,7 @@ class SolutionTest {
 public:
     void test_twoSum();
     void test_addTwoNumbers();
+    void test_addTwoNumbers2();
     void test_lengthOfLongestSubstring();
     void test_findMedianSortedArrays();
 };

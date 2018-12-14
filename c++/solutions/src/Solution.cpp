@@ -60,8 +60,33 @@ Solution::ListNode* Solution::addTwoNumbers(ListNode* l1, ListNode* l2) {
     return head;
 }
 
-ListNode* Solution::addTwoNumbers2(ListNode* l1, ListNode* l2) {
+Solution::ListNode* Solution::addTwoNumbers2(ListNode* l1, ListNode* l2) {
+    ListNode* dummyHead = new ListNode(0);
+    ListNode* p = l1;
+    ListNode* q = l2;
+    int carry = 0;
+    ListNode* current = dummyHead;
+    while (nullptr != p || nullptr != q) {
+        int x = nullptr != p ? p->val : 0;
+        int y = nullptr != q ? q->val : 0;
+        int sum = carry + x + y;
+        if (current->next)
+            current->next->val = sum % 10;
+        else
+            current->next = new ListNode(sum % 10);
+        carry = sum / 10;
+        current = current->next;
+        
+        if (carry > 0)
+            current->next = new ListNode(carry);
+        
+        if (p)
+            p = p->next;
     
+        if (q)
+            q = q->next;
+    }
+    return dummyHead->next;
 }
 
 
