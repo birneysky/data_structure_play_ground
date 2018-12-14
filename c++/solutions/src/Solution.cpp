@@ -60,6 +60,10 @@ Solution::ListNode* Solution::addTwoNumbers(ListNode* l1, ListNode* l2) {
     return head;
 }
 
+ListNode* Solution::addTwoNumbers2(ListNode* l1, ListNode* l2) {
+    
+}
+
 
 int Solution::lengthOfLongestSubstring(std::string s) {
     return 0;

@@ -51,6 +51,7 @@ public:
         You may assume the two numbers do not contain any leading zero, except the number 0 itself.
         */
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2);
+    ListNode* addTwoNumbers2(ListNode* l1, ListNode* l2);
     
     /* 3
             给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
