@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7476723F21B5739600EAD0FF /* BST_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7476723E21B5739600EAD0FF /* BST_test.cpp */; };
 		7476724321B573B800EAD0FF /* BST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B98E1D21A307250063C05E /* BST.cpp */; };
+		7476724621C4D20C00EAD0FF /* FingerSolution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7476724421C4D20C00EAD0FF /* FingerSolution.cpp */; };
 		74B98E1C21A3033D0063C05E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B98E1B21A3033D0063C05E /* main.cpp */; };
 		74B98E1F21A307250063C05E /* BST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B98E1D21A307250063C05E /* BST.cpp */; };
 		B22AA56021AFFEF10017DAB1 /* Solution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22AA55721AFFE540017DAB1 /* Solution.cpp */; };
@@ -50,6 +51,8 @@
 /* Begin PBXFileReference section */
 		7476723C21B5739600EAD0FF /* BST_Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BST_Test; sourceTree = BUILT_PRODUCTS_DIR; };
 		7476723E21B5739600EAD0FF /* BST_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BST_test.cpp; sourceTree = "<group>"; };
+		7476724421C4D20C00EAD0FF /* FingerSolution.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FingerSolution.cpp; sourceTree = "<group>"; };
+		7476724521C4D20C00EAD0FF /* FingerSolution.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FingerSolution.hpp; sourceTree = "<group>"; };
 		74B98E1021A302F20063C05E /* PlayGround */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PlayGround; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B98E1B21A3033D0063C05E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		74B98E1D21A307250063C05E /* BST.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BST.cpp; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				B22AA55721AFFE540017DAB1 /* Solution.cpp */,
 				B29E2B3721B7DDC90027ECEF /* SolutionTest.hpp */,
 				B29E2B3621B7DDC90027ECEF /* SolutionTest.cpp */,
+				7476724421C4D20C00EAD0FF /* FingerSolution.cpp */,
+				7476724521C4D20C00EAD0FF /* FingerSolution.hpp */,
 				B22AA55821AFFE540017DAB1 /* main.cpp */,
 			);
 			path = src;
@@ -266,6 +271,7 @@
 			files = (
 				B22AA56021AFFEF10017DAB1 /* Solution.cpp in Sources */,
 				B22AA56121AFFEF10017DAB1 /* main.cpp in Sources */,
+				7476724621C4D20C00EAD0FF /* FingerSolution.cpp in Sources */,
 				B29E2B3821B7DDC90027ECEF /* SolutionTest.cpp in Sources */,
 				B22AA56221AFFEF10017DAB1 /* Solution.hpp in Sources */,
 			);
