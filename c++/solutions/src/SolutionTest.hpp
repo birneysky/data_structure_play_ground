@@ -17,6 +17,7 @@ public:
     void test_addTwoNumbers2();
     void test_lengthOfLongestSubstring();
     void test_findMedianSortedArrays();
+    void test_duplicate();
 };
 
 #endif /* SolutionTest_hpp */

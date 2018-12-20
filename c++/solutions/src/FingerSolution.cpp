@@ -7,3 +7,17 @@
 //
 
 #include "FingerSolution.hpp"
+
+
+int FingerSolution::duplicate(int numbers[], int length) {
+	for ( int i = 0; i < length;) {
+		if (numbers[i] == i) {
+            i++;
+		} else if(numbers[i] != numbers[numbers[i]]){
+            std::swap(numbers[i], numbers[numbers[i]]);
+		} else {
+			return numbers[i];
+		}
+	}
+    return -1;
+}

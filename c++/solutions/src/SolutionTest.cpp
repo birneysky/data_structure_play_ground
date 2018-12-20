@@ -11,6 +11,7 @@
 #include <sstream>
 #include "SolutionTest.hpp"
 #include "Solution.hpp"
+#include "FingerSolution.hpp"
 
 
 template<typename T>
@@ -138,4 +139,10 @@ void SolutionTest::test_lengthOfLongestSubstring() {
 
 void SolutionTest::test_findMedianSortedArrays() {
     std::cout << "♥♥♥♥♥♥ " << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
+}
+
+void SolutionTest::test_duplicate() {
+    std::cout << "♥♥♥♥♥♥ " << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
+    
+    
 }
