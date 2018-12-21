@@ -46,6 +46,7 @@ private:
     void inOrder(Node* node);
     void postOrder(Node* node);
     void levelOrder(Node* node);
+    void free(Node* node);
 public:
     BST();
     ~BST();
@@ -67,7 +68,9 @@ BST<E>::BST() {
 }
 template<typename E>
 BST<E>::~BST() {
-    
+    std::cout << __FUNCTION__ << " : ";
+    free(root);
+    std::cout << std::endl;
 }
 
 template<typename E>
@@ -270,6 +273,35 @@ void BST<E>::levelOrder(Node* node) {
         if (node->right) {
             queue.push(node->right);
         }
+    }
+}
+
+
+/**
+ 释放已 node 为根的整颗二叉树
+
+ @param node 二叉树根节点
+ */
+template<typename E>
+void BST<E>::free(Node* node) {
+    if (nullptr == node) {
+        return;
+    }
+    
+    if (node->left) {
+        free(node->left);
+        node->left = nullptr;
+    }
+    
+    if (node->right) {
+        free(node->right);
+        node->right = nullptr;
+    }
+    
+    if (!node->left && !node->right) {
+        std::cout << node->e << ' ';
+        delete node;
+        node = nullptr;
     }
 }
 
