@@ -143,6 +143,10 @@ void SolutionTest::test_findMedianSortedArrays() {
 
 void SolutionTest::test_duplicate() {
     std::cout << "♥♥♥♥♥♥ " << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
+    int a[] = {2,3,1,0,2,5,3};
+    FingerSolution s;
+    std::cout << s.duplicate(a, 7) << std::endl;
     
-    
+    int b[] = {0,1,2,4,3,5,5};
+    std::cout << s.duplicate(b, 7) << std::endl;
 }

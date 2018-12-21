@@ -145,8 +145,8 @@
 				B22AA55721AFFE540017DAB1 /* Solution.cpp */,
 				B29E2B3721B7DDC90027ECEF /* SolutionTest.hpp */,
 				B29E2B3621B7DDC90027ECEF /* SolutionTest.cpp */,
-				7476724421C4D20C00EAD0FF /* FingerSolution.cpp */,
 				7476724521C4D20C00EAD0FF /* FingerSolution.hpp */,
+				7476724421C4D20C00EAD0FF /* FingerSolution.cpp */,
 				B22AA55821AFFE540017DAB1 /* main.cpp */,
 			);
 			path = src;
