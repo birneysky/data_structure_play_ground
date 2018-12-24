@@ -11,6 +11,7 @@
 
 #include <cstdio>
 #include <unordered_map>
+#include <iostream>
 
 class Trie {
 protected:
@@ -24,6 +25,15 @@ protected:
         Node(bool isWord) {
             this->isWord = isWord;
         }
+        
+        ~Node() {
+            std::cout << "~Node: ";
+            std::for_each(next.begin(), next.end(), [](std::pair<char, Node*> pair){
+                std::cout << pair.first << ' ';
+                delete pair.second;
+            });
+        }
+        
     };
 
 private:
@@ -33,7 +43,22 @@ public:
     Trie();
     ~Trie();
     int getSize();
-    void add(std::string word);
+    
+    /**
+     添加一个单词
+
+     @param word 单词
+     */
+    void add(const std::string& word);
+    
+    
+    /**
+     判断是否包含一个单词
+
+     @param word 单词
+     @return 如果包含返回true ，否则返回false；
+     */
+    bool contains(const std::string& word);
 
 };
 

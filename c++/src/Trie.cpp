@@ -7,7 +7,7 @@
 //
 
 #include "Trie.hpp"
-
+#include "string"
 
 Trie::Trie() {
     root = new Node();
@@ -16,7 +16,6 @@ Trie::Trie() {
 
 Trie::~Trie() {
     delete root;
-    root = nullptr;
 }
 
 
@@ -24,14 +23,33 @@ int Trie::getSize() {
     return size;
 }
 
-void Trie::add(std::string word) {
+void Trie::add(const std::string& word) {
     Node* cur = root;
     for(int i = 0; i < word.size(); i++) {
         char ch = word.at(i);
-        if (cur->next.at(ch) == null) {
-            cur->next.insert(ch,new Node())
-        } else {
-            cur = cur->next.at(ch);
+        /// 如果不存在 ch 就添加一个
+        if (cur->next.find(ch) == cur->next.end()) {
+            cur->next.insert(std::make_pair(ch, new Trie::Node()));
         }
+        cur = cur->next.at(ch);
     }
+    
+    if (!cur->isWord) {
+        size++;
+        cur->isWord = true;
+    }
+    
+}
+
+bool Trie::contains(const std::string& word) {
+    Node* cur = root;
+    for (int i = 0; i < word.size(); i++) {
+        char ch = word.at(i);
+        if (cur->next.find(ch) == cur->next.end()) {
+            return false;
+        }
+        cur = cur->next.at(ch);
+    }
+    
+    return cur->isWord;
 }

@@ -10,6 +10,7 @@
 #include <vector>
 #include <sstream>
 #include "BST.hpp"
+#include "Trie.hpp"
 
 struct student {
     std::string name = "liuhua";
@@ -33,6 +34,17 @@ int main(int argc, const char * argv[]) {
     
     student ttt;
     std::cout << ttt << std::endl;
+    
+    Trie trie;
+    trie.add("cat");
+    trie.add("pig");
+    trie.add("apple");
+    trie.add("phone");
+    trie.add("cat");
+    std::cout << trie.getSize() << std::endl;
+    std::cout << trie.contains("cat") << std::endl;
+    std::cout << trie.contains("hah") << std::endl;
+    std::cout << trie.contains("phone") <<  std::endl;
     
     return EXIT_SUCCESS;
 }
