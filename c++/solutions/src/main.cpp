@@ -14,5 +14,9 @@ int main (int argc, char* argv[]) {
     tester.test_addTwoNumbers();
     tester.test_addTwoNumbers2();
     tester.test_duplicate();
+    tester.test_replaceBlank();
+    tester.test_printListReversingly_Recursively();
+    tester.test_printListReversingly_Iteratively();
+    tester.test_constructBinaryTree();
 	return EXIT_SUCCESS;
 }

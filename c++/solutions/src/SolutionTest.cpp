@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <cstring>
 #include "SolutionTest.hpp"
 #include "Solution.hpp"
 #include "FingerSolution.hpp"
@@ -44,6 +45,22 @@ Solution::ListNode* generateList(const std::vector<T>& vec) {
             curNode->val = val;
         } else {
             curNode->next = new Solution::ListNode(val);
+            curNode = curNode->next;
+        }
+    });
+    return node1;
+}
+
+template<typename T>
+FingerSolution::ListNode* generateList_f(const std::vector<T>& vec) {
+    FingerSolution::ListNode* node1 =  new FingerSolution::ListNode(0);
+    FingerSolution::ListNode* curNode = nullptr;
+    std::for_each(vec.begin(), vec.end(), [&node1,&curNode](const int& val){
+        if (!curNode) {
+            curNode = node1;
+            curNode->val = val;
+        } else {
+            curNode->next = new FingerSolution::ListNode(val);
             curNode = curNode->next;
         }
     });
@@ -149,4 +166,62 @@ void SolutionTest::test_duplicate() {
     
     int b[] = {0,1,2,4,3,5,5};
     std::cout << s.duplicate(b, 7) << std::endl;
+}
+
+void SolutionTest::test_replaceBlank() {
+    std::cout << "♥♥♥♥♥♥"  << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
+    FingerSolution s;
+    auto testing = [&s](const std::string& testName,char str[],int length,const char* expected) {
+        std::cout << testName << " begin: ";
+        s.replaceBlank(str, length);
+        if (!str || !expected) {
+            std::cout << "failed." << std::endl;
+        } else if(strcmp((const char*)str, (const char*)expected) == 0) {
+            std::cout << "pass. str: " << str << std::endl;
+        }
+    };
+    
+    char a[] = {'w','e',' ','a','r','e',' ','h','a','p','p','y','\0','\0','\0','\0','\0'};
+    testing(std::string("中间有空格😀"),a,sizeof(a)/sizeof(char),"we%20are%20happy");
+    
+    int len = 100;
+    char b[100] = "hello   world";
+    testing("中间有连续多个空格",b,len,"hello%20%20%20world");
+    
+    char c[100] = "     ";
+    testing("全部是空格",c,len,"%20%20%20%20%20");
+    
+    char d[100] = "  are you kidding me?";
+    testing("开始是连续空格",d,len,"%20%20are%20you%20kidding%20me?");
+}
+
+void SolutionTest::test_printListReversingly_Recursively() {
+    std::cout << "♥♥♥♥♥♥"  << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
+    std::vector<int> v1 {2,4,3,7,5,6,9};
+    FingerSolution::ListNode* list1 = generateList_f(v1);
+    std::cout << "origin list: " << *list1 << std::endl;
+    FingerSolution s;
+    s.printListReversingly_Recursively(list1);
+    std::cout << std::endl;
+}
+
+void SolutionTest::test_printListReversingly_Iteratively() {
+    std::cout << "♥♥♥♥♥♥"  << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
+    std::vector<int> v1 {2,4,3,7,5,6,9};
+    FingerSolution::ListNode* list1 = generateList_f(v1);
+    
+    std::cout << "origin list: " << *list1 << std::endl;
+    FingerSolution s;
+    s.printListReversingly_Iteratively(list1);
+    std::cout << std::endl;
+}
+
+void SolutionTest::test_constructBinaryTree() {
+    std::cout << "♥♥♥♥♥♥"  << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
+    
+    int a[8] = {1,2,4,7,3,5,6,8};
+    int b[8] = {4,7,2,1,5,3,8,6};
+    FingerSolution s;
+    FingerSolution::TreeNode* root =  s.constructBinaryTree(a, b, 8);
+    std::cout << root << std::endl;
 }

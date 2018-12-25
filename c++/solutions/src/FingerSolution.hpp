@@ -11,6 +11,7 @@
 #include <ostream>
 #include <sstream>
 
+/// https://github.com/zhedahht/CodingInterviewChinese2
 class FingerSolution {
 public:
     struct ListNode {
@@ -31,6 +32,25 @@ public:
             return out;
         }
     };
+    
+    struct TreeNode {
+        int value;
+        TreeNode* left;
+        TreeNode* right;
+        TreeNode(int val): value(val),left(nullptr),right(nullptr){}
+    };
+private:
+    
+    /**
+     根据前序和中序遍历的子序列构建二叉树，并返回二叉树的根；
+
+     @param startPreorder 前序遍历子序列首地址
+     @param endPreorder 前序遍历子序列尾地址
+     @param startInorder 中序遍历子序列首地址
+     @param endInorder 中序遍历子序列尾地址
+     @return 返回二叉树的根
+     */
+    TreeNode* constructBinaryTree(int* startPreorder,int* endPreorder,int* startInorder,int* endInorder);
 public:
     
     /** 3
@@ -76,14 +96,29 @@ public:
 
      @param node 链表头结点
      */
-    void printListReversingly(ListNode* node);
+    void printListReversingly_Recursively(ListNode* node);
+    
+    void printListReversingly_Iteratively(ListNode* node);
     
     
-    void constructBinaryTree(int* preorder,int* inorder, int length);
-    
-    
-    
-    
+    /**
+     输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输
+     // 入的前序遍历和中序遍历的结果中都不含重复的数字。
+     // 例如输入前序遍历序列{1,2, 4, 7, 3, 5, 6, 8}
+     // 和中序遍历序列{4, 7, 2, 1, 5, 3, 8, 6}，则重建出
+     //              1
+     //          /       \
+     //         2         3
+     //        /        /   \
+     //       4        5     6
+     //         \           /
+     //           7        8
+     @param preorder 前序遍历
+     @param inorder 中序遍历
+     @param length 数组长度
+     */
+    TreeNode* constructBinaryTree(int* preorder,int* inorder, int length);
+
 };
 
 #endif /* FingerSolution_hpp */

@@ -18,6 +18,10 @@ public:
     void test_lengthOfLongestSubstring();
     void test_findMedianSortedArrays();
     void test_duplicate();
+    void test_replaceBlank();
+    void test_printListReversingly_Recursively();
+    void test_printListReversingly_Iteratively();
+    void test_constructBinaryTree();
 };
 
 #endif /* SolutionTest_hpp */

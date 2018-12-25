@@ -7,7 +7,8 @@
 //
 
 #include "FingerSolution.hpp"
-
+#include <iostream>
+#include <stack>
 
 int FingerSolution::duplicate(int numbers[], int length) {
     if (!numbers || length <= 0) {
@@ -49,3 +50,99 @@ bool FingerSolution::find(int* matrix,int rows, int columns, int number) {
     }
     return false;
 }
+
+
+
+/*
+    0     1    2    3    4    5    6     7    8      9    10     11     12    13    14    15   16
+   'w'   'a'  '  '  'a'    'r'   'e'   ' '    'h'   'a'    'p'    'p'    'y'    '\0'
+                                                                                   ^                         ^
+ 
+ 0     1    2    3    4    5    6     7    8      9    10     11     12    13    14    15   16
+ 'w'  'a'  '  '   'a'    'r'   'e'  ' '          '%'   '2'   '0'     'h'     'a'   'p'    'p'   'y'   '\0'
+                                 ^          ^
+ 
+ 0     1    2    3    4    5    6     7    8      9    10     11     12    13    14    15   16
+ 'w'  'a'  '  '               'a'  'r'   'e'   '%'    '2'   '0'     'h'     'a'   'p'    'p'   'y'   '\0'
+             ^           ^
+ */
+void FingerSolution::replaceBlank(char string[], int length) {
+    if (!string || length <= 0) {
+        return;
+    }
+    int originLength = 0;
+    int numberOfBlank = 0;
+    int i = 0;
+    while (string[i] != '\0') {
+        originLength ++;
+        if (string[i] == ' ') {
+            numberOfBlank++;
+        }
+        i++;
+    }
+    /// 乘以2的原因是，字符串中本身包含空格
+    int newLenth = originLength + numberOfBlank * 2;
+    if (newLenth > length) {
+        return;
+    }
+    
+    int p2 = newLenth;
+    int p1 = originLength;
+    
+    while (p2 > p1 && p1 >= 0) {
+        if (string[p1] == ' ') {
+            string[p2--] = '0';
+            string[p2--] = '2';
+            string[p2--] = '%';
+            p1--;
+        } else {
+            string[p2--] = string[p1--];            
+        }
+    }
+}
+
+void FingerSolution::printListReversingly_Recursively(ListNode* node) {
+    if (!node) {
+        std::cout << "nullprt" << "->";
+        return;
+    } else {
+        printListReversingly_Recursively(node->next);
+        std::cout << node->val << "-->";
+    }
+}
+
+void FingerSolution::printListReversingly_Iteratively(ListNode* node) {
+    std::stack<ListNode*> stack;
+    ListNode* cur = node;
+    while (cur) {
+        stack.push(cur);
+        cur = cur->next;
+    }
+    
+    while (!stack.empty()) {
+        std::cout << stack.top()->val << "-->";
+        stack.pop();
+    }
+}
+
+FingerSolution::TreeNode* FingerSolution::constructBinaryTree(int* preorder,int* inorder, int length) {
+    return constructBinaryTree(preorder, preorder + length - 1, inorder, inorder + length - 1);
+}
+
+FingerSolution::TreeNode*  FingerSolution::constructBinaryTree(int* startPreorder,int* endPreorder,int* startInorder,int* endInorder) {
+    
+    
+    int rootValue = startPreorder[0];
+    TreeNode* root = new TreeNode(rootValue);
+//    long subInorderLen = endInorder - startInorder + 1;
+//    int* endLeftSubInorder = nullptr;
+//    int* startLeftSubInorder = nullptr;
+//    for (int i = 0; i < subInorderLen; i++) {
+//        if (startInorder[i] == rootValue) {
+//            endLeftSubInorder = startInorder + (i - 1);
+//        }
+//    }
+    
+    return root;
+}
+
