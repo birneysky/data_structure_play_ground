@@ -22,6 +22,7 @@ public:
     void test_printListReversingly_Recursively();
     void test_printListReversingly_Iteratively();
     void test_constructBinaryTree();
+    void test_printPermutations();
 };
 
 #endif /* SolutionTest_hpp */

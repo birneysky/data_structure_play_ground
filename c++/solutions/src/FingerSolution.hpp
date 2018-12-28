@@ -118,6 +118,19 @@ public:
      @param length 数组长度
      */
     TreeNode* constructBinaryTree(int* preorder,int* inorder, int length);
+    
+    
+    /**
+     打印是一个n位正整数的全排列
+     
+     如果输入 num[] = {0,0} len = 3 index = 0
+     输出的数据应该是[0,99] 范围内的所有整数
+     
+     @param number n位数的数组，每一个元素表示一位，每个元素的取值范围[0,9]
+     @param len 数组长度
+     @param index 索引
+     */
+    void printPermutations(int* number, int len, int index);
 
 };
 

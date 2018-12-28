@@ -225,3 +225,17 @@ void SolutionTest::test_constructBinaryTree() {
     FingerSolution::TreeNode* root =  s.constructBinaryTree(a, b, 8);
     std::cout << root << std::endl;
 }
+
+void SolutionTest::test_printPermutations() {
+    std::cout << "♥♥♥♥♥♥"  << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
+    int num[] = {0,0};
+    FingerSolution s;
+    s.printPermutations(num, 2, 0);
+    std::cout << std::endl;
+    
+    
+    int num1[] = {0,0,0,0};
+    s.printPermutations(num1, sizeof(num1)/sizeof(int), 0);
+    std::cout << std::endl;
+}
+

@@ -18,5 +18,6 @@ int main (int argc, char* argv[]) {
     tester.test_printListReversingly_Recursively();
     tester.test_printListReversingly_Iteratively();
     tester.test_constructBinaryTree();
+    tester.test_printPermutations();
 	return EXIT_SUCCESS;
 }

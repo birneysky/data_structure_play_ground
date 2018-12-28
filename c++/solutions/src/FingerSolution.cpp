@@ -146,3 +146,21 @@ FingerSolution::TreeNode*  FingerSolution::constructBinaryTree(int* startPreorde
     return root;
 }
 
+
+void FingerSolution::printPermutations(int* number, int len, int index) {
+    
+    if (index == len) {
+        std::stringstream stream;
+        for ( int i = 0; i < len; i++) {
+            stream << number[i];
+        }
+        std::cout << stream.str() << ' ';
+        return;
+    }
+    
+    for (int i = 0; i < 10; i++) {
+        number[index] = i;
+        printPermutations(number, len, index+1);
+    }
+}
+
