@@ -9,6 +9,7 @@
 #include "FingerSolution.hpp"
 #include <iostream>
 #include <stack>
+#include <cmath>
 
 int FingerSolution::duplicate(int numbers[], int length) {
     if (!numbers || length <= 0) {
@@ -162,5 +163,15 @@ void FingerSolution::printPermutations(int* number, int len, int index) {
         number[index] = i;
         printPermutations(number, len, index+1);
     }
+}
+
+double FingerSolution::absoluteValuationMethod(double curCashFlow, int years, double averageGrowthRate, double averageDiscountRate) {
+    double finalCashFlow = 0;
+    for( int i = 1; i <= years; i++) {
+        double temp = curCashFlow * pow(1+averageGrowthRate,years) / pow(1+averageDiscountRate,years);
+        std::cout << temp << std::endl;
+        finalCashFlow += temp;
+    }
+    return finalCashFlow;
 }
 

@@ -131,6 +131,18 @@ public:
      @param index 索引
      */
     void printPermutations(int* number, int len, int index);
+    
+    
+    /**
+     绝对估值法
+
+     @param curCashFlow 当前现金流
+     @param years 年， 如果是3 年 传3 years >=1
+     @param averageGrowthRate 平均现金流增长率
+     @param averageDiscountRate 平均折现率
+     @return years 年后的现金流量是多少
+     */
+    double absoluteValuationMethod(double curCashFlow, int years, double averageGrowthRate, double averageDiscountRate);
 
 };
 

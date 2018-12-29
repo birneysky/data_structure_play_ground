@@ -234,8 +234,14 @@ void SolutionTest::test_printPermutations() {
     std::cout << std::endl;
     
     
-    int num1[] = {0,0,0,0};
+    int num1[] = {0,0};
     s.printPermutations(num1, sizeof(num1)/sizeof(int), 0);
     std::cout << std::endl;
+}
+
+void SolutionTest::test_absoluteValuationMethod() {
+    std::cout << "♥♥♥♥♥♥"  << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
+    FingerSolution s;
+    std::cout << s.absoluteValuationMethod(8.28, 10, 0.15, 0.09) << std::endl;
 }
 

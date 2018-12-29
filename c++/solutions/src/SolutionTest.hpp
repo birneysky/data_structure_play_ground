@@ -23,6 +23,7 @@ public:
     void test_printListReversingly_Iteratively();
     void test_constructBinaryTree();
     void test_printPermutations();
+    void test_absoluteValuationMethod();
 };
 
 #endif /* SolutionTest_hpp */

@@ -19,5 +19,6 @@ int main (int argc, char* argv[]) {
     tester.test_printListReversingly_Iteratively();
     tester.test_constructBinaryTree();
     tester.test_printPermutations();
+    tester.test_absoluteValuationMethod();
 	return EXIT_SUCCESS;
 }
