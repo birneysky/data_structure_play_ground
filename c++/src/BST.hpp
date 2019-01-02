@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <queue>
+#include <sstream>
 /* 二分搜索树
  每个节点的值大于其左子树所有节点值
  每个节点的值小于其右子树所有节点值
@@ -47,6 +48,7 @@ private:
     void postOrder(Node* node);
     void levelOrder(Node* node);
     void free(Node* node);
+    void toString(Node node, int depth, std::stringstream& sstream);
 public:
     BST();
     ~BST();
@@ -58,6 +60,10 @@ public:
     void inOrder();
     void postOrder();
     void levelOrder();
+    
+    friend std::ostream& operator <<(std::ostream& os,BST<E>& bst) {
+        return os;
+    }
 };
 
 
@@ -304,5 +310,6 @@ void BST<E>::free(Node* node) {
         node = nullptr;
     }
 }
+
 
 #endif /* BST_hpp */

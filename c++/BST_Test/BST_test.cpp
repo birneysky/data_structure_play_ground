@@ -64,5 +64,6 @@ int main(int argc, const char * argv[]) {
     std::cout << std::endl;
     std::cout << "Hello, BST!\n";
     std::cout << bst.getSize() << bst.isEmpty() << std::endl;
+    std::cout << bst << std::endl;
     return EXIT_SUCCESS;
 }
