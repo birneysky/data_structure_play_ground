@@ -18,11 +18,11 @@ int main(int argc, const char * argv[]) {
 *                      /                   \
 *                      30                   70
 *                  /       \             /      \
-*                 20       35        60        75
+*                 20       35          60        75
 *              /     \                /    \        \
-*             18      25         55     68      100
-*                                            /
-*                                           63
+*             18      25            55     68      100
+*                                         /
+*                                        63
 */
     
     std::vector<int> va(a,a+sizeof(a)/sizeof(int));
