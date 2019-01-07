@@ -168,9 +168,9 @@ void FingerSolution::printPermutations(int* number, int len, int index) {
 double FingerSolution::absoluteValuationMethod(double curCashFlow, int years, double averageGrowthRate, double averageDiscountRate) {
     double finalCashFlow = 0;
     for( int i = 1; i <= years; i++) {
-        double temp = curCashFlow * pow(1+averageGrowthRate,years) / pow(1+averageDiscountRate,years);
+        double temp = curCashFlow * pow(1+averageGrowthRate,i) / pow(1+averageDiscountRate,i);
         std::cout << temp << std::endl;
-        finalCashFlow += temp;
+        finalCashFlow += curCashFlow * pow(1+averageGrowthRate,i) / pow(1+averageDiscountRate,i);
     }
     return finalCashFlow;
 }

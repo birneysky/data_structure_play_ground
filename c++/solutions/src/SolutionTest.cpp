@@ -234,7 +234,7 @@ void SolutionTest::test_printPermutations() {
     std::cout << std::endl;
     
     
-    int num1[] = {0,0};
+    int num1[] = {0,0,0};
     s.printPermutations(num1, sizeof(num1)/sizeof(int), 0);
     std::cout << std::endl;
 }
