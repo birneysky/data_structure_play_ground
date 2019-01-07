@@ -63,7 +63,9 @@ int main(int argc, const char * argv[]) {
     bst.levelOrder();
     std::cout << std::endl;
     std::cout << "Hello, BST!\n";
-    std::cout << bst.getSize() << bst.isEmpty() << std::endl;
     std::cout << bst << std::endl;
+    std::cout << "size:" << bst.getSize() << " isEmpty:" << bst.isEmpty() << " minimum:" << bst.minimum() <<
+    " maximum: " << bst.maximum() << " removeMin: " << bst.removeMin() << " size after deletion: "
+    << bst.getSize() << " minimum after deletion:" << bst.minimum() << " removeMax:" << bst.removeMax() << std::endl;
     return EXIT_SUCCESS;
 }
