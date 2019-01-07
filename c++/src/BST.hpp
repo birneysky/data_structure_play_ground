@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <queue>
+#include <sstream>
 /* 二分搜索树
  每个节点的值大于其左子树所有节点值
  每个节点的值小于其右子树所有节点值
@@ -47,6 +48,7 @@ private:
     void postOrder(Node* node);
     void levelOrder(Node* node);
     void free(Node* node);
+    void toString(Node* node, int depth, std::stringstream& sstream);
 public:
     BST();
     ~BST();
@@ -58,6 +60,14 @@ public:
     void inOrder();
     void postOrder();
     void levelOrder();
+    
+    friend std::ostream& operator <<(std::ostream& os,BST<E>& bst) {
+        std::cout << "♥♥♥♥♥♥ " << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
+        std::stringstream sstream;
+        bst.toString(bst.root, 0, sstream);
+        os << sstream.str();
+        return os;
+    }
 };
 
 
@@ -304,5 +314,24 @@ void BST<E>::free(Node* node) {
         node = nullptr;
     }
 }
+
+template<typename E>
+void BST<E>::toString(Node* node, int depth, std::stringstream& sstream) {
+    auto depthstring = [](const int& depth) -> std::string {
+        std::stringstream stream;
+        for (int i = 0;i <= depth; i++) {
+            stream << "-";
+        }
+        return stream.str();
+    };
+    if (nullptr == node) {
+        sstream << depthstring(depth) << ' ' << "nullptr" << std::endl;
+        return;
+    }
+    sstream << depthstring(depth) << ' ' << node->e << std::endl;
+    toString(node->left, depth+1, sstream);
+    toString(node->right, depth+1, sstream);
+}
+
 
 #endif /* BST_hpp */

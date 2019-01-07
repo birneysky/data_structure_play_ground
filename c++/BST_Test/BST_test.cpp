@@ -18,11 +18,11 @@ int main(int argc, const char * argv[]) {
 *                      /                   \
 *                      30                   70
 *                  /       \             /      \
-*                 20       35        60        75
+*                 20       35          60        75
 *              /     \                /    \        \
-*             18      25         55     68      100
-*                                            /
-*                                           63
+*             18      25            55     68      100
+*                                         /
+*                                        63
 */
     
     std::vector<int> va(a,a+sizeof(a)/sizeof(int));
@@ -64,5 +64,6 @@ int main(int argc, const char * argv[]) {
     std::cout << std::endl;
     std::cout << "Hello, BST!\n";
     std::cout << bst.getSize() << bst.isEmpty() << std::endl;
+    std::cout << bst << std::endl;
     return EXIT_SUCCESS;
 }
