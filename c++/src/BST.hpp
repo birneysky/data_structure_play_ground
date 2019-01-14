@@ -32,6 +32,11 @@ protected:
             left = nullptr;
             right = nullptr;
         }
+        Node(const Node& node) {
+            this->e = node.e;
+            left = nullptr;
+            right = nullptr;
+        }
     };
 
 private:
@@ -152,6 +157,16 @@ private:
      @return 返回删除最大结点后的根结点
      */
     Node* removeMax(Node* node);
+    
+    
+    /**
+     删除以node 为根的二分搜索树中值为e的节点，递归算法
+
+     @param node 根节点
+     @param e 元素值
+     @return 返回删除节点后新的二分搜索树的根
+     */
+    Node* remove(Node* node, E e);
 public:
     BST();
     ~BST();
@@ -229,7 +244,6 @@ public:
      */
     E minimum();
     
-    
     /**
      寻找二分搜索树的最大元素
 
@@ -251,6 +265,14 @@ public:
      @return 返回最大值
      */
     E removeMax();
+    
+    
+    /**
+     从二分搜索树中删除元素为e的的节点
+
+     @param e e
+     */
+    void remove(E e);
 };
 
 
@@ -548,6 +570,54 @@ typename BST<E>::Node* BST<E>::removeMax(Node* node) {
     
     node->right = removeMax(node->right);
     return node;
+}
+
+template<typename E>
+void BST<E>::remove(E e) {
+    root = remove(root,e);
+}
+
+template<typename E>
+typename BST<E>::Node* BST<E>::remove(Node* node, E e) {
+    if (!node) {
+        return nullptr;
+    }
+    
+    if (e > node->e) {
+        node->right = remove(node->right, e);
+        return node;
+    } else if (e < node->e) {
+        node->left = remove(node->left, e);
+        return node;
+    } else { /// 等于e
+        /// 左子树为空
+        if (!node->left) {
+            Node* rightNode = node->right;
+            node->right = nullptr;
+            delete node;
+            size --;
+            return rightNode;
+        }
+        /// 右子树为空
+        if (!node->right) {
+            Node* leftNode = node->left;
+            node->left = nullptr;
+            delete node;
+            size --;
+            return leftNode;
+        }
+        
+        /// 左右子树都不为空的情况
+        /// 使用右子树中最小的元素替换删除节点，该节点是比待删除节点大的最小节点
+        Node* minNode = minimum(node->right);
+        Node* successor = new Node(*minNode);
+        successor->right = removeMin(node->right);
+        successor->left = node->left;
+        node->left = nullptr;
+        node->right = nullptr;
+        delete node;
+        return successor;
+    }
 }
 
 
