@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include "BST.hpp"
+#include "BSTMap.hpp"
 
 int main(int argc, const char * argv[]) {
     
@@ -38,23 +39,23 @@ int main(int argc, const char * argv[]) {
     std::cout << "bst preOrder: ";
     bst.preOrder();
     std::cout << std::endl;
-    
+
     std::cout << "bst1 preOrder: ";
     bst1.preOrder();
     std::cout << std::endl;
-    
+
     std::cout << "bst inOrder: ";
     bst.inOrder();
     std::cout << std::endl;
-    
+
     std::cout << "bst1 inOrder: ";
     bst1.inOrder();
     std::cout << std::endl;
- 
+
     std::cout << "bst postOrder: ";
     bst.postOrder();
     std::cout << std::endl;
-    
+
     std::cout << "bst1 postOrder: ";
     bst1.postOrder();
     std::cout << std::endl;
@@ -64,8 +65,13 @@ int main(int argc, const char * argv[]) {
     std::cout << std::endl;
     std::cout << "Hello, BST!\n";
     std::cout << bst << std::endl;
+    bst.remove(70);
     std::cout << "size:" << bst.getSize() << " isEmpty:" << bst.isEmpty() << " minimum:" << bst.minimum() <<
     " maximum: " << bst.maximum() << " removeMin: " << bst.removeMin() << " size after deletion: "
     << bst.getSize() << " minimum after deletion:" << bst.minimum() << " removeMax:" << bst.removeMax() << std::endl;
+    
+    
+    BSTMap<int,float> bstmap;
+    
     return EXIT_SUCCESS;
 }

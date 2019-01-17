@@ -11,6 +11,7 @@
 #include <sstream>
 #include "BST.hpp"
 #include "Trie.hpp"
+#include "BSTMap.hpp"
 
 struct student {
     std::string name = "liuhua";

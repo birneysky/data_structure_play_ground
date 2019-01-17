@@ -1,13 +1,13 @@
 //
-//  BST.hpp
+//  BSTMapMap.hpp
 //  PlayGround
 //
-//  Created by birneysky on 2018/11/19.
-//  Copyright © 2018 Grocery. All rights reserved.
+//  Created by birneysky on 2019/1/17.
+//  Copyright © 2019 Grocery. All rights reserved.
 //
 
-#ifndef BST_hpp
-#define BST_hpp
+#ifndef BSTMapMap_hpp
+#define BSTMapMap_hpp
 
 #include <iostream>
 #include <queue>
@@ -18,17 +18,19 @@
  每个节点的值小于其右子树所有节点值
  其每一棵子树也是二分搜索树
  */
-template <typename E>
-class BST {
+template <typename K,typename V>
+class BSTMap {
     
 private:
     class Node {
     public:
-        E e;
+        K key;
+        V value;
         Node* left;
         Node* right;
-        Node(E e) {
-            this->e =e;
+        Node(K key,V value) {
+            this->key =key;
+            this->value = value;
             left = nullptr;
             right = nullptr;
         }
@@ -39,28 +41,13 @@ private:
         }
         
         ~Node(){
-            std::cout << "~Node:" << this << " e:" << this->e << std::endl;
+            std::cout << "~Node:" << this << " e:" << this->value << std::endl;
         }
     };
-
+    
 private:
     Node* root;
     int size;
-private:
-    /**
-     向以node为根的二分搜索树中添加元素e，递归算法
-     
-     @param node 结点
-     @param e 元素e
-     */
-    void add_0(Node* node, E e);
-public:
-    /**
-     向二分搜索树中添加元素e
-     
-     @param e 元素e
-     */
-    void add_0(E e);
 private:
     /**
      向以node为根的二分搜索树中添加元素e，递归算法
@@ -69,7 +56,7 @@ private:
      @param e 元素
      @return 返回插入新结点后新的二叉树的根
      */
-    Node* add(Node* node, E e);
+    Node* add(Node* node, K key,V value);
     
     /**
      以node 为根的二分搜索树中是否包含元素e
@@ -78,7 +65,7 @@ private:
      @param e 元素
      @return 包含返回 true ，否则 返回 false
      */
-    bool containts(Node* node, E e);
+    bool containts(Node* node, K key);
     
     /**
      以node 为根的搜索树进行前序遍历
@@ -104,7 +91,7 @@ private:
     
     /**
      以Node 为根的二叉树进行层序遍历
-
+     
      @param node 节点指针
      */
     void levelOrder(Node* node);
@@ -119,7 +106,7 @@ private:
     
     /**
      根据节点深度 以Node 为根的二叉树的字符串表示
-
+     
      @param node 根结点
      @param depth 深度
      @param sstream 字符串流
@@ -129,7 +116,7 @@ private:
     
     /**
      寻找以node为根的二分搜索树中的最小结点
-
+     
      @param node 根结点
      @return 返回最小元素结点的地址
      */
@@ -138,7 +125,7 @@ private:
     
     /**
      寻找以node 为根的二分搜索树中的值最大的结点
-
+     
      @param node 根结点
      @return 最大元素结点的地址
      */
@@ -146,25 +133,25 @@ private:
     
     
     /**
-     删除以node为根的BST中的最小值结点，并释放该节点占用的内存
-
+     删除以node为根的BSTMap中的最小值结点，并释放该节点占用的内存
+     
      @param node 当前根结点
-     @return 返回新的BST的根节点
+     @return 返回新的BSTMap的根节点
      */
     Node* removeMin(Node* node);
     
     /**
-     删除以node 为根的BST中最小值的节点，不释放最小节点占用的内存，并将其返回
-
+     删除以node 为根的BSTMap中最小值的节点，不释放最小节点占用的内存，并将其返回
+     
      @param node 当前根节点
      @param min 最小值节点指针引用
-     @return 返回新的BST的根节点
+     @return 返回新的BSTMap的根节点
      */
     Node* deleteMin(Node* node, Node*& min);
     
     /**
-     删除以node为根的BST中的最大值结点，并释放该节点占用的内存
-
+     删除以node为根的BSTMap中的最大值结点，并释放该节点占用的内存
+     
      @param node 根结点
      @return 返回删除最大结点后的根结点
      */
@@ -173,33 +160,33 @@ private:
     
     /**
      删除以node 为根的二分搜索树中值为e的节点，并释放该节点占用的内存，递归算法
-
+     
      @param node 根节点
      @param e 元素值
      @return 返回删除节点后新的二分搜索树的根
      */
-    Node* remove(Node* node, E e);
+    Node* remove(Node* node, K key);
 public:
-    BST();
-    ~BST();
+    BSTMap();
+    ~BSTMap();
     /**
      重载二分搜索树的 << 运算符，方便通过cout 输出
      
      @param os cout 引用
-     @param bst 二叉树引用
+     @param BSTMap 二叉树引用
      @return 返回 cout引用
      */
-    friend std::ostream& operator <<(std::ostream& os,const BST<E>& bst) {
+    friend std::ostream& operator <<(std::ostream& os,const BSTMap<K,V>& BSTMap) {
         std::cout << "♥♥♥♥♥♥ " << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
         std::stringstream sstream;
-        bst.toString(bst.root, 0, sstream);
+        BSTMap.toString(BSTMap.root, 0, sstream);
         os << sstream.str();
         return os;
     }
     
     /**
      获取二分搜素树中的节点个数
-
+     
      @return 节点个数
      */
     int getSize();
@@ -207,7 +194,7 @@ public:
     
     /**
      判断二分搜索树是否为空
-
+     
      @return 为空返回YES ，否则返回NO
      */
     bool isEmpty();
@@ -215,10 +202,10 @@ public:
     
     /**
      在二分搜索树中添加元素
-
+     
      @param e 添加的元素e
      */
-    void add(E e);
+    void add(K key,V value);
     
     /**
      二分搜索树中是否包含元素e
@@ -226,7 +213,7 @@ public:
      @param e 元素
      @return 包含返回 true ，否则 返回 false
      */
-    bool containts(E e);
+    bool containts(K key);
     
     
     /**
@@ -251,146 +238,114 @@ public:
     
     /**
      寻找二分搜索树的最小元素
-
+     
      @return 返回最小元素的值
      */
-    E minimum();
+    V minimum();
     
     /**
      寻找二分搜索树的最大元素
-
+     
      @return 返回最大元素的值
      */
-    E maximum();
+    V maximum();
     
     /**
      删除值最小的结点
-
+     
      @return 返回最小值
      */
-    E removeMin();
+    V removeMin();
     
     
     /**
      删除值最大的结点
-
+     
      @return 返回最大值
      */
-    E removeMax();
+    V removeMax();
     
     
     /**
      从二分搜索树中删除元素为e的的节点
-
+     
      @param e e
      */
-    void remove(E e);
+    void remove(K key);
 };
 
 
-template<typename E>
-BST<E>::BST() {
+template<typename K,typename V>
+BSTMap<K,V>::BSTMap() {
     root = nullptr;
     size = 0;
 }
 
-template<typename E>
-BST<E>::~BST() {
+template<typename K,typename V>
+BSTMap<K,V>::~BSTMap() {
     std::cout << __FUNCTION__ << " : ";
     free(root);
     std::cout << std::endl;
 }
 
-template<typename E>
-int BST<E>::getSize() {
+template<typename K,typename V>
+int BSTMap<K,V>::getSize() {
     return size;
 }
 
-template<typename E>
-bool BST<E>::isEmpty() {
+template<typename K,typename V>
+bool BSTMap<K,V>::isEmpty() {
     return size == 0;
 }
 
-template <typename E>
-void BST<E>::add_0(E e) {
-    if (nullptr == root) {
-        root = new Node(e);
-        size++;
-    } else {
-        add_0(root, e);
-    }
-}
 
-template <typename E>
-void BST<E>::add_0(Node* node, E e) {
-    if (e == node->e) {
-        return;
-    }
-    
-    if (e > node->e) {
-        if (node->right) {
-            add_0(node->right, e);
-        } else {
-            size++;
-            node->right = new Node(e);
-        }
-    } else {
-        if (node->left) {
-            add_0(node->left, e);
-        } else {
-            size++;
-            node->left = new Node(e);
-        }
-    }
-}
-
-template <typename E>
-typename BST<E>::Node* BST<E>::add(Node *node, E e) {
+template<typename K,typename V>
+typename BSTMap<K,V>::Node* BSTMap<K,V>::add(Node *node, K key,V value) {
     if (node == nullptr) {
         size++;
-        return new Node(e);
+        return new Node(key,value);
     }
     
-    if (e > node->e) {
-        node->right = add(node->right, e);
-    } else if( e < node->e ) {
-        node->left = add(node->left, e);
+    if (key > node->key) {
+        node->right = add(node->right, key, value);
+    } else if( key < node->key ) {
+        node->left = add(node->left, key, value);
     }
     return node;
 }
 
-template <typename E>
-void BST<E>::add(E e) {
-    root = add(root, e);
+template<typename K,typename V>
+void BSTMap<K,V>::add(K key,V value) {
+    root = add(root, key, value);
 }
 
-template <typename E>
-bool BST<E>::containts(E e) {
-    return containts(root, e);
+template<typename K,typename V>
+bool BSTMap<K,V>::containts(K key) {
+    return containts(root, key);
 }
 
-template <typename E>
-bool BST<E>::containts(Node* node, E e) {
+template<typename K,typename V>
+bool BSTMap<K,V>::containts(Node* node, K key) {
     if (nullptr == node) {
         return false;
     }
     
-    if (e == node->e) {
+    if (key == node->key) {
         return true;
-    } else if (e > node->e) {
-        return containts(node->right, e);
+    } else if (key > node->key) {
+        return containts(node->right, key);
     } else {
-        return containts(node->left, e);
+        return containts(node->left, key);
     }
 }
 
-template <typename E>
-void  BST<E>::preOrder() {
+template<typename K,typename V>
+void  BSTMap<K,V>::preOrder() {
     preOrder(root);
 }
 
-template <typename E>
-void BST<E>::preOrder(Node* node) {
+template<typename K,typename V>
+void BSTMap<K,V>::preOrder(Node* node) {
     if (nullptr == node) {
         return;
     }
@@ -401,13 +356,13 @@ void BST<E>::preOrder(Node* node) {
 
 
 
-template <typename E>
-void BST<E>::inOrder() {
+template<typename K,typename V>
+void BSTMap<K,V>::inOrder() {
     inOrder(root);
 }
 
-template <typename E>
-void BST<E>::inOrder(Node* node) {
+template<typename K,typename V>
+void BSTMap<K,V>::inOrder(Node* node) {
     if (nullptr == node) {
         return;
     }
@@ -416,13 +371,13 @@ void BST<E>::inOrder(Node* node) {
     inOrder(node->right);
 }
 
-template <typename E>
-void BST<E>::postOrder() {
+template<typename K,typename V>
+void BSTMap<K,V>::postOrder() {
     postOrder(root);
 }
 
-template <typename E>
-void BST<E>::postOrder(Node* node) {
+template<typename K,typename V>
+void BSTMap<K,V>::postOrder(Node* node) {
     if (nullptr == node) {
         return;
     }
@@ -431,13 +386,13 @@ void BST<E>::postOrder(Node* node) {
     std::cout << node->e << ' ';
 }
 
-template <typename E>
-void BST<E>::levelOrder() {
+template<typename K,typename V>
+void BSTMap<K,V>::levelOrder() {
     levelOrder(root);
 }
 
-template <typename E>
-void BST<E>::levelOrder(Node* node) {
+template<typename K,typename V>
+void BSTMap<K,V>::levelOrder(Node* node) {
     if (nullptr == node) {
         return;
     }
@@ -456,8 +411,8 @@ void BST<E>::levelOrder(Node* node) {
     }
 }
 
-template<typename E>
-void BST<E>::free(Node* node) {
+template<typename K,typename V>
+void BSTMap<K,V>::free(Node* node) {
     if (nullptr == node) {
         return;
     }
@@ -473,14 +428,14 @@ void BST<E>::free(Node* node) {
     }
     
     if (!node->left && !node->right) {
-        std::cout << node->e << ' ';
+        std::cout << node->value << ' ';
         delete node;
         node = nullptr;
     }
 }
 
-template<typename E>
-void BST<E>::toString(Node* node, int depth, std::stringstream& sstream) const {
+template<typename K,typename V>
+void BSTMap<K,V>::toString(Node* node, int depth, std::stringstream& sstream) const {
     auto depthstring = [](const int& depth) -> std::string {
         std::stringstream stream;
         for (int i = 0;i <= depth; i++) {
@@ -498,18 +453,18 @@ void BST<E>::toString(Node* node, int depth, std::stringstream& sstream) const {
 }
 
 
-template<typename E>
-E BST<E>::minimum() {
+template<typename K,typename V>
+V BSTMap<K,V>::minimum() {
     Node* minNode =  minimum(root->left);
     if (minNode) {
-        return minNode->e;
+        return minNode->value;
     } else {
-        throw std::invalid_argument("bst is empty");
+        throw std::invalid_argument("BSTMap is empty");
     }
 }
 
-template<typename E>
-typename BST<E>::Node* BST<E>::minimum(Node* node){
+template<typename K,typename V>
+typename BSTMap<K,V>::Node* BSTMap<K,V>::minimum(Node* node){
     if (!node->left) {
         return node;
     }
@@ -517,36 +472,36 @@ typename BST<E>::Node* BST<E>::minimum(Node* node){
 }
 
 
-template<typename E>
-E BST<E>::maximum() {
+template<typename K,typename V>
+V BSTMap<K,V>::maximum() {
     Node* maxNode = maximum(root);
     if (maxNode) {
-        return maxNode->e;
+        return maxNode->value;
     } else {
-        throw std::invalid_argument("BST is empty!");
+        throw std::invalid_argument("BSTMap is empty!");
     }
 }
 
-template<typename E>
-typename BST<E>::Node* BST<E>::maximum(Node* node) {
+template<typename K,typename V>
+typename BSTMap<K,V>::Node* BSTMap<K,V>::maximum(Node* node) {
     if (!node->right) {
         return node;
     }
     return maximum(node->right);
 }
 
-template<typename E>
-E BST<E>::removeMin()  {
+template<typename K,typename V>
+V BSTMap<K,V>::removeMin()  {
     if (getSize() == 0) {
-        throw std::invalid_argument("BST is empty!");
+        throw std::invalid_argument("BSTMap is empty!");
     }
-    E e = minimum();
+    V v = minimum();
     root = removeMin(root);
-    return e;
+    return v;
 }
 
-template<typename E>
-typename BST<E>::Node* BST<E>::removeMin(Node* node) {
+template<typename K,typename V>
+typename BSTMap<K,V>::Node* BSTMap<K,V>::removeMin(Node* node) {
     if (!node->left) {
         Node* rightNode = node->right;
         node->right = nullptr;
@@ -559,8 +514,8 @@ typename BST<E>::Node* BST<E>::removeMin(Node* node) {
     return node;
 }
 
-template<typename E>
-typename BST<E>::Node* BST<E>::deleteMin(Node* node,Node*& min) {
+template<typename K,typename V>
+typename BSTMap<K,V>::Node* BSTMap<K,V>::deleteMin(Node* node,Node*& min) {
     if (!node->left) {
         Node* rightNode = node->right;
         node->right = nullptr;
@@ -572,19 +527,19 @@ typename BST<E>::Node* BST<E>::deleteMin(Node* node,Node*& min) {
     return node;
 }
 
-template<typename E>
-E BST<E>::removeMax() {
+template<typename K,typename V>
+V BSTMap<K,V>::removeMax() {
     if (size == 0) {
-        throw std::invalid_argument("BST is eimpty");
+        throw std::invalid_argument("BSTMap is eimpty");
     }
     
-    E e = maximum();
+    V v = maximum();
     root = removeMax(root);
-    return e;
+    return v;
 }
 
-template <typename E>
-typename BST<E>::Node* BST<E>::removeMax(Node* node) {
+template<typename K,typename V>
+typename BSTMap<K,V>::Node* BSTMap<K,V>::removeMax(Node* node) {
     if (!node->right) {
         Node* leftNode = node->left;
         node->left = nullptr;
@@ -597,22 +552,22 @@ typename BST<E>::Node* BST<E>::removeMax(Node* node) {
     return node;
 }
 
-template<typename E>
-void BST<E>::remove(E e) {
-    root = remove(root,e);
+template<typename K,typename V>
+void BSTMap<K,V>::remove(K key) {
+    root = remove(root,key);
 }
 
-template<typename E>
-typename BST<E>::Node* BST<E>::remove(Node* node, E e) {
+template<typename K,typename V>
+typename BSTMap<K,V>::Node* BSTMap<K,V>::remove(Node* node, K key) {
     if (!node) {
         return nullptr;
     }
     
-    if (e > node->e) {
-        node->right = remove(node->right, e);
+    if (key > node->key) {
+        node->right = remove(node->right, key);
         return node;
-    } else if (e < node->e) {
-        node->left = remove(node->left, e);
+    } else if (key < node->key) {
+        node->left = remove(node->left, key);
         return node;
     } else { /// 等于e
         /// 左子树为空
@@ -646,5 +601,4 @@ typename BST<E>::Node* BST<E>::remove(Node* node, E e) {
     }
 }
 
-
-#endif /* BST_hpp */
+#endif /* BSTMapMap_hpp */

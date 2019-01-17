@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7476723F21B5739600EAD0FF /* BST_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7476723E21B5739600EAD0FF /* BST_test.cpp */; };
-		7476724321B573B800EAD0FF /* BST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B98E1D21A307250063C05E /* BST.cpp */; };
 		7476724621C4D20C00EAD0FF /* FingerSolution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7476724421C4D20C00EAD0FF /* FingerSolution.cpp */; };
 		74B98E1C21A3033D0063C05E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B98E1B21A3033D0063C05E /* main.cpp */; };
-		74B98E1F21A307250063C05E /* BST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B98E1D21A307250063C05E /* BST.cpp */; };
 		B22AA56021AFFEF10017DAB1 /* Solution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22AA55721AFFE540017DAB1 /* Solution.cpp */; };
 		B22AA56121AFFEF10017DAB1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22AA55821AFFE540017DAB1 /* main.cpp */; };
 		B22AA56221AFFEF10017DAB1 /* Solution.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B22AA55921AFFE540017DAB1 /* Solution.hpp */; };
@@ -51,13 +49,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		74472DCE21F05091004A2B59 /* BSTMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BSTMap.hpp; sourceTree = "<group>"; };
 		7476723C21B5739600EAD0FF /* BST_Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BST_Test; sourceTree = BUILT_PRODUCTS_DIR; };
 		7476723E21B5739600EAD0FF /* BST_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BST_test.cpp; sourceTree = "<group>"; };
 		7476724421C4D20C00EAD0FF /* FingerSolution.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FingerSolution.cpp; sourceTree = "<group>"; };
 		7476724521C4D20C00EAD0FF /* FingerSolution.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FingerSolution.hpp; sourceTree = "<group>"; };
 		74B98E1021A302F20063C05E /* PlayGround */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PlayGround; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B98E1B21A3033D0063C05E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		74B98E1D21A307250063C05E /* BST.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BST.cpp; sourceTree = "<group>"; };
 		74B98E1E21A307250063C05E /* BST.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BST.hpp; sourceTree = "<group>"; };
 		B22AA54721AFFE160017DAB1 /* solutions */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = solutions; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22AA55121AFFE540017DAB1 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
@@ -130,11 +128,11 @@
 			children = (
 				74B98E1B21A3033D0063C05E /* main.cpp */,
 				74B98E1E21A307250063C05E /* BST.hpp */,
-				74B98E1D21A307250063C05E /* BST.cpp */,
+				74472DCE21F05091004A2B59 /* BSTMap.hpp */,
+				B25DA65821CCF8F9004F8D58 /* Trie.hpp */,
 				B25DA65721CCF8F9004F8D58 /* Trie.cpp */,
 				B262BD6A21E37A3900C4B357 /* FileReader.hpp */,
 				B262BD6921E37A3900C4B357 /* FileReader.cpp */,
-				B25DA65821CCF8F9004F8D58 /* Trie.hpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -261,7 +259,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7476724321B573B800EAD0FF /* BST.cpp in Sources */,
 				7476723F21B5739600EAD0FF /* BST_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,7 +270,6 @@
 				B25DA65921CCF8F9004F8D58 /* Trie.cpp in Sources */,
 				74B98E1C21A3033D0063C05E /* main.cpp in Sources */,
 				B262BD6B21E37A3900C4B357 /* FileReader.cpp in Sources */,
-				74B98E1F21A307250063C05E /* BST.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
