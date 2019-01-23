@@ -15,6 +15,8 @@
 		B22AA56221AFFEF10017DAB1 /* Solution.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B22AA55921AFFE540017DAB1 /* Solution.hpp */; };
 		B25DA65921CCF8F9004F8D58 /* Trie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B25DA65721CCF8F9004F8D58 /* Trie.cpp */; };
 		B262BD6B21E37A3900C4B357 /* FileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B262BD6921E37A3900C4B357 /* FileReader.cpp */; };
+		B293456021F5AA3A00C19F1C /* pride-and-prejudice.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = B293455F21F5AA2100C19F1C /* pride-and-prejudice.txt */; };
+		B293456121F5AABE00C19F1C /* pride-and-prejudice.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = B293455F21F5AA2100C19F1C /* pride-and-prejudice.txt */; };
 		B29E2B3821B7DDC90027ECEF /* SolutionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B29E2B3621B7DDC90027ECEF /* SolutionTest.cpp */; };
 /* End PBXBuildFile section */
 
@@ -22,20 +24,22 @@
 		7476723A21B5739600EAD0FF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			dstPath = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 			dstSubfolderSpec = 0;
 			files = (
+				B293456021F5AA3A00C19F1C /* pride-and-prejudice.txt in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		74B98E0E21A302F20063C05E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			buildActionMask = 12;
+			dstPath = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 			dstSubfolderSpec = 0;
 			files = (
+				B293456121F5AABE00C19F1C /* pride-and-prejudice.txt in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B22AA54521AFFE160017DAB1 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -66,6 +70,7 @@
 		B25DA65821CCF8F9004F8D58 /* Trie.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Trie.hpp; sourceTree = "<group>"; };
 		B262BD6921E37A3900C4B357 /* FileReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FileReader.cpp; sourceTree = "<group>"; };
 		B262BD6A21E37A3900C4B357 /* FileReader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FileReader.hpp; sourceTree = "<group>"; };
+		B293455F21F5AA2100C19F1C /* pride-and-prejudice.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pride-and-prejudice.txt"; sourceTree = "<group>"; };
 		B29E2B3621B7DDC90027ECEF /* SolutionTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SolutionTest.cpp; sourceTree = "<group>"; };
 		B29E2B3721B7DDC90027ECEF /* SolutionTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SolutionTest.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +111,7 @@
 		74B98E0721A302F20063C05E = {
 			isa = PBXGroup;
 			children = (
+				B293455E21F5AA2100C19F1C /* resource */,
 				B22AA54E21AFFE540017DAB1 /* solutions */,
 				74B98E1A21A3033D0063C05E /* src */,
 				7476723D21B5739600EAD0FF /* BST_Test */,
@@ -158,6 +164,14 @@
 				B22AA55821AFFE540017DAB1 /* main.cpp */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		B293455E21F5AA2100C19F1C /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				B293455F21F5AA2100C19F1C /* pride-and-prejudice.txt */,
+			);
+			path = resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

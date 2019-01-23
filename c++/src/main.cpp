@@ -12,6 +12,7 @@
 #include "BST.hpp"
 #include "Trie.hpp"
 #include "BSTMap.hpp"
+#include "FileReader.hpp"
 
 struct student {
     std::string name = "liuhua";
@@ -46,6 +47,10 @@ int main(int argc, const char * argv[]) {
     std::cout << trie.contains("cat") << std::endl;
     std::cout << trie.contains("hah") << std::endl;
     std::cout << trie.contains("phone") <<  std::endl;
+    
+    FileReader fileReader("pride-and-prejudice.txt");
+    std::vector<std::string> words;
+    fileReader.readAllWords(words);
     
     return EXIT_SUCCESS;
 }

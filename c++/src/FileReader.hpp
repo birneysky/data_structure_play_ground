@@ -15,6 +15,8 @@
 class FileReader {
 private:
     std::string fileName;
+    int firstCharacterIndex(std::string s, int start);
+    bool isLetter(char ch);
 public:
     FileReader(const std::string& fineName);
     bool readAllWords(std::vector<std::string>& vec);
