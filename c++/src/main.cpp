@@ -51,6 +51,8 @@ int main(int argc, const char * argv[]) {
     FileReader fileReader("pride-and-prejudice.txt");
     std::vector<std::string> words;
     fileReader.readAllWords(words);
-    
+    std::for_each(words.begin(), words.end(), [&trie](const std::string& str){
+        trie.add(str);
+    });
     return EXIT_SUCCESS;
 }
