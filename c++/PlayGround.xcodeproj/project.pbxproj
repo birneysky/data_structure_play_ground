@@ -54,6 +54,11 @@
 
 /* Begin PBXFileReference section */
 		74472DCE21F05091004A2B59 /* BSTMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BSTMap.hpp; sourceTree = "<group>"; };
+		74472DD121FD5986004A2B59 /* Set.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Set.hpp; sourceTree = "<group>"; };
+		74472DD421FD5A04004A2B59 /* TreeSet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TreeSet.hpp; sourceTree = "<group>"; };
+		74472DD721FD5C00004A2B59 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
+		74472DDA21FD5CC8004A2B59 /* TreeMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TreeMap.hpp; sourceTree = "<group>"; };
+		74472DDD21FD6893004A2B59 /* AVLTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AVLTree.hpp; sourceTree = "<group>"; };
 		7476723C21B5739600EAD0FF /* BST_Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BST_Test; sourceTree = BUILT_PRODUCTS_DIR; };
 		7476723E21B5739600EAD0FF /* BST_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BST_test.cpp; sourceTree = "<group>"; };
 		7476724421C4D20C00EAD0FF /* FingerSolution.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FingerSolution.cpp; sourceTree = "<group>"; };
@@ -135,6 +140,11 @@
 				74B98E1B21A3033D0063C05E /* main.cpp */,
 				74B98E1E21A307250063C05E /* BST.hpp */,
 				74472DCE21F05091004A2B59 /* BSTMap.hpp */,
+				74472DDD21FD6893004A2B59 /* AVLTree.hpp */,
+				74472DD121FD5986004A2B59 /* Set.hpp */,
+				74472DD721FD5C00004A2B59 /* Map.hpp */,
+				74472DD421FD5A04004A2B59 /* TreeSet.hpp */,
+				74472DDA21FD5CC8004A2B59 /* TreeMap.hpp */,
 				B25DA65821CCF8F9004F8D58 /* Trie.hpp */,
 				B25DA65721CCF8F9004F8D58 /* Trie.cpp */,
 				B262BD6A21E37A3900C4B357 /* FileReader.hpp */,

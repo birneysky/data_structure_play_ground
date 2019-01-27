@@ -13,6 +13,8 @@
 #include "Trie.hpp"
 #include "BSTMap.hpp"
 #include "FileReader.hpp"
+#include "TreeSet.hpp"
+#include "TreeMap.hpp"
 
 struct student {
     std::string name = "liuhua";
@@ -54,5 +56,8 @@ int main(int argc, const char * argv[]) {
     std::for_each(words.begin(), words.end(), [&trie](const std::string& str){
         trie.add(str);
     });
+    
+    TreeSet<std::string> treeSet;
+    TreeMap<std::string,int> treeMap;
     return EXIT_SUCCESS;
 }

@@ -49,23 +49,35 @@ private:
     Node* root;
     int size;
 private:
+    
     /**
-     向以node为根的二分搜索树中添加元素e，递归算法
-     
-     @param node 结点指针
-     @param e 元素
+     向以node为根的二分搜索树中添加元素键值对，递归算法
+
+     @param node 根节点
+     @param key 键值
+     @param value 值
      @return 返回插入新结点后新的二叉树的根
      */
     Node* add(Node* node, K key,V value);
     
     /**
-     以node 为根的二分搜索树中是否包含元素e
+     以node 为根的二分搜索树中是否包含键值key
      
      @param node 结点指针
-     @param e 元素
+     @param key 键值
      @return 包含返回 true ，否则 返回 false
      */
     bool containts(Node* node, K key);
+    
+    
+    /**
+     在node 为根的搜索树中查找包含键值key 的节点
+
+     @param node 根节点
+     @param key 键值
+     @return 包含返回节点指针， 否则返回null
+     */
+    Node* find(Node* node, K key);
     
     /**
      以node 为根的搜索树进行前序遍历
@@ -159,10 +171,10 @@ private:
     
     
     /**
-     删除以node 为根的二分搜索树中值为e的节点，并释放该节点占用的内存，递归算法
+     删除以node 为根的二分搜索树中键值为key的节点，并释放该节点占用的内存，递归算法
      
      @param node 根节点
-     @param e 元素值
+     @param key 键值
      @return 返回删除节点后新的二分搜索树的根
      */
     Node* remove(Node* node, K key);
@@ -199,22 +211,32 @@ public:
      */
     bool isEmpty();
     
-    
     /**
-     在二分搜索树中添加元素
-     
-     @param e 添加的元素e
+     在二分搜索树中添加键值对
+
+     @param key 键值
+     @param value 值
      */
     void add(K key,V value);
     
+    void set(K key,V value);
+    
     /**
-     二分搜索树中是否包含元素e
+     二分搜索树中是否包含键值key
      
-     @param e 元素
+     @param key 键值
      @return 包含返回 true ，否则 返回 false
      */
     bool containts(K key);
     
+    
+    /**
+     查找键值为key的值
+
+     @param key 键值
+     @return 如果 key 存在，返回对应的值。 否则抛出异常。
+     */
+    V find(K key);
     
     /**
      前序遍历
@@ -267,9 +289,9 @@ public:
     
     
     /**
-     从二分搜索树中删除元素为e的的节点
+     从二分搜索树中删除键值为key的的节点
      
-     @param e e
+     @param key 键值
      */
     void remove(K key);
 };
@@ -310,13 +332,24 @@ typename BSTMap<K,V>::Node* BSTMap<K,V>::add(Node *node, K key,V value) {
         node->right = add(node->right, key, value);
     } else if( key < node->key ) {
         node->left = add(node->left, key, value);
+    } else {
+        node->value = value;
     }
+    
     return node;
 }
 
 template<typename K,typename V>
 void BSTMap<K,V>::add(K key,V value) {
     root = add(root, key, value);
+}
+
+template<typename K, typename V>
+void BSTMap<K,V>::set(K key,V value) {
+    Node* node = find(node, key);
+    if (node) {
+        node->value = value;
+    }
 }
 
 template<typename K,typename V>
@@ -336,6 +369,31 @@ bool BSTMap<K,V>::containts(Node* node, K key) {
         return containts(node->right, key);
     } else {
         return containts(node->left, key);
+    }
+}
+
+template<typename K, typename V>
+typename BSTMap<K,V>::Node* BSTMap<K,V>::find(Node* node, K key) {
+    if (!node) {
+        return nullptr;
+    }
+    
+    if (key == node->key) {
+        return node;
+    } else if (key > node->key) {
+        return find(node->right,key);
+    } else {
+        return find(node->left,key);
+    }
+}
+
+template<typename K, typename V>
+V BSTMap<K,V>::find(K key) {
+    Node* node = find(root,key);
+    if (node) {
+        return node->value;
+    } else {
+        throw std::invalid_argument("BST not Contanin key");
     }
 }
 
