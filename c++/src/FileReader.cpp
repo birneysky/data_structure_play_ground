@@ -71,8 +71,7 @@ int FileReader::firstCharacterIndex(std::string s, int start) {
 
 bool FileReader::isLetter(char ch) {
     if ((ch >= 'A' && ch <='Z')||
-        (ch >= 'a' && ch <= 'z') ||
-        (ch == '-')) {
+        (ch >= 'a' && ch <= 'z')) {
         return true;
     }
     return false;

@@ -15,6 +15,7 @@
 #include "FileReader.hpp"
 #include "TreeSet.hpp"
 #include "TreeMap.hpp"
+#include "AVLTree.hpp"
 
 struct student {
     std::string name = "liuhua";
@@ -59,5 +60,18 @@ int main(int argc, const char * argv[]) {
     
     TreeSet<std::string> treeSet;
     TreeMap<std::string,int> treeMap;
+    std::for_each(words.begin(), words.end(), [&treeMap](const std::string& word){
+        if (treeMap.contains(word)) {
+            treeMap.set(word, treeMap.get(word)+1);
+        } else {
+            treeMap.add(word,1);
+        }
+    });
+    
+    std::cout << "Total difference words: " << treeMap.getSize() << std::endl;
+    std::cout << "Frequency of PRIDE: " << treeMap.get("pride") << std::endl;
+    std::cout << "Frenquency of PREJUDICE: " << treeMap.get("prejudice") << std::endl;
+    
+    AVLTree<int, int> avlTree;
     return EXIT_SUCCESS;
 }

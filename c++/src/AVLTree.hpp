@@ -17,6 +17,41 @@
  每个节点的值大于其左子树所有节点值
  每个节点的值小于其右子树所有节点值
  其每一棵子树也是二分搜索树
+ 
+ G. M. Adelson-Velsky 和 E. M. Landis 在1962年首次提出的
+ 是最早的自平衡二叉树
+ 什么是平衡二叉树
+    对于任意一个节点，左子树的右子树的高度差不能超过1
+    比如：
+                        12
+                    /      \
+                  8         18
+               /    \      /
+              5     11    17
+            /
+           4
+  平衡二叉树的高度和节点数量之间的关系是 O(logn)
+ 节点的高度：
+    叶子节点的高度记为1，其他节点的高度等于左右子树高度最大值加1
+ 平衡因子：
+    对于一个节点，它的左右子树的高度差
+ 
+ 
+    如下：节点左边为节点高度，右侧为平衡因子
+ 
+                                6🄷2
+                    /                         \
+                3🄳0                          5🅆3
+               /      \                    /       \
+            2🄲1      2🄶1               4🅃2         1🅉0
+            /        /                /      \
+          1🄰0       1🄵0            1🄸0      3🅅2
+                                                \
+                                                2🄹1
+                                                  \
+                                                   1🄺0
+ 
+ 
  */
 template <typename K,typename V>
 class AVLTree {
@@ -28,16 +63,20 @@ private:
         V value;
         Node* left;
         Node* right;
+        int height;
         Node(K key,V value) {
             this->key =key;
             this->value = value;
             left = nullptr;
             right = nullptr;
+            height = 1;
         }
+        
         Node(const Node& node) {
             this->e = node.e;
             left = nullptr;
             right = nullptr;
+            height = node->height;
         }
         
         ~Node(){
@@ -72,7 +111,40 @@ private:
             node->value = value;
         }
         
+        node->height = std::max(getHeight(node->left), getHeight(node->right)) + 1;
+        int balanceFactor = getBalanceFactor(node);
+        if (abs(balanceFactor) > 1) {
+            std::cout << "unbalanced: " << balanceFactor << std::endl;
+        }
         return node;
+    }
+    
+    
+    /**
+     获取每一个节点的高度
+
+     @param node 节点指针
+     @return 返回高度
+     */
+    int getHeight(Node* node) {
+        if (!node) {
+            return 0;
+        }
+        return node->height;
+    }
+    
+    
+    /**
+     获得节点的平衡因子
+
+     @param node 节点指针
+     @return 返回平衡因子
+     */
+    int getBalanceFactor(Node* node) {
+        if (!node) {
+            return 0;
+        }
+        return getHeight(node->left) - getHeight(node->right);
     }
     
     /**
@@ -371,12 +443,12 @@ private:
 
     }
 public:
-    BSTMap() {
+    AVLTree() {
         root = nullptr;
         size = 0;
     }
     
-    ~BSTMap() {
+    ~AVLTree() {
         std::cout << __FUNCTION__ << " : ";
         free(root);
         std::cout << std::endl;
@@ -386,13 +458,13 @@ public:
      重载二分搜索树的 << 运算符，方便通过cout 输出
      
      @param os cout 引用
-     @param BSTMap 二叉树引用
+     @param avlTree 二叉树引用
      @return 返回 cout引用
      */
-    friend std::ostream& operator <<(std::ostream& os,const BSTMap<K,V>& BSTMap) {
+    friend std::ostream& operator <<(std::ostream& os,const AVLTree<K,V>& avlTree) {
         std::cout << "♥♥♥♥♥♥ " << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
         std::stringstream sstream;
-        BSTMap.toString(BSTMap.root, 0, sstream);
+        avlTree.toString(avlTree.root, 0, sstream);
         os << sstream.str();
         return os;
     }
