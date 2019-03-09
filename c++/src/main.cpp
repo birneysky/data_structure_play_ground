@@ -29,17 +29,7 @@ struct student {
     }
 };
 
-
-int main(int argc, const char * argv[]) {
-    student stu;
-    stu.age = 30;
-    stu.name = "hanmeimei";
-    stu.scores = 500;
-    std::cout << stu << std::endl;
-    
-    student ttt;
-    std::cout << ttt << std::endl;
-    
+void testTrie(std::vector<std::string>& words) {
     Trie trie;
     trie.add("cat");
     trie.add("pig");
@@ -51,14 +41,12 @@ int main(int argc, const char * argv[]) {
     std::cout << trie.contains("hah") << std::endl;
     std::cout << trie.contains("phone") <<  std::endl;
     
-    FileReader fileReader("pride-and-prejudice.txt");
-    std::vector<std::string> words;
-    fileReader.readAllWords(words);
     std::for_each(words.begin(), words.end(), [&trie](const std::string& str){
         trie.add(str);
     });
-    
-    TreeSet<std::string> treeSet;
+}
+
+void testTreeMap(std::vector<std::string>& words) {
     TreeMap<std::string,int> treeMap;
     std::for_each(words.begin(), words.end(), [&treeMap](const std::string& word){
         if (treeMap.contains(word)) {
@@ -67,11 +55,38 @@ int main(int argc, const char * argv[]) {
             treeMap.add(word,1);
         }
     });
-    
     std::cout << "Total difference words: " << treeMap.getSize() << std::endl;
     std::cout << "Frequency of PRIDE: " << treeMap.get("pride") << std::endl;
     std::cout << "Frenquency of PREJUDICE: " << treeMap.get("prejudice") << std::endl;
-    
+}
+
+void testTreeSet(std::vector<std::string>& words) {
+    TreeSet<std::string> treeSet;
+}
+
+void testAVL(std::vector<std::string>& words) {
     AVLTree<int, int> avlTree;
+}
+
+int main(int argc, const char * argv[]) {
+    student stu;
+    stu.age = 30;
+    stu.name = "hanmeimei";
+    stu.scores = 500;
+    std::cout << stu << std::endl;
+    
+    student ttt;
+    std::cout << ttt << std::endl;
+    
+
+    
+    FileReader fileReader("pride-and-prejudice.txt");
+    std::vector<std::string> words;
+    fileReader.readAllWords(words);
+    //testTrie(words);
+    //testTreeMap(words);
+    
+    
+    
     return EXIT_SUCCESS;
 }
