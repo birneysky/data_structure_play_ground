@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7476723F21B5739600EAD0FF /* BST_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7476723E21B5739600EAD0FF /* BST_test.cpp */; };
 		7476724621C4D20C00EAD0FF /* FingerSolution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7476724421C4D20C00EAD0FF /* FingerSolution.cpp */; };
+		74B379BB2234C8F7009D3519 /* testG1.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74B379B92234C8DC009D3519 /* testG1.txt */; };
+		74B379BC2234C8F7009D3519 /* testG2.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74B379BA2234C8DC009D3519 /* testG2.txt */; };
 		74B98E1C21A3033D0063C05E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74B98E1B21A3033D0063C05E /* main.cpp */; };
 		B22AA56021AFFEF10017DAB1 /* Solution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22AA55721AFFE540017DAB1 /* Solution.cpp */; };
 		B22AA56121AFFEF10017DAB1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22AA55821AFFE540017DAB1 /* main.cpp */; };
@@ -37,6 +39,8 @@
 			dstPath = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 			dstSubfolderSpec = 0;
 			files = (
+				74B379BB2234C8F7009D3519 /* testG1.txt in CopyFiles */,
+				74B379BC2234C8F7009D3519 /* testG2.txt in CopyFiles */,
 				B293456121F5AABE00C19F1C /* pride-and-prejudice.txt in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +67,10 @@
 		7476723E21B5739600EAD0FF /* BST_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BST_test.cpp; sourceTree = "<group>"; };
 		7476724421C4D20C00EAD0FF /* FingerSolution.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FingerSolution.cpp; sourceTree = "<group>"; };
 		7476724521C4D20C00EAD0FF /* FingerSolution.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FingerSolution.hpp; sourceTree = "<group>"; };
+		74B379B42234B4C9009D3519 /* SparseGraph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SparseGraph.hpp; sourceTree = "<group>"; };
+		74B379B72234C7E2009D3519 /* ReadGraph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ReadGraph.hpp; sourceTree = "<group>"; };
+		74B379B92234C8DC009D3519 /* testG1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testG1.txt; sourceTree = "<group>"; };
+		74B379BA2234C8DC009D3519 /* testG2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testG2.txt; sourceTree = "<group>"; };
 		74B98E1021A302F20063C05E /* PlayGround */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PlayGround; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B98E1B21A3033D0063C05E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		74B98E1E21A307250063C05E /* BST.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BST.hpp; sourceTree = "<group>"; };
@@ -148,7 +156,9 @@
 				74472DDA21FD5CC8004A2B59 /* TreeMap.hpp */,
 				B25DA65821CCF8F9004F8D58 /* Trie.hpp */,
 				B25DA65721CCF8F9004F8D58 /* Trie.cpp */,
+				74B379B72234C7E2009D3519 /* ReadGraph.hpp */,
 				B21055732233C2CF008AD085 /* DenseGraph.hpp */,
+				74B379B42234B4C9009D3519 /* SparseGraph.hpp */,
 				B262BD6A21E37A3900C4B357 /* FileReader.hpp */,
 				B262BD6921E37A3900C4B357 /* FileReader.cpp */,
 			);
@@ -181,6 +191,8 @@
 		B293455E21F5AA2100C19F1C /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				74B379B92234C8DC009D3519 /* testG1.txt */,
+				74B379BA2234C8DC009D3519 /* testG2.txt */,
 				B293455F21F5AA2100C19F1C /* pride-and-prejudice.txt */,
 			);
 			path = resource;

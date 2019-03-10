@@ -16,6 +16,9 @@
 #include "TreeSet.hpp"
 #include "TreeMap.hpp"
 #include "AVLTree.hpp"
+#include "DenseGraph.hpp"
+#include "SparseGraph.hpp"
+#include "ReadGraph.hpp"
 
 struct student {
     std::string name = "liuhua";
@@ -68,6 +71,62 @@ void testAVL(std::vector<std::string>& words) {
     AVLTree<int, int> avlTree;
 }
 
+void testGraph() {
+    //DenseGraph d(3, false);
+    
+    int n = 20; /// 20个节点
+    int m = 100; /// 100 条边
+    
+    srand(time(nullptr));
+    
+    SparseGraph g1(n, false);
+    for (int i = 0; i < m; i++) {
+        int a = rand() % n;
+        int b = rand() % n;
+        g1.addEdge(a,b);
+    }
+    
+    for (int v = 0; v < n; v++) {
+        std::cout << v << " : ";
+        SparseGraph::adjIterator adj(g1, v);
+        for (int w = adj.begin(); !adj.end(); w = adj.next()) {
+            std::cout << w << " ";
+        }
+        std::cout << std::endl;
+    }
+    
+    std::cout << std::endl;
+    
+    DenseGraph g2(n, false);
+    for (int i = 0; i < m; i++) {
+        int a = rand() % n;
+        int b = rand() % n;
+        g2.addEdge(a,b);
+    }
+    
+    for (int v = 0; v < n; v++) {
+        std::cout << v << " : ";
+        DenseGraph::adjIterator adj(g2, v);
+        for (int w = adj.begin(); !adj.end(); w = adj.next()) {
+            std::cout << w << " ";
+        }
+        std::cout << std::endl;
+    }
+    
+
+    std::cout << std::endl;
+}
+
+void testReadGraph () {
+    SparseGraph g1(13, false);
+    ReadGraph<SparseGraph> readGraph1(g1,"testG1.txt");
+    std::cout << g1 << std::endl;
+
+    DenseGraph g2(6, false);
+    ReadGraph<DenseGraph> readGraph2(g2,"testG2.txt");
+    std::cout << g2 << std::endl;
+}
+
 int main(int argc, const char * argv[]) {
     student stu;
     stu.age = 30;
@@ -86,7 +145,8 @@ int main(int argc, const char * argv[]) {
     //testTrie(words);
     //testTreeMap(words);
     
-    
+    //testGraph();
+    testReadGraph();
     
     return EXIT_SUCCESS;
 }

@@ -126,6 +126,7 @@ private:
      @param node 节点指针
      @return 返回高度
      */
+    
     int getHeight(Node* node) {
         if (!node) {
             return 0;
