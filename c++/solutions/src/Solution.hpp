@@ -2,6 +2,7 @@
 #define SOLUTION_H
 #include <vector>
 #include <sstream>
+#include <iostream>
 
 class Solution{
 public:
@@ -89,6 +90,61 @@ public:
         You may assume nums1 and nums2 cannot be both empty.
         */
     double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2);
+    
+    
+    /**
+     283
+     给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+
+     @param nums 数组
+     @note 说明:
+     
+     必须在原数组上操作，不能拷贝额外的数组。
+     尽量减少操作次数。
+     */
+    void moveZeroes(std::vector<int>& nums) {
+        int i = 0; /// 索引 i 记录当前考察的元素
+        int j = 0; /// 索引 j 记录当前第一个值为 0 元素的索引
+        while (i < nums.size() && j < nums.size()) {
+            if (nums[i] != 0 && nums[j] == 0) {
+                std::swap(nums[i++], nums[j++]);
+                continue;
+            }
+            
+            if (nums[i] == 0 && nums[j] != 0) {
+                i++;
+                j++;
+                continue;
+            }
+            
+            if (nums[i] == 0 && nums[j] == 0) {
+                i++;
+                continue;
+            }
+            
+            
+            if (nums[i] != 0 && nums[j] != 0) {
+                i++;
+                j++;
+                continue;
+            }
+        }
+    }
+    
+    /**
+     * 283
+     */
+    void moveZeroes1(std::vector<int>& nums) {
+        std::ios::sync_with_stdio(false);
+        std::cin.tie(0);
+        int j = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] != 0) {
+                std::swap(nums[i], nums[j]);
+                j++;
+            }
+        }
+    }
 };
 
 #endif

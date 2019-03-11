@@ -20,5 +20,6 @@ int main (int argc, char* argv[]) {
     tester.test_constructBinaryTree();
     tester.test_printPermutations();
     tester.test_absoluteValuationMethod();
+    tester.test_moveZeroes();
 	return EXIT_SUCCESS;
 }

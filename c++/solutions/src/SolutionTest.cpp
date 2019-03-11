@@ -245,3 +245,24 @@ void SolutionTest::test_absoluteValuationMethod() {
     std::cout << s.absoluteValuationMethod(8.28, 10, 0.15, 0.09) << std::endl;
 }
 
+void SolutionTest::test_moveZeroes() {
+    std::vector<int> nums1{6,7,3,0,4,0,0,1};
+    Solution s;
+    s.moveZeroes(nums1);
+    
+    
+    std::vector<int> nums2{0,0,0,1,2,3,0,4,0,5,0,0,6};
+    s.moveZeroes(nums2);
+    
+    std::vector<int> nums3{0,1,0,3,12};
+    s.moveZeroes(nums3);
+    
+    std::vector<int> nums4{6,7,3,0,4,0,0,1};
+    std::vector<int> nums5{0,0,0,1,2,3,0,4,0,5,0,0,6};
+    std::vector<int> nums6{0,1,0,3,12};
+    
+    s.moveZeroes1(nums4);
+    s.moveZeroes1(nums5);
+    s.moveZeroes1(nums6);
+}
+

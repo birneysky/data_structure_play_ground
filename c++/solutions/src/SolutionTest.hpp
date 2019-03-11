@@ -24,6 +24,7 @@ public:
     void test_constructBinaryTree();
     void test_printPermutations();
     void test_absoluteValuationMethod();
+    void test_moveZeroes();
 };
 
 #endif /* SolutionTest_hpp */
