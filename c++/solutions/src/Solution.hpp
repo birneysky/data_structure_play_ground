@@ -140,11 +140,97 @@ public:
         int j = 0;
         for (int i = 0; i < nums.size(); i++) {
             if (nums[i] != 0) {
-                std::swap(nums[i], nums[j]);
+                if (i != j) {
+                    std::swap(nums[i], nums[j]);
+                }
                 j++;
             }
         }
     }
+    
+    /**
+     * 283
+     */
+    void moveZeroes2(std::vector<int>& nums) {
+        std::ios::sync_with_stdio(false);
+        std::cin.tie(0);
+        int j = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] != 0) {
+                if (i != j) {
+                    nums[j] = nums[i];
+                }
+                j++;
+            }
+        }
+        
+        for (int i = j; i < nums.size(); i++) {
+            nums[i] = 0;
+        }
+    }
+    
+    
+    /** 26
+     给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+     
+     不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+
+     例如
+        给定数组 nums = [1,1,2],
+        函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。
+     
+        你不需要考虑数组中超出新长度后面的元素。
+     
+     nums = [0,0,1,1,1,2,2,3,3,4] =====>  [0, 1, 2, 3, 4] return 5;
+     @param nums 数组
+     @return 去重后数组的长度
+     */
+    int removeDuplicates(std::vector<int>& nums) {
+        if (nums.size() == 0) {
+            return 0;
+        }
+        int j = 1; /// 索引j 似的[0,j] 区间内都是不重复的元素
+        for( int i = j+1; i < nums.size(); i++) {
+            /// 由于是有序数组，所以当前元素和前一个元素不同时，说明出现了新的元素
+            if (nums[i] != nums[i-1]) {
+                nums[j] = nums[i];
+                j ++;
+            }
+        }
+        return j;
+    }
+    
+    
+    /** 80
+     给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素最多出现两次，返回移除后数组的新长度。
+     
+     不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+
+      [1,1,1,2,2,3], ===> length = 5  1, 1, 2, 2, 3
+      [0,0,1,1,1,1,2,3,3] ===> length = 7   0, 0, 1, 1, 2, 3, 3
+     @param nums  数组
+     @return 去重后数组的长度
+     */
+    int removeDuplicates_2(std::vector<int>& nums) {
+        if (nums.size() == 0) {
+            return 0;
+        }
+        
+        int j = 2;
+        int repeatCount = 1;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] != nums[i-1] && repeatCount > 2) {
+                nums[j] = nums[i];
+                j+=2;
+                repeatCount = 1;
+            } else {
+                repeatCount ++;
+            }
+        }
+        return j;
+    }
+    
+    
 };
 
 #endif

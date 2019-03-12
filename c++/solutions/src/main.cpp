@@ -21,5 +21,6 @@ int main (int argc, char* argv[]) {
     tester.test_printPermutations();
     tester.test_absoluteValuationMethod();
     tester.test_moveZeroes();
+    tester.test_removeDuplicates();
 	return EXIT_SUCCESS;
 }

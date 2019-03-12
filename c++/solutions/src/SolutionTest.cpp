@@ -246,23 +246,50 @@ void SolutionTest::test_absoluteValuationMethod() {
 }
 
 void SolutionTest::test_moveZeroes() {
-    std::vector<int> nums1{6,7,3,0,4,0,0,1};
     Solution s;
-    s.moveZeroes(nums1);
-    
-    
+
+    std::vector<int> nums1{6,7,3,0,4,0,0,1};
     std::vector<int> nums2{0,0,0,1,2,3,0,4,0,5,0,0,6};
-    s.moveZeroes(nums2);
-    
     std::vector<int> nums3{0,1,0,3,12};
-    s.moveZeroes(nums3);
-    
     std::vector<int> nums4{6,7,3,0,4,0,0,1};
     std::vector<int> nums5{0,0,0,1,2,3,0,4,0,5,0,0,6};
     std::vector<int> nums6{0,1,0,3,12};
+    std::vector<int> nums7{6,7,3,0,4,0,0,1};
+    std::vector<int> nums8{0,0,0,1,2,3,0,4,0,5,0,0,6};
+    std::vector<int> nums9{0,1,0,3,12};
+    std::vector<int> nums10{6,7,3,0,4,0,0,1};
+    std::vector<int> nums11{0,0,0,1,2,3,0,4,0,5,0,0,6};
+    std::vector<int> nums12{0,1,0,3,12};
+    
+    s.moveZeroes(nums1);
+    s.moveZeroes(nums2);
+    s.moveZeroes(nums3);
     
     s.moveZeroes1(nums4);
     s.moveZeroes1(nums5);
     s.moveZeroes1(nums6);
+    
+    s.moveZeroes2(nums7);
+    s.moveZeroes2(nums8);
+    s.moveZeroes2(nums9);
+    s.moveZeroes2(nums10);
+    s.moveZeroes2(nums11);
+    s.moveZeroes2(nums12);
+}
+
+void SolutionTest::test_removeDuplicates() {
+    Solution s;
+    std::vector<int> nums1{1,1,2};
+    int length1 = 2;
+    
+    std::vector<int> nums2{0,0,1,1,1,2,2,3,3,4};
+    int length2 = 5;
+    
+    std::vector<int> nums3;
+    int length3 = 0;
+    
+    assert(s.removeDuplicates(nums1)==length1);
+    assert(s.removeDuplicates(nums2)==length2);
+    assert(s.removeDuplicates(nums3)==length3);
 }
 

@@ -25,6 +25,7 @@ public:
     void test_printPermutations();
     void test_absoluteValuationMethod();
     void test_moveZeroes();
+    void test_removeDuplicates();
 };
 
 #endif /* SolutionTest_hpp */
