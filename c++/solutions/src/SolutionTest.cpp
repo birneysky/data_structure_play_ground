@@ -293,3 +293,20 @@ void SolutionTest::test_removeDuplicates() {
     assert(s.removeDuplicates(nums3)==length3);
 }
 
+void SolutionTest::test_removeDuplicates_2() {
+    Solution s;
+    std::vector<int> nums1{1,1};
+    int length1 = 2;
+    
+    std::vector<int> nums2{0,0,1,1,1,2,2,3,3,4};
+    int length2 = 9;
+    
+    std::vector<int> nums3;
+    int length3 = 0;
+ 
+    assert(s.removeDuplicates_2(nums1)==length1);
+    assert(s.removeDuplicates_2(nums2)==length2);
+    assert(s.removeDuplicates_2(nums3)==length3);
+    
+}
+

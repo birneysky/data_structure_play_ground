@@ -22,5 +22,6 @@ int main (int argc, char* argv[]) {
     tester.test_absoluteValuationMethod();
     tester.test_moveZeroes();
     tester.test_removeDuplicates();
+    tester.test_removeDuplicates_2();
 	return EXIT_SUCCESS;
 }

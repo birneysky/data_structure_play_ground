@@ -26,6 +26,7 @@ public:
     void test_absoluteValuationMethod();
     void test_moveZeroes();
     void test_removeDuplicates();
+    void test_removeDuplicates_2();
 };
 
 #endif /* SolutionTest_hpp */
