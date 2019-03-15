@@ -308,13 +308,21 @@ void SolutionTest::test_removeDuplicates_2() {
     std::vector<int> nums4{0,0,0,0,1,1,2};
     int length4 = 5;
     
-    std::vector<int> nums5 {0,0,1,1,1,1,2,2,2,4};
-    int length5 = 7;
+    std::vector<int> nums5 {0,0,1,1,1,1,2,2,2,3,4};
+    int length5 = 8;
     
-    assert(s.removeDuplicates_2(nums1)==length1);
-    assert(s.removeDuplicates_2(nums2)==length2);
-    assert(s.removeDuplicates_2(nums3)==length3);
-    assert(s.removeDuplicates_2(nums4)==length4);
-    assert(s.removeDuplicates_2(nums5)==length5);
+    std::vector<int> nums6 {0,0,0,1,1,1,2,2,2,3,3,4,4,4,5,5,5,6,6,7,7,8,8,9};
+    int length6 = 19;
+    
+    std::vector<int> nums7 {0,1,2,3,4,5,6,7,8,9,10};
+    int length7 = 11;
+    
+    assert(s.removeDuplicates_2(nums1) == length1);
+    assert(s.removeDuplicates_2(nums2) == length2);
+    assert(s.removeDuplicates_2(nums3) == length3);
+    assert(s.removeDuplicates_2(nums4) == length4);
+    assert(s.removeDuplicates_2(nums5) == length5);
+    assert(s.removeDuplicates_2(nums6) == length6);
+    assert(s.removeDuplicates_2(nums7) == length7);
 }
 

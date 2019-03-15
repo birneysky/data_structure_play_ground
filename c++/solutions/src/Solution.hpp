@@ -216,24 +216,18 @@ public:
         if (nums.size() <= k) {
             return (int)nums.size();
         }
-        bool flag = false;
+        /// 始终让[0,k]区间内，重复元素最多有2个
         for (int i = k; i < nums.size(); i++) {
-            if (nums[i] != nums[i-1] || nums[i] != nums[i-2]) {
-                if (i != k) {
-                    flag = true;
-                }
-                nums[k++] = nums[i];
-            } else {
-                if (flag) {
-                    k++;
-                    flag = false;
-                }
+            if (i != k) {
+                nums[k] = nums[i];
+            }
+            if (nums[k] != nums[k-1] ||
+                nums[k] != nums[k-2]) {
+                k++;
             }
         }
         return k;
     }
-    
-    
 };
 
 #endif
