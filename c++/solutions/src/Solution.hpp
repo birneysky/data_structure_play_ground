@@ -92,10 +92,151 @@ public:
     double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2);
     
     
+    
+    
+    /** 26
+     给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+     
+     不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+
+     例如
+        给定数组 nums = [1,1,2],
+        函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。
+     
+        你不需要考虑数组中超出新长度后面的元素。
+     
+     nums = [0,0,1,1,1,2,2,3,3,4] =====>  [0, 1, 2, 3, 4] return 5;
+     @param nums 数组
+     @return 去重后数组的长度
+     */
+    int removeDuplicates(std::vector<int>& nums) {
+        if (nums.size() == 0) {
+            return 0;
+        }
+        int j = 1; /// 索引j 似的[0,j] 区间内都是不重复的元素
+        for( int i = j; i < nums.size(); i++) {
+            /// 由于是有序数组，所以当前元素和前一个元素不同时，说明出现了新的元素
+            if (nums[i] != nums[i-1]) {
+                nums[j] = nums[i];
+                j ++;
+            }
+        }
+        return j;
+    }
+    
+    /** 27
+     给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。
+     
+     不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+     
+     元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
+
+    nums = [3,2,2,3], val = 3 =====> [2,2] ,2
+    nums = [0,1,2,2,3,0,4,2], val = 2 =====> [0, 1, 3, 0, 4] ,5
+     
+     @param nums 数组
+     @param val 待删除元素的值
+     @return 返回删除元素后数组的长度
+     */
+    int removeElement(std::vector<int>& nums, int val) {
+        int k = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] != val) {
+//                if (i != k) {
+                    nums[k++] = nums[i];
+//                }
+            }
+        }
+
+
+        return k;
+    }
+    
+    /** 75
+     给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
+     
+     此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
+
+     [2,0,2,1,1,0] ====> [0,0,1,1,2,2]
+     
+     @param nums 数组
+
+     */
+    
+    void sortColors(std::vector<int>& nums) {
+        
+    }
+    
+    /** 80
+     给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素最多出现两次，返回移除后数组的新长度。
+     
+     不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+
+      [1,1,1,2,2,3], ===> length = 5  1, 1, 2, 2, 3
+      [0,0,1,1,1,1,2,3,3] ===> length = 7   0, 0, 1, 1, 2, 3, 3
+     @param nums  数组
+     @return 去重后数组的长度
+     */
+    int removeDuplicates_2(std::vector<int>& nums) {
+        int k = 2;
+        if (nums.size() <= k) {
+            return (int)nums.size();
+        }
+        /// 始终让[0,k)区间内，重复元素最多有2个
+        for (int i = k; i < nums.size(); i++) {
+            if (i != k) {
+                nums[k] = nums[i];
+            }
+            /// 检查 k 之前前2个元素是否与 k相等，如果相等说明有nums[k],nums[k-1],nums[k-2]均相等，这时 k 的位置应该保持不变
+            /// 如果 nums[k] 与 nums[k-1],nums[k-2] 其中一个不相等，说明没有超过两个的重复元素，这时 k 应该向后移动一位
+            if (nums[k] != nums[k-1] ||
+                nums[k] != nums[k-2]) {
+                k++;
+            }
+        }
+        return k;
+    }
+    
+    
+    /** 88
+     给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。
+     初始化 nums1 和 nums2 的元素数量分别为 m 和 n。
+     你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
+     
+     
+     nums1 = [1,2,3,0,0,0], m = 3
+     nums2 = [2,5,6],       n = 3      =======>  [1,2,2,3,5,6]
+
+     @param nums1 数组1
+     @param m 数组1 长度
+     @param nums2 数组2
+     @param n 数组2 长度
+     */
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        
+    }
+    
+    /**
+     在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
+
+     [3,2,1,5,6,4] 和 k = 2  ====> 5
+     [3,2,3,1,2,4,5,5,6] 和 k = 4 ====> 4
+     
+     @param nums 数组1
+     @param k k
+     @return 返回元素的值
+     */
+    
+    int findKthLargest(vector<int>& nums, int k) {
+        
+    }
+    
+    
+    
     /**
      283
      给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
-
+     
      @param nums 数组
      @note 说明:
      
@@ -168,68 +309,7 @@ public:
             nums[i] = 0;
         }
     }
-    
-    
-    /** 26
-     给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
-     
-     不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
 
-     例如
-        给定数组 nums = [1,1,2],
-        函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。
-     
-        你不需要考虑数组中超出新长度后面的元素。
-     
-     nums = [0,0,1,1,1,2,2,3,3,4] =====>  [0, 1, 2, 3, 4] return 5;
-     @param nums 数组
-     @return 去重后数组的长度
-     */
-    int removeDuplicates(std::vector<int>& nums) {
-        if (nums.size() == 0) {
-            return 0;
-        }
-        int j = 1; /// 索引j 似的[0,j] 区间内都是不重复的元素
-        for( int i = j+1; i < nums.size(); i++) {
-            /// 由于是有序数组，所以当前元素和前一个元素不同时，说明出现了新的元素
-            if (nums[i] != nums[i-1]) {
-                nums[j] = nums[i];
-                j ++;
-            }
-        }
-        return j;
-    }
-    
-    
-    /** 80
-     给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素最多出现两次，返回移除后数组的新长度。
-     
-     不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
-
-      [1,1,1,2,2,3], ===> length = 5  1, 1, 2, 2, 3
-      [0,0,1,1,1,1,2,3,3] ===> length = 7   0, 0, 1, 1, 2, 3, 3
-     @param nums  数组
-     @return 去重后数组的长度
-     */
-    int removeDuplicates_2(std::vector<int>& nums) {
-        int k = 2;
-        if (nums.size() <= k) {
-            return (int)nums.size();
-        }
-        /// 始终让[0,k)区间内，重复元素最多有2个
-        for (int i = k; i < nums.size(); i++) {
-            if (i != k) {
-                nums[k] = nums[i];
-            }
-            /// 检查 k 之前前2个元素是否与 k相等，如果相等说明有nums[k],nums[k-1],nums[k-2]均相等，这时 k 的位置应该保持不变
-            /// 如果 nums[k] 与 nums[k-1],nums[k-2] 其中一个不相等，说明没有超过两个的重复元素，这个 k 应该向后移动一位
-            if (nums[k] != nums[k-1] ||
-                nums[k] != nums[k-2]) {
-                k++;
-            }
-        }
-        return k;
-    }
 };
 
 #endif
