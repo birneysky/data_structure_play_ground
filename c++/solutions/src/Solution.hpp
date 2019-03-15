@@ -212,14 +212,22 @@ public:
      @return 去重后数组的长度
      */
     int removeDuplicates_2(std::vector<int>& nums) {
-        
         int k = 2;
         if (nums.size() <= k) {
             return (int)nums.size();
         }
+        bool flag = false;
         for (int i = k; i < nums.size(); i++) {
-            if (nums[i] != nums[i-2]) {
+            if (nums[i] != nums[i-1] || nums[i] != nums[i-2]) {
+                if (i != k) {
+                    flag = true;
+                }
                 nums[k++] = nums[i];
+            } else {
+                if (flag) {
+                    k++;
+                    flag = false;
+                }
             }
         }
         return k;
