@@ -216,11 +216,13 @@ public:
         if (nums.size() <= k) {
             return (int)nums.size();
         }
-        /// 始终让[0,k]区间内，重复元素最多有2个
+        /// 始终让[0,k)区间内，重复元素最多有2个
         for (int i = k; i < nums.size(); i++) {
             if (i != k) {
                 nums[k] = nums[i];
             }
+            /// 检查 k 之前前2个元素是否与 k相等，如果相等说明有nums[k],nums[k-1],nums[k-2]均相等，这时 k 的位置应该保持不变
+            /// 如果 nums[k] 与 nums[k-1],nums[k-2] 其中一个不相等，说明没有超过两个的重复元素，这个 k 应该向后移动一位
             if (nums[k] != nums[k-1] ||
                 nums[k] != nums[k-2]) {
                 k++;
