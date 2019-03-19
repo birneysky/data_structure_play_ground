@@ -28,6 +28,7 @@ public:
     void test_removeDuplicates();
     void test_removeDuplicates_2();
     void test_removeElement();
+    void test_merge();
 };
 
 #endif /* SolutionTest_hpp */

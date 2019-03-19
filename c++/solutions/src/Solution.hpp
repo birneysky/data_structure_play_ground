@@ -212,8 +212,25 @@ public:
      @param nums2 数组2
      @param n 数组2 长度
      */
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n) {
+        std::vector<int> aux(m,0); /// auxiliar
+        for (int i = 0; i < m; i++) {
+            aux[i] = nums1[i];
+        }
         
+        int i = 0; /// 记录 nums1 当前考察元素的索引
+        int j = 0; ///  记录 nums2 当前考察元素的索引
+        for(int k = 0; k < m+n; k++) {
+            if (i >= m) {
+                nums1[k] = nums2[j++];
+            } else if (j>=n) {
+                nums1[k] = aux[i++];
+            } else if (aux[i] < nums2[j]) {
+                nums1[k] = aux[i++];
+            } else {
+                nums1[k] = nums2[j++];
+            }
+        }
     }
     
     /**
@@ -227,8 +244,8 @@ public:
      @return 返回元素的值
      */
     
-    int findKthLargest(vector<int>& nums, int k) {
-        
+    int findKthLargest(std::vector<int>& nums, int k) {
+        return 0;
     }
     
     

@@ -341,3 +341,15 @@ void SolutionTest::test_removeElement() {
     assert(s.removeElement(nums2, val2) == length2);
 
 }
+
+
+void SolutionTest::test_merge() {
+    Solution s;
+    std::vector<int> nums1 {1,2,3,0,0,0};
+    int m = 3;
+    std::vector<int> nums2 {2,5,6};
+    int n = 3;
+    
+    s.merge(nums1, m, nums2, n);
+    
+}

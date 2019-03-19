@@ -7,7 +7,6 @@
 
 
 
-
 int main (int argc, char* argv[]) {
     SolutionTest tester;
     tester.test_twoSum();
@@ -24,5 +23,6 @@ int main (int argc, char* argv[]) {
     tester.test_removeDuplicates();
     tester.test_removeDuplicates_2();
     tester.test_removeElement();
+    tester.test_merge();
 	return EXIT_SUCCESS;
 }
