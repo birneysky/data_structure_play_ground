@@ -5,6 +5,40 @@
 #include <iostream>
 
 class Solution{
+private:
+    /**
+     对一个数组的[left,right]区间内的元素做快速排序的 partitionn 操作
+
+     @param vector<int>nums 数组
+     @param left 左索引值
+     @param right 右索引值
+     @return 返回标定点的索引
+     */
+
+    int partition(std::vector<int>& nums, int left, int right) {
+        int val = nums[left];
+        int j = left;
+        for (int i = left + 1; i <= right; i++) {
+            if (nums[i] < val) {
+                j++;
+                std::swap(nums[i],nums[j]);
+            }
+        }
+        std::swap(nums[left],nums[j]);
+        return j;
+    }
+    
+    int findKthLargest(std::vector<int>& nums, int left, int right, int k) {
+        int p = partition(nums, left, right);
+        int kth = (int)(nums.size() - k);
+        if (p == kth) {
+            return p;
+        } else if (p < kth) {
+            return findKthLargest(nums, p+1, right,k);
+        } else {
+            return findKthLargest(nums, left, p-1,k);
+        }
+    }
 public:
     struct ListNode {
         int val;
@@ -245,7 +279,11 @@ public:
      */
     
     int findKthLargest(std::vector<int>& nums, int k) {
-        return 0;
+        assert(k > 0 && k < nums.size());
+        int left = 0;
+        int right = (int)(nums.size() -1);
+        int kth = findKthLargest(nums,left,right,k);
+        return nums[kth];
     }
     
     

@@ -353,3 +353,23 @@ void SolutionTest::test_merge() {
     s.merge(nums1, m, nums2, n);
     
 }
+
+
+void SolutionTest::test_findKthLargest() {
+    Solution s;
+    std::vector<int> nums1 {5,8,9,2,1,6,7,10,3,4,0};
+    int k = s.findKthLargest(nums1, 1);
+    assert(k == 10);
+    
+    std::vector<int> nums2 {5,8,0,2,1,6,7,10,3,4,9};
+    int k2 = s.findKthLargest(nums2,3);
+    assert(k2 == 8);
+    
+    std::vector<int> nums3 {5,3,9,2,1,6,7,10,8,4,0};
+    int k3 = s.findKthLargest(nums3, 4);
+    assert(k3 == 7);
+    
+    std::vector<int> nums4 {5,8,9,2,1,6,7,10,3,4,0};
+    int k4 = s.findKthLargest(nums4, 5);
+    assert(k4 == 6);
+}

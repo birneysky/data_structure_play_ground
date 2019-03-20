@@ -24,5 +24,6 @@ int main (int argc, char* argv[]) {
     tester.test_removeDuplicates_2();
     tester.test_removeElement();
     tester.test_merge();
+    tester.test_findKthLargest();
 	return EXIT_SUCCESS;
 }

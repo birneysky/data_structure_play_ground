@@ -29,6 +29,7 @@ public:
     void test_removeDuplicates_2();
     void test_removeElement();
     void test_merge();
+    void test_findKthLargest();
 };
 
 #endif /* SolutionTest_hpp */
