@@ -30,6 +30,7 @@ public:
     void test_removeElement();
     void test_merge();
     void test_findKthLargest();
+    void test_sortColors();
 };
 
 #endif /* SolutionTest_hpp */

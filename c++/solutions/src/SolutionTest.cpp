@@ -373,3 +373,16 @@ void SolutionTest::test_findKthLargest() {
     int k4 = s.findKthLargest(nums4, 5);
     assert(k4 == 6);
 }
+
+void SolutionTest::test_sortColors() {
+    Solution s;
+    std::vector<int> nums1 {1,0,0,2,1,2,2,0,0};
+    s.sortColors(nums1);
+    
+    std::vector<int> nums2 {1,1,1,2,2,2,2,2,2,2,0,0,0,0,0,1,1,1,2,2,2,2,0,0,0};
+    s.sortColors(nums2);
+    
+    std::vector<int> nums3 {1,0,2,0,0,1,0,2,0,0,1,0,2,0,0,2,2,2,0,1,0};
+    s.sortColors(nums3);
+    
+}

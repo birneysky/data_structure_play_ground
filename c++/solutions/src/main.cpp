@@ -25,5 +25,6 @@ int main (int argc, char* argv[]) {
     tester.test_removeElement();
     tester.test_merge();
     tester.test_findKthLargest();
+    tester.test_sortColors();
 	return EXIT_SUCCESS;
 }

@@ -198,7 +198,22 @@ public:
      */
     
     void sortColors(std::vector<int>& nums) {
+        int colorCounts[3] = {0};
+        for (int i = 0; i < nums.size(); i++) {
+            colorCounts[nums[i]] ++;
+        }
         
+        for (int i = 0; i < colorCounts[0]; i++) {
+            nums[i] = 0;
+        }
+        
+        for (int i = 0; i < colorCounts[1]; i++) {
+            nums[i + colorCounts[0]] = 1;
+        }
+        
+        for (int i = 0; i < colorCounts[2]; i++) {
+            nums[i + colorCounts[0] + colorCounts[1]] = 2;
+        }
     }
     
     /** 80
@@ -257,7 +272,7 @@ public:
         for(int k = 0; k < m+n; k++) {
             if (i >= m) {
                 nums1[k] = nums2[j++];
-            } else if (j>=n) {
+            } else if (j >= n) {
                 nums1[k] = aux[i++];
             } else if (aux[i] < nums2[j]) {
                 nums1[k] = aux[i++];
