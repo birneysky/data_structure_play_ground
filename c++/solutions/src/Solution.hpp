@@ -2,6 +2,7 @@
 #define SOLUTION_H
 #include <vector>
 #include <sstream>
+#include <string>
 #include <iostream>
 
 class Solution{
@@ -379,7 +380,55 @@ public:
             nums[i] = 0;
         }
     }
+    
+#pragma mark - Byte Dance
+    /**  3
+     给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
 
+     输入: "abcabcbb"
+     输出: 3
+     解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+     
+     输入: "bbbbb"
+     输出: 1
+     解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+     
+     输入: "pwwkew"
+     输出: 3
+     解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+     请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+     
+     @param s 字符串你
+     @return 最长子串的长度
+     */
+    int lengthOfLongestSubstring1(std::string s) {
+        return  0;
+    }
+    
+
+    /**
+      编写一个函数来查找字符串数组中的最长公共前缀。
+
+     输入: ["flower","flow","flight"]
+     输出: "fl"
+     
+     输入: ["dog","racecar","car"]
+     输出: ""
+     解释: 输入不存在公共前缀。
+     
+     说明:
+     
+     所有输入只包含小写字母 a-z 。
+     
+     @param strs 字符串
+     @return 最长公共前缀4
+     */
+    std::string longestCommonPrefix(std::vector<std::string>& strs) {
+        return "";
+    }
+    
+    
+    
 };
 
 #endif
