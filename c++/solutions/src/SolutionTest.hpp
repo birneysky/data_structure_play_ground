@@ -31,6 +31,8 @@ public:
     void test_merge();
     void test_findKthLargest();
     void test_sortColors();
+    void test_twoSum_167();
+    void test_isPalindrome();
 };
 
 #endif /* SolutionTest_hpp */

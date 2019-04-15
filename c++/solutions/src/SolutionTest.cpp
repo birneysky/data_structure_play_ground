@@ -386,3 +386,47 @@ void SolutionTest::test_sortColors() {
     s.sortColors(nums3);
     
 }
+
+void SolutionTest::test_twoSum_167() {
+    Solution s;
+    
+    std::vector<int> num1 {1,2,3,4,5,6,7,8,13,20,24,26,50};
+    auto result1 =  s.twoSum_167(num1, 26);
+    
+    std::vector<int> num2 {2,7,11,15};
+    auto result2 = s.twoSum_167(num2, 9);
+    
+}
+
+
+void SolutionTest::test_isPalindrome() {
+    Solution s;
+    
+    std::string s1 = "A man, a plan, a canal: Panama";
+    auto result1 =  s.isPalindrome(s1);
+    assert(result1);
+    
+    std::string s2 = "race a car";
+    auto result2 = s.isPalindrome(s2);
+    assert(!result2);
+    
+    std::string s3 = "a";
+    auto result3 = s.isPalindrome(s3);
+    assert(result3);
+    
+    std::string s4 = "";
+    auto result4 = s.isPalindrome(s4);
+    assert(result4);
+    
+    std::string s5 = " ";
+    auto result5 = s.isPalindrome(s5);
+    assert(result5);
+
+    std::string s6 = "0P";
+    auto result6 = s.isPalindrome(s6);
+    assert(!result6);
+    
+    std::string s7 = "1b1";
+    auto result7 = s.isPalindrome(s7);
+    assert(result7);
+}

@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string>
 #include <iostream>
+#include <cassert>
 
 class Solution{
 private:
@@ -40,6 +41,42 @@ private:
             return findKthLargest(nums, left, p-1,k);
         }
     }
+    
+    bool isALetterOrANumber(char ch) {
+        return isLetter(ch) || isNumber(ch);
+    }
+    
+    bool isLetter(char ch) {
+        if ((ch >= 'A' && ch <= 'Z') ||
+            (ch >= 'a' && ch <= 'z') ) {
+            return true;
+        }
+        return false;
+    }
+    
+    bool isNumber(char ch) {
+        return (ch >= '0' && ch <= '9');
+    }
+    
+    
+    /**
+     判断两个字符是否相同
+     
+     这里相同的定义是 'a' 'A' 是认为是相同的
+     所以如果 a 和 b 全部都是字母，那么要注意大小写字母不敏感的逻辑
+     
+     @param a 字符a
+     @param b 字符b
+     @return 如果相同返回YES，否则返回NO
+     */
+    bool isSampleLetter(char a, char b) {
+        if (isLetter(a) && isLetter(b)) {
+            return a == b || abs(a - b) == 32;
+        }
+        
+        return a == b;
+    }
+    
 public:
     struct ListNode {
         int val;
@@ -283,7 +320,97 @@ public:
         }
     }
     
+    
     /**
+     125
+     给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+     
+     说明：本题中，我们将空字符串定义为有效的回文串。
+     
+     示例 1:
+     
+     输入: "A man, a plan, a canal: Panama"
+     输出: true
+     示例 2:
+     
+     输入: "race a car"
+     输出: false
+
+     @param s 字符串
+     @return 如果是 返回 true ，否则 返回 false
+     */
+    bool isPalindrome(std::string s) {
+        if (s.length() == 0) {
+            return true;
+        }
+        
+        int l = 0;
+        int r = 0;
+
+        for (int i = (int)s.length()-1; i >= 0; i--) {
+            if (isALetterOrANumber(s.at(i))) {
+                r = (int)i;
+                break;
+            }
+        }
+        
+        while (l < r) {
+            while(!isALetterOrANumber(s[l])) {
+                l++;
+            }
+            
+            while(!isALetterOrANumber(s[r])) {
+                r --;
+            }
+            
+            if (l >= r) {
+                return true;
+            }
+            
+            if (isSampleLetter(s[l],s[r])) {
+                l++;
+                r--;
+            } else {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    /**
+     167
+     给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。
+     
+     函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。
+     
+     返回的下标值（index1 和 index2）不是从零开始的。
+     你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。
+
+     @param numbers 目标数组
+     @param target 目标值
+     @return 返回索引数组
+     */
+    std::vector<int> twoSum_167(std::vector<int>& numbers, int target) {
+        std::vector<int> result;
+        int left = 0;
+        int right = (int)numbers.size() - 1;
+        while (left < right) {
+            if (numbers[left] + numbers[right] == target) {
+                result.push_back(left);
+                result.push_back(right);
+                break;
+            } else if (numbers[left] + numbers[right] < target) {
+                left ++;
+            } else {
+                right --;
+            }
+        }
+        return result;
+    }
+    
+    /**
+     215
      在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
 
      [3,2,1,5,6,4] 和 k = 2  ====> 5
@@ -379,6 +506,24 @@ public:
         for (int i = j; i < nums.size(); i++) {
             nums[i] = 0;
         }
+    }
+    
+    
+    /**
+     334
+     给定一个未排序的数组，判断这个数组中是否存在长度为 3 的递增子序列。
+     
+     数学表达式如下:
+     
+     如果存在这样的 i, j, k,  且满足 0 ≤ i < j < k ≤ n-1，
+     使得 arr[i] < arr[j] < arr[k] ，返回 true ; 否则返回 false 。
+     说明: 要求算法的时间复杂度为 O(n)，空间复杂度为 O(1) 。
+
+     @param nums  数组
+     @return 存在 返回 true ，否则 返回 false
+     */
+    bool increasingTriplet(std::vector<int>& nums) {
+        return true;
     }
     
 #pragma mark - Byte Dance

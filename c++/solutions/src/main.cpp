@@ -26,5 +26,7 @@ int main (int argc, char* argv[]) {
     tester.test_merge();
     tester.test_findKthLargest();
     tester.test_sortColors();
+    tester.test_twoSum_167();
+    tester.test_isPalindrome();
 	return EXIT_SUCCESS;
 }
