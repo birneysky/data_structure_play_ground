@@ -28,5 +28,7 @@ int main (int argc, char* argv[]) {
     tester.test_sortColors();
     tester.test_twoSum_167();
     tester.test_isPalindrome();
+    tester.test_lengthOfLongestSubstring1();
+    tester.test_rotate();
 	return EXIT_SUCCESS;
 }

@@ -430,3 +430,30 @@ void SolutionTest::test_isPalindrome() {
     auto result7 = s.isPalindrome(s7);
     assert(result7);
 }
+
+void SolutionTest::test_lengthOfLongestSubstring1() {
+    Solution s;
+    std::string s1 = "areyouok";
+    auto result1 = s.lengthOfLongestSubstring1(s1);
+    assert(result1 == 6);
+    
+    std::string s2 = "bbb";
+    auto result2 = s.lengthOfLongestSubstring1(s2);
+    assert(result2 == 1);
+    
+    std::string s3 = "abcabcbb";
+    auto result3 =s.lengthOfLongestSubstring1(s3);
+    assert(result3 == 3);
+}
+
+void SolutionTest::test_rotate() {
+    std::cout << "♥♥♥♥♥♥ " << __LINE__ << ' ' << __FUNCTION__ << " ♥♥♥♥♥♥" << std::endl;
+    Solution s;
+    std::vector<int> vec1 {1,2,3,4,5,6,7};
+    s.rotate(vec1, 3);
+    std::cout << vec1 << std::endl;
+    
+    std::vector<int> vec2 {-1,-100,3,99};
+    s.rotate(vec2, 2);
+    std::cout << vec2 << std::endl;
+}

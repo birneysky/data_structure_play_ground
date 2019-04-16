@@ -33,6 +33,8 @@ public:
     void test_sortColors();
     void test_twoSum_167();
     void test_isPalindrome();
+    void test_lengthOfLongestSubstring1();
+    void test_rotate();
 };
 
 #endif /* SolutionTest_hpp */
