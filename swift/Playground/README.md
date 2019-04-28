@@ -1,3 +1,14 @@
 # Playground
-http://kostiakoval.github.io/posts/swift-package-manager
 A description of this package.
+
+
+compile and run
+```
+cd Playground
+swift run Playground
+```
+
+compile
+```
+swift build
+```
