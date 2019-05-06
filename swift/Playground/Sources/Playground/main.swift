@@ -35,3 +35,8 @@ for _ in 0..<heap2.size() {
 	}
 	print("max:\(max), heap2:\(heap2)")
 }
+
+let stack = Stack<Int>()
+for item in array {
+    stack.push(element: item)
+}
