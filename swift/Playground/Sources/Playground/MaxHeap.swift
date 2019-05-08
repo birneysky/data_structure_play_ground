@@ -8,6 +8,28 @@ class MaxHeap<T: Comparable>: CustomStringConvertible {
     func size() -> Int {
         return count
     }
+    init() {
+    }
+
+    init(array: [T]) {
+        if array.isEmpty {
+            return
+        }
+
+        for item in array {
+            if data.isEmpty {
+                data.append(contentsOf: [item,item])
+            } else {
+                data.append(item)
+            }
+        }
+
+        count = count + array.count
+        for index in stride(from:count / 2, through: 1, by: -1 ) {
+            shiftDown(index)
+        }
+        
+    }
 
     func isEmpty() -> Bool {
         return count == 0

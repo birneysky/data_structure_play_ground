@@ -7,8 +7,8 @@ if CommandLine.arguments.count != 2 {
     print(name)
 }
 
-let heap = MaxHeap<Int>()
 let array = [8,9,10,2,4,5,6,3,21,100]
+let heap = MaxHeap<Int>()
 for item in array {
     heap.insert(element: item)
 }
@@ -22,11 +22,8 @@ for _ in 0...8 {
 	print("max:\(max), heap:\(heap),size:\(heap.size())")
 }
 
-let heap2 = MaxHeap<Int>()
 let array2 = [3,4,2]
-for item in array2 {
-	heap2.insert(element: item)
-}
+let heap2 = MaxHeap<Int>(array:array2)
 
 print("heap2:\(heap2),size:\(heap2.size())")
 for _ in 0..<heap2.size() {
@@ -40,3 +37,4 @@ let stack = Stack<Int>()
 for item in array {
     stack.push(element: item)
 }
+
