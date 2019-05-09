@@ -1,4 +1,5 @@
 import Foundation
+import Collections
 
 if CommandLine.arguments.count != 2 {
 	print("Usage: hello NAME")

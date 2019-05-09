@@ -1,17 +1,18 @@
 import Foundation
 
-class MaxHeap<T: Comparable>: CustomStringConvertible {
+open class MaxHeap<T: Comparable>: CustomStringConvertible {
 
     private var data: [T] = []
     private var count: Int = 0
 
-    func size() -> Int {
+    public func size() -> Int {
         return count
     }
-    init() {
+
+    public init() {
     }
 
-    init(array: [T]) {
+    public init(array: [T]) {
         if array.isEmpty {
             return
         }
@@ -31,11 +32,11 @@ class MaxHeap<T: Comparable>: CustomStringConvertible {
         
     }
 
-    func isEmpty() -> Bool {
+    public func isEmpty() -> Bool {
         return count == 0
     }
 
-    func insert(element: T) {
+    public func insert(element: T) {
         if data.count == 0 {
             data.append(contentsOf: [element,element])
         } else {
@@ -45,7 +46,7 @@ class MaxHeap<T: Comparable>: CustomStringConvertible {
         shiftUp(count)
     }
 
-	func extractMax() -> T? {
+	public func extractMax() -> T? {
 		guard count > 0 else {
 			return nil
 		}
@@ -87,7 +88,7 @@ class MaxHeap<T: Comparable>: CustomStringConvertible {
 	}
 
     // MARK: - CustomStringConvertible
-    var description: String {
+    open var description: String {
         if count == 0 {
             return "[]"
         } else {

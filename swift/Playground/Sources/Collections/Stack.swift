@@ -1,18 +1,18 @@
-class Stack<T> {
-    var data: [T]
-    var isEmpty: Bool {
+open class Stack<T> {
+    private var data: [T]
+    open  var isEmpty: Bool {
         return data.isEmpty
     }
 
-    init() {
+    public init() {
         data = [T]()
     }
 
-    func push(element: T) {
+    public func push(element: T) {
         data.append(element)
     }
 
-    func pop() -> T? {
+    public func pop() -> T? {
         if(!isEmpty) {
             return data.removeLast()
         } else {
@@ -20,7 +20,7 @@ class Stack<T> {
         }
     }
 
-    func peek() -> T? {
+    public func peek() -> T? {
         return data.last
     }
 }
