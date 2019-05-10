@@ -9,9 +9,12 @@ let package = Package(
         .library(
             name: "Collections",
             targets: ["Collections"]),
+         .library(
+            name: "Solution",
+            targets: ["Solution"]),
         .executable(
             name: "Playground",
-            targets: ["Playground"])
+            targets: ["Playground"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -23,9 +26,18 @@ let package = Package(
         .target(
             name: "Collections",
             path: "./Sources/Collections"),
+        .testTarget(
+            name: "CollectionsTests",
+            dependencies: ["Playground"]),
+        .target(
+            name: "Solution",
+            path: "./Sources/Solution"),
+        .testTarget(
+            name: "SolutionTests",
+            dependencies: ["Playground"]),
         .target(
             name: "Playground",
-            dependencies: ["Collections"]),
+            dependencies: ["Collections","Solution"]),
         .testTarget(
             name: "PlaygroundTests",
             dependencies: ["Playground"]),

@@ -4,12 +4,9 @@ open class MaxHeap<T: Comparable>: CustomStringConvertible {
 
     private var data: [T] = []
     private var count: Int = 0
-
-    public func size() -> Int {
-        return count
-    }
-
+    
     public init() {
+    
     }
 
     public init(array: [T]) {
@@ -31,6 +28,14 @@ open class MaxHeap<T: Comparable>: CustomStringConvertible {
         }
         
     }
+    
+    
+    /// 获取最大堆中元素个数
+    ///
+    /// - Returns: 返回元素个数
+    public func size() -> Int {
+        return count
+    }
 
     public func isEmpty() -> Bool {
         return count == 0
@@ -38,6 +43,7 @@ open class MaxHeap<T: Comparable>: CustomStringConvertible {
 
     public func insert(element: T) {
         if data.count == 0 {
+            /// 从1开始索引，0索引闲置
             data.append(contentsOf: [element,element])
         } else {
             data.append(element)
