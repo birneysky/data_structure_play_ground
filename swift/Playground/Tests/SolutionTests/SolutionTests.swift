@@ -38,4 +38,50 @@ final class SolutionTests: XCTestCase {
         print("\t output->maxProfit3: \(maxProfit3)")
         XCTAssertEqual(maxProfit3, 0)
     }
+    
+    func testSolution_containsDuplicate() {
+        /// eg1:
+        ///     输入: [1,2,3,1]
+        ///     输出: true
+        /// eg2:
+        ///     输入: [1,2,3,4]
+        ///     输出: false
+        /// eg3:
+        ///     输入: [1,1,1,3,3,4,3,2,4,2]
+        ///     输出: true
+        let s = Solution()
+        let nums1 =  [1,2,3,1];
+        let result1 = s.containsDuplicate(nums1);
+        XCTAssertEqual(result1, true)
+        
+        let nums2 = [1,2,3,4]
+        let result2 = s.containsDuplicate(nums2)
+        XCTAssertEqual(result2, false)
+        
+        let nums3 = [1,1,1,3,3,4,3,2,4,2]
+        let result3 = s.containsDuplicate(nums3)
+        XCTAssertEqual(result3, true)
+    }
+    
+    func testSolution_rotate() {
+        let s = Solution()
+        var num1 = [1,2,3,4,5,6,7]
+        let k1 = 3
+        print("\t input->num1:\(num1)")
+        s.rotate(&num1, k1)
+        print("\t output->num1:\(num1)")
+        
+        var num2 = [-1,-100,3,99]
+        let k2 = 2
+        print("\t input->nums2:\(num2)")
+        s.rotate(&num2, k2)
+        print("\t output->num2:\(num2)")
+        
+        
+        var num3 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        let k3 = 45
+        print("\t input->nums3:\(num3)")
+        s.rotate(&num3, k3)
+        print("\t output->num3:\(num3)")
+    }
 }

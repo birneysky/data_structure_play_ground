@@ -89,7 +89,19 @@ public class Solution {
     ///   - nums: nums
     ///   - k: k
     public func rotate(_ nums: inout [Int], _ k: Int) {
-        
+        let rotateCount = k % nums.count
+        guard rotateCount != 0 else {
+            return
+        }
+        var j = nums.count - rotateCount
+        /// 注意最后一个元素，不需要处理
+        for i in 0 ..< nums.count - 1 {
+            nums.swapAt(i, j)
+            j = j + 1
+            if j >= nums.count {
+                j = nums.count - rotateCount
+            }
+        }
     }
     
     
@@ -109,6 +121,14 @@ public class Solution {
     /// - Parameter nums: nums
     /// - Returns: return bool
     public func containsDuplicate(_ nums: [Int]) -> Bool {
-        return true
+        var set = Set<Int>(minimumCapacity: nums.count)
+        for i in 0 ..< nums.count {
+            if set.contains(nums[i]) {
+                return true
+            } else {
+                set.insert(nums[i])
+            }
+        }
+        return false
     }
 }
