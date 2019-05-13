@@ -145,6 +145,7 @@ public class Solution {
     ///     输出: 4
     /// - Parameter nums: nums description
     /// - Returns: return value description
+    /// 可以先对数组进行一次排序，然后步长 2 遍历整个数组，如果nums[i] != nums[i-1] 那么i 就是那个只出现一次的元素的索引
     public func singleNumber(_ nums: [Int]) -> Int {
         return 0
     }
