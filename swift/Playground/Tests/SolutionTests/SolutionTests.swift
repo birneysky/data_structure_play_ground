@@ -84,4 +84,17 @@ final class SolutionTests: XCTestCase {
         s.rotate(&num3, k3)
         print("\t output->num3:\(num3)")
     }
+    
+    func testSolution_singleNumber() {
+        let s = Solution()
+        let nums1 = [2,2,1]
+        
+        let target1 =   s.singleNumber(nums1)
+        XCTAssertEqual(target1, 1)
+        
+        let nums2 = [4,1,2,1,2]
+        let target2 = s.singleNumber(nums2)
+        XCTAssertEqual(target2, 4)
+        
+    }
 }

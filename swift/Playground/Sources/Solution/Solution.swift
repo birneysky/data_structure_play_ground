@@ -147,7 +147,21 @@ public class Solution {
     /// - Returns: return value description
     /// 可以先对数组进行一次排序，然后步长 2 遍历整个数组，如果nums[i] != nums[i-1] 那么i 就是那个只出现一次的元素的索引
     public func singleNumber(_ nums: [Int]) -> Int {
-        return 0
+        var array = nums
+        array.sort { (a, b) -> Bool in
+            return a < b
+        }
+        var index = -1
+        for i in stride(from: 1, to: array.count, by: 2) {
+            if array[i] != array[i-1] {
+                index = i-1
+                break
+            }
+        }
+        if index == -1 {
+            index = array.count - 1
+        }
+        return array[index]
     }
     
     
