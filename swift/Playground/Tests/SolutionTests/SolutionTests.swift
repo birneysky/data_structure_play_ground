@@ -97,4 +97,41 @@ final class SolutionTests: XCTestCase {
         XCTAssertEqual(target2, 4)
         
     }
+    
+    func testSolution_moveZeroes() {
+        let s = Solution()
+        var nums1 = [0,1,0,3,12]
+        print("\t input->num1:\(nums1)")
+        s.moveZeroes(&nums1)
+        print("\t output->num1:\(nums1)")
+        
+        
+        var nums2 = [0,0,0,3,4,5,6,7,0,8,0,9,10,0,11,0,12]
+        print("\t input->num2:\(nums2)")
+        s.moveZeroes(&nums2)
+        print("\t output->num2:\(nums2)")
+        
+    }
+    
+    func testSolution_plusOne() {
+        let s = Solution()
+        
+        
+        let nums1 = [1,2,3]
+        print("\t input->num1:\(nums1)")
+        let res1 = s.plusOne(nums1)
+        print("\t output->res1:\(res1)")
+        
+        let nums2 = [4,3,2,1]
+        print("\t input->nums2:\(nums2)")
+        let res2 = s.plusOne(nums2)
+        print("\t output->res2:\(res2)")
+        
+        let nums3 = [4,9,8,9,9,9]
+        print("\t input->nums2:\(nums3)")
+        let res3 = s.plusOne(nums3)
+        print("\t output->res3:\(res3)")
+
+        
+    }
 }

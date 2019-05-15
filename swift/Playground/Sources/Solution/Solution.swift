@@ -193,7 +193,7 @@ public class Solution {
     ///   - nums1: nums1 description
     ///   - nums2: nums2 description
     /// - Returns: return value description
-    func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
+    public func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
         return []
     }
     
@@ -214,8 +214,26 @@ public class Solution {
     ///
     /// - Parameter digits: digits description
     /// - Returns: return value description
-    func plusOne(_ digits: [Int]) -> [Int] {
-     return []
+    public func plusOne(_ digits: [Int]) -> [Int] {
+        var nums = digits
+        var i = nums.count - 1
+        var takeOver = 1
+        while i >= 0 {
+            let result = nums[i] + takeOver
+            if result <= 9  {
+                nums[i] = result
+                takeOver = 0
+                break
+            } else {
+                takeOver = result % 9
+                nums[i] = 0
+            }
+            i = i - 1
+        }
+        if takeOver > 0 {
+            nums.insert(takeOver, at: 0)
+        }
+        return nums
     }
     
     
@@ -230,8 +248,14 @@ public class Solution {
     ///     尽量减少操作次数。
     ///
     /// - Parameter nums: nums description
-    func moveZeroes(_ nums: inout [Int]) {
-        
+    public func moveZeroes(_ nums: inout [Int]) {
+        var j = 0
+        for i in 0 ..< nums.count {
+            if nums[i] != 0 {
+                nums.swapAt(j, i)
+                j = j + 1
+            }
+        }
     }
     
     
@@ -248,7 +272,7 @@ public class Solution {
     ///   - nums: nums description
     ///   - target: target description
     /// - Returns: return value description
-    func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+    public func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
         return []
     }
     
@@ -315,7 +339,7 @@ public class Solution {
     ///
     /// - Parameter board: board description
     /// - Returns: return value description
-    func isValidSudoku(_ board: [[Character]]) -> Bool {
+    public func isValidSudoku(_ board: [[Character]]) -> Bool {
         return false
     }
     
@@ -359,7 +383,7 @@ public class Solution {
     ///         ]
     ///
     /// - Parameter matrix: matrix description
-    func rotate(_ matrix: inout [[Int]]) {
+    public func rotate(_ matrix: inout [[Int]]) {
         
     }
     
@@ -376,7 +400,7 @@ public class Solution {
     ///     输出：["h","a","n","n","a","H"]
     /// ```
     /// - Parameter s: 字符数组
-    func reverseString(_ s: inout [Character]) {
+    public func reverseString(_ s: inout [Character]) {
         
     }
     
@@ -397,7 +421,7 @@ public class Solution {
     /// 假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231,  231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。
     /// - Parameter x: x description
     /// - Returns: return value description
-    func reverse(_ x: Int) -> Int {
+    public func reverse(_ x: Int) -> Int {
         return 0
     }
 }
