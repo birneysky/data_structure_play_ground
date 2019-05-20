@@ -134,4 +134,42 @@ final class SolutionTests: XCTestCase {
 
         
     }
+    
+    func testSolution_rotateMatrix() {
+        let s = Solution()
+        
+        var maxtrix1  = [
+            [1,2,3],
+            [4,5,6],
+            [7,8,9]
+        ]
+        print("\t input->maxtrix1:\(maxtrix1)")
+        s.rotate(&maxtrix1)
+        print("\t output->maxtrix1:\(maxtrix1)")
+        
+        var matrix2 = [
+            [ 5, 1, 9,11],
+            [ 2, 4, 8,10],
+            [13, 3, 6, 7],
+            [15,14,12,16]
+        ]
+        
+        print("\t input->matrix2:\(matrix2)")
+        s.rotate(&matrix2)
+        print("\t output->matrix2:\(matrix2)")
+    }
+    
+    func testSolution_reverseString () {
+        let s = Solution()
+        
+        var s1: [Character] = ["h","e","l","l","o"]
+        print("\t input->S1:\(s1)")
+        s.reverseString(&s1)
+        print("\t output->S1:\(s1)")
+        
+        var s2: [Character] = ["H","a","n","n","a","h"]
+        print("\t input->S2:\(s2)")
+        s.reverseString(&s2)
+        print("\t output->S2:\(s2)")
+    }
 }
