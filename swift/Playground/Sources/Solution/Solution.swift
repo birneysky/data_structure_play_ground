@@ -521,6 +521,8 @@ public class Solution {
 
     
     /// 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的一个字母异位词。
+    /// 两个单词如果包含相同的字母，次序不同，则称为字母易位词(anagram)。
+    /// 例如，“silent”和“listen”是字母易位词，而“apple”和“aplee”不是易位词
     /// ```
     /// eg1:
     /// 输入: s = "anagram", t = "nagaram"
@@ -557,7 +559,30 @@ public class Solution {
     /// - Parameter s: s
     /// - Returns: return value description
     public func isPalindrome(_ s: String) -> Bool {
-        return false
+        var left = s.startIndex
+        var right = s.endIndex
+        var result = true
+        while left < right {
+            while !s[left].isEnglishLetter && left <= right  {
+                left = s.index(after: left)
+            }
+            while !s[right].isEnglishLetter && right >= left {
+                right = s.index(before: right)
+            }
+            
+            if left >= right {
+                break
+            }
+            
+            if s[left] == s[right] {
+                left = s.index(after: left)
+                right = s.index(before: right)
+            } else {
+                result = false
+                break
+            }
+        }
+        return result
     }
     
     
@@ -732,5 +757,13 @@ public class Solution {
     public func reverseList(_ head: ListNode?) -> ListNode? {
         return nil
         
+    }
+}
+
+
+extension Character {
+    var isEnglishLetter: Bool {
+        return (self >= "A" && self <= "Z") ||
+               (self >= "a" && self <= "z")
     }
 }
