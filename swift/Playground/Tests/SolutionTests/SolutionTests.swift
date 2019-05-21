@@ -172,4 +172,17 @@ final class SolutionTests: XCTestCase {
         s.reverseString(&s2)
         print("\t output->S2:\(s2)")
     }
+    
+    func testSolution_firstUniqChar() {
+        let s = Solution()
+        let str1 = "leetcode"
+        print("\t input->str1:\(str1)")
+        let index1 = s.firstUniqChar(str1)
+        XCTAssertEqual(index1, 0)
+        
+        let str2 = "loveleetcode"
+        print("\t input->str2:\(str2)")
+        let index2 = s.firstUniqChar(str2)
+        XCTAssertEqual(index2, 2)
+    }
 }

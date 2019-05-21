@@ -1,5 +1,15 @@
 import Foundation
 
+
+public class ListNode {
+    public var val: Int
+    public var next: ListNode?
+    public init(_ val: Int) {
+        self.val = val
+        self.next = nil
+    }
+}
+
 public class Solution {
     public init() {}
 
@@ -282,7 +292,7 @@ public class Solution {
     ///     1.数字 1-9 在每一行只能出现一次。
     ///     2.数字 1-9 在每一列只能出现一次。
     ///     3.数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次
-    ///
+    ///     ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png)
     ///     [
     ///         ["5","3",".",".","7",".",".",".","."],
     ///         ["6",".",".","1","9","5",".",".","."],
@@ -474,5 +484,253 @@ public class Solution {
     /// - Returns: return value description
     public func reverse(_ x: Int) -> Int {
         return 0
+    }
+    
+    
+    /// 给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
+    /// ```
+    /// eg:
+    /// s = "leetcode"
+    /// 返回 0.
+    /// s = "loveleetcode",
+    /// 返回 2.
+    /// 注意事项：您可以假定该字符串只包含小写字母。
+    /// ```
+    /// - Parameter s: 字符串
+    /// - Returns: 返回 0
+    public func firstUniqChar(_ s: String) -> Int {
+        var freq: [Character:Int] = Dictionary(minimumCapacity: s.count)
+        for item in s {
+            if let q = freq[item] {
+                freq[item] = q + 1
+            } else {
+                freq[item] = 1
+            }
+        }
+        
+        for index in s.indices {
+            guard let q = freq[s[index]] else {
+                return -1
+            }
+            if q == 1 {
+                return s.distance(from: s.startIndex, to: index)
+            }
+        }
+        return 0
+    }
+
+    
+    /// 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的一个字母异位词。
+    /// ```
+    /// eg1:
+    /// 输入: s = "anagram", t = "nagaram"
+    /// 输出: true
+    /// eg 2:
+    /// 输入: s = "rat", t = "car"
+    /// 输出: false
+    /// 说明:
+    /// 你可以假设字符串只包含小写字母。
+    /// 进阶:
+    /// 如果输入字符串包含 unicode 字符怎么办？你能否调整你的解法来应对这种情况？
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - s: s
+    ///   - t: t
+    /// - Returns: return value description
+    public func isAnagram(_ s: String, _ t: String) -> Bool {
+        return false
+    }
+    
+    
+    /// 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+    
+    /// 说明：本题中，我们将空字符串定义为有效的回文串。
+    /// ```
+    /// eg 1:
+    /// 输入: "A man, a plan, a canal: Panama"
+    /// 输出: true
+    /// eg 2:
+    /// 输入: "race a car"
+    /// 输出: false
+    /// ```
+    /// - Parameter s: s
+    /// - Returns: return value description
+    public func isPalindrome(_ s: String) -> Bool {
+        return false
+    }
+    
+    
+    /// 请你来实现一个 atoi 函数，使其能将字符串转换成整数。
+    /// ```
+    /// 首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。
+    /// 当我们寻找到的第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字组合起来，作为该整数的正负号；假如第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。
+    /// 该字符串除了有效的整数部分之后也可能会存在多余的字符，这些字符可以被忽略，它们对于函数不应该造成影响。
+    /// 注意：假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，则你的函数不需要进行转换。
+    /// 在任何情况下，若函数不能进行有效的转换时，请返回 0。
+    /// 说明：
+    /// 假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−231,  231 − 1]。如果数值超过这个范围，qing返回  INT_MAX (231 − 1) 或 INT_MIN (−231) 。
+    /// eg 1:
+    /// 输入: "42"
+    /// 输出: 42
+    /// eg 2:
+    /// 输入: "   -42"
+    /// 输出: -42
+    /// 解释: 第一个非空白字符为 '-', 它是一个负号。
+    /// 我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。
+    /// eg 3:
+    /// 输入: "4193 with words"
+    /// 输出: 4193
+    /// 解释: 转换截止于数字 '3' ，因为它的下一个字符不为数字。
+    /// eg 4:
+    /// 输入: "words and 987"
+    /// 输出: 0
+    /// 解释: 第一个非空字符是 'w', 但它不是数字或正、负号。
+    /// 因此无法执行有效的转换。
+    /// eg 5:
+    /// 输入: "-91283472332"
+    /// 输出: -2147483648
+    /// 解释: 数字 "-91283472332" 超过 32 位有符号整数范围。
+    /// 因此返回 INT_MIN (−231) 。
+    ///
+    /// ```
+    /// - Parameter str: str
+    /// - Returns: return value description
+    public func myAtoi(_ str: String) -> Int {
+        return 0
+    }
+
+    
+    /// 实现 strStr() 函数。
+    
+    /// 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。
+    /// ```
+    /// 示例 1:
+    /// 输入: haystack = "hello", needle = "ll"
+    /// 输出: 2
+    /// 示例 2:
+    
+    /// 输入: haystack = "aaaaa", needle = "bba"
+    /// 输出: -1
+    /// ```
+    /// 说明:
+    /// 当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。
+    /// 对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。
+    ///
+    /// - Parameters:
+    ///   - haystack: haystack description
+    ///   - needle: needle description
+    /// - Returns: return value description
+    public func strStr(_ haystack: String, _ needle: String) -> Int {
+        return 0
+    }
+    
+    
+    /// 报数序列是一个整数序列，按照其中的整数的顺序进行报数，得到下一个数。其前五项如下：
+    /// 1.     1
+    /// 2.     11
+    /// 3.     21
+    /// 4.     1211
+    /// 5.     111221
+    /// 1 被读作  "one 1"  ("一个一") , 即 11。
+    /// 11 被读作 "two 1s" ("两个一"）, 即 21。
+    /// 21 被读作 "one 2",  "one 1" （"一个二" ,  "一个一") , 即 1211。
+    /// 给定一个正整数 n（1 ≤ n ≤ 30），输出报数序列的第 n 项。
+    /// 注意：整数顺序将表示为一个字符串。
+    
+    /// ```
+    /// eg 1:
+    /// 输入: 1
+    /// 输出: "1"
+    /// eg 2:
+    /// 输入: 4
+    /// 输出: "1211"
+    /// ```
+    /// - Parameter n: n description
+    /// - Returns: return value description
+    public func countAndSay(_ n: Int) -> String {
+        return ""
+    }
+    
+    
+    /// 编写一个函数来查找字符串数组中的最长公共前缀。
+    /// 如果不存在公共前缀，返回空字符串 ""。
+    /// ```
+    /// 示例 1:
+    /// 输入: ["flower","flow","flight"]
+    /// 输出: "fl"
+    /// 示例 2:
+    
+    /// 输入: ["dog","racecar","car"]
+    /// 输出: ""
+    /// ```
+    /// 解释: 输入不存在公共前缀。
+    /// 说明:
+    /// 所有输入只包含小写字母 a-z 。
+    ///
+    /// - Parameter strs: strs description
+    /// - Returns: return value description
+    public func longestCommonPrefix(_ strs: [String]) -> String {
+        return ""
+    }
+
+    // MARK: - Basic list
+    /// 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
+    /// 现有一个链表 -- head = [4,5,1,9]，它可以表示为:
+    /// 示例 1:
+    /// 输入: head = [4,5,1,9], node = 5
+    /// 输出: [4,1,9]
+    /// 解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -> 1 -> 9.
+    /// 示例 2:
+    /// 输入: head = [4,5,1,9], node = 1
+    /// 输出: [4,5,9]
+    /// 解释: 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -> 5 -> 9.
+    /// 说明:
+    /// 链表至少包含两个节点。
+    /// 链表中所有节点的值都是唯一的。
+    /// 给定的节点为非末尾节点并且一定是链表中的一个有效节点。
+    /// 不要从你的函数中返回任何结果。
+    ///
+    /// - Parameters:
+    ///   - head: head description
+    ///   - target: target description
+    
+    public func deleteNode(_ head: ListNode, target: Int) {
+        
+    }
+    
+    
+    /// 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
+    /// ```
+    /// 示例：
+    /// 给定一个链表: 1->2->3->4->5, 和 n = 2.
+    /// 当删除了倒数第二个节点后，链表变为 1->2->3->5.
+    /// ```
+    /// 说明：
+    /// 给定的 n 保证是有效的。
+    /// 进阶：
+    /// 你能尝试使用一趟扫描实现吗？
+    ///
+    /// - Parameters:
+    ///   - head: head description
+    ///   - n: n description
+    /// - Returns: return value description
+    public func removeNthFromEnd(_ head: ListNode?, _ n: Int) -> ListNode? {
+        return nil
+    }
+    
+    
+    /// 反转一个单链表。
+    /// 示例:
+    /// 输入: 1->2->3->4->5->NULL
+    /// 输出: 5->4->3->2->1->NULL
+    /// 进阶:
+    /// 你可以迭代或递归地反转链表。你能否用两种方法解决这道题？
+    ///
+    /// - Parameter head: head description
+    /// - Returns: return value description
+    public func reverseList(_ head: ListNode?) -> ListNode? {
+        return nil
+        
     }
 }
