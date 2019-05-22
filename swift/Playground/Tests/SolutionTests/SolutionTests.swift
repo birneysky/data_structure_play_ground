@@ -185,4 +185,36 @@ final class SolutionTests: XCTestCase {
         let index2 = s.firstUniqChar(str2)
         XCTAssertEqual(index2, 2)
     }
+    
+    func testSolution_isPalindrome() {
+        let s = Solution()
+        let str1 = "A man, a plan, a canal: Panama"
+        print("\t input->str1:\(str1)")
+        XCTAssertEqual(s.isPalindrome(str1), true)
+        let str2 = "race a car"
+        print("\t input->str2:\(str2)")
+        XCTAssertEqual(s.isPalindrome(str2), false)
+    }
+    
+    func testSolution_longestCommonPrefix() {
+        let s = Solution()
+        
+        let strArray1 = ["flower","flow","flight"]
+        print("\t input->strArray1:\(strArray1)")
+        let resut1 = s.longestCommonPrefix(strArray1)
+        print("\t output->result1: \(resut1)")
+        XCTAssertEqual(resut1, "fl")
+        
+        let strArray2 = ["dog","racecar","car"]
+        print("\t input->strArray2:\(strArray2)")
+        let resut2 = s.longestCommonPrefix(strArray2)
+        print("\t output->result2:\(resut2)")
+        XCTAssertEqual(resut2, "")
+        
+        let strArray3 = ["solve","solution","solving"]
+        print("\t input->strArray3:\(strArray3)")
+        let resut3 = s.longestCommonPrefix(strArray3)
+        print("\t output->result3:\(resut3)")
+        XCTAssertEqual(resut3, "sol")
+    }
 }

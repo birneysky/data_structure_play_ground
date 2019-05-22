@@ -559,14 +559,15 @@ public class Solution {
     /// - Parameter s: s
     /// - Returns: return value description
     public func isPalindrome(_ s: String) -> Bool {
+        /// swift String 的 endIndex 表示的是最后一个字符的后一个位置
         var left = s.startIndex
-        var right = s.endIndex
+        var right = s.index(before: s.endIndex)
         var result = true
         while left < right {
-            while !s[left].isEnglishLetter && left <= right  {
+            while !s[left].isEnglishLetter && left < s.endIndex  {
                 left = s.index(after: left)
             }
-            while !s[right].isEnglishLetter && right >= left {
+            while !s[right].isEnglishLetter && right >= s.startIndex {
                 right = s.index(before: right)
             }
             
@@ -574,7 +575,7 @@ public class Solution {
                 break
             }
             
-            if s[left] == s[right] {
+            if s[left].lowercased() == s[right].lowercased() {
                 left = s.index(after: left)
                 right = s.index(before: right)
             } else {
@@ -696,7 +697,31 @@ public class Solution {
     /// - Parameter strs: strs description
     /// - Returns: return value description
     public func longestCommonPrefix(_ strs: [String]) -> String {
-        return ""
+        var commonPrefix: String = ""
+        guard let first = strs.first else {
+            return commonPrefix
+        }
+        
+        for index in first.indices {
+            var isEqual = false
+            for item in strs {
+                guard index < item.endIndex else {
+                    return commonPrefix
+                }
+                isEqual =  item[index] == first[index]
+                if !isEqual {
+                    break   
+                }
+            }
+            
+            if isEqual {
+                commonPrefix.append(first[index])
+            } else {
+                break
+            }
+        }
+        
+        return commonPrefix
     }
 
     // MARK: - Basic list
