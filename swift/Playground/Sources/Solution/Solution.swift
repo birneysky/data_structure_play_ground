@@ -710,7 +710,7 @@ public class Solution {
                 }
                 isEqual =  item[index] == first[index]
                 if !isEqual {
-                    break   
+                    break
                 }
             }
             
