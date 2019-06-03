@@ -63,6 +63,7 @@
 		74263BA322A56310004269E3 /* PlayGroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayGroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74263BA522A56310004269E3 /* PlayGroundTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayGroundTests.mm; sourceTree = "<group>"; };
 		74263BA722A56310004269E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74263BAF22A57A75004269E3 /* Component.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Component.hpp; sourceTree = "<group>"; };
 		74472DCE21F05091004A2B59 /* BSTMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BSTMap.hpp; sourceTree = "<group>"; };
 		74472DD121FD5986004A2B59 /* Set.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Set.hpp; sourceTree = "<group>"; };
 		74472DD421FD5A04004A2B59 /* TreeSet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TreeSet.hpp; sourceTree = "<group>"; };
@@ -183,6 +184,7 @@
 				74B379B72234C7E2009D3519 /* ReadGraph.hpp */,
 				B21055732233C2CF008AD085 /* DenseGraph.hpp */,
 				74B379B42234B4C9009D3519 /* SparseGraph.hpp */,
+				74263BAF22A57A75004269E3 /* Component.hpp */,
 				B262BD6A21E37A3900C4B357 /* FileReader.hpp */,
 				B262BD6921E37A3900C4B357 /* FileReader.cpp */,
 			);
