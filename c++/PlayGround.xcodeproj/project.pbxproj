@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74263BA622A56310004269E3 /* PlayGroundTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 74263BA522A56310004269E3 /* PlayGroundTests.mm */; };
+		74263BAC22A565C1004269E3 /* testG1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 74B379B92234C8DC009D3519 /* testG1.txt */; };
+		74263BAD22A565C7004269E3 /* testG2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 74B379BA2234C8DC009D3519 /* testG2.txt */; };
 		7476723F21B5739600EAD0FF /* BST_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7476723E21B5739600EAD0FF /* BST_test.cpp */; };
 		7476724621C4D20C00EAD0FF /* FingerSolution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7476724421C4D20C00EAD0FF /* FingerSolution.cpp */; };
 		74B379BB2234C8F7009D3519 /* testG1.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74B379B92234C8DC009D3519 /* testG1.txt */; };
@@ -57,6 +60,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		74263BA322A56310004269E3 /* PlayGroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayGroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		74263BA522A56310004269E3 /* PlayGroundTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayGroundTests.mm; sourceTree = "<group>"; };
+		74263BA722A56310004269E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74472DCE21F05091004A2B59 /* BSTMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BSTMap.hpp; sourceTree = "<group>"; };
 		74472DD121FD5986004A2B59 /* Set.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Set.hpp; sourceTree = "<group>"; };
 		74472DD421FD5A04004A2B59 /* TreeSet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TreeSet.hpp; sourceTree = "<group>"; };
@@ -90,6 +96,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		74263BA022A56310004269E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7476723921B5739600EAD0FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,6 +127,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74263BA422A56310004269E3 /* PlayGroundTests */ = {
+			isa = PBXGroup;
+			children = (
+				74263BA522A56310004269E3 /* PlayGroundTests.mm */,
+				74263BA722A56310004269E3 /* Info.plist */,
+			);
+			path = PlayGroundTests;
+			sourceTree = "<group>";
+		};
 		7476723D21B5739600EAD0FF /* BST_Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +151,7 @@
 				B22AA54E21AFFE540017DAB1 /* solutions */,
 				74B98E1A21A3033D0063C05E /* src */,
 				7476723D21B5739600EAD0FF /* BST_Test */,
+				74263BA422A56310004269E3 /* PlayGroundTests */,
 				74B98E1121A302F20063C05E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -139,6 +162,7 @@
 				74B98E1021A302F20063C05E /* PlayGround */,
 				7476723C21B5739600EAD0FF /* BST_Test */,
 				B22AA54721AFFE160017DAB1 /* solutions */,
+				74263BA322A56310004269E3 /* PlayGroundTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,6 +225,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		74263BA222A56310004269E3 /* PlayGroundTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74263BAA22A56310004269E3 /* Build configuration list for PBXNativeTarget "PlayGroundTests" */;
+			buildPhases = (
+				74263B9F22A56310004269E3 /* Sources */,
+				74263BA022A56310004269E3 /* Frameworks */,
+				74263BA122A56310004269E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlayGroundTests;
+			productName = PlayGroundTests;
+			productReference = 74263BA322A56310004269E3 /* PlayGroundTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7476723B21B5739600EAD0FF /* BST_Test */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7476724021B5739600EAD0FF /* Build configuration list for PBXNativeTarget "BST_Test" */;
@@ -262,6 +303,9 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Grocery;
 				TargetAttributes = {
+					74263BA222A56310004269E3 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 					7476723B21B5739600EAD0FF = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -288,11 +332,32 @@
 				74B98E0F21A302F20063C05E /* PlayGround */,
 				7476723B21B5739600EAD0FF /* BST_Test */,
 				B22AA54621AFFE160017DAB1 /* solutions */,
+				74263BA222A56310004269E3 /* PlayGroundTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		74263BA122A56310004269E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74263BAD22A565C7004269E3 /* testG2.txt in Resources */,
+				74263BAC22A565C1004269E3 /* testG1.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		74263B9F22A56310004269E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74263BA622A56310004269E3 /* PlayGroundTests.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7476723821B5739600EAD0FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -326,6 +391,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		74263BA822A56310004269E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PlayGroundTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = grocery.tech.cn.PlayGroundTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		74263BA922A56310004269E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PlayGroundTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = grocery.tech.cn.PlayGroundTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		7476724121B5739600EAD0FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -490,6 +587,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		74263BAA22A56310004269E3 /* Build configuration list for PBXNativeTarget "PlayGroundTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74263BA822A56310004269E3 /* Debug */,
+				74263BA922A56310004269E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7476724021B5739600EAD0FF /* Build configuration list for PBXNativeTarget "BST_Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

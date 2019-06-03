@@ -18,7 +18,7 @@
 template <typename Graph>
 class ReadGraph {
 public:
-    ReadGraph(Graph& graph, std::string fileName) {
+    ReadGraph(Graph& graph, const std::string& fileName) {
         std::ifstream file(fileName);
         std::string line;
         int v, e;

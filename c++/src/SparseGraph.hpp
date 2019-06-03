@@ -96,7 +96,7 @@ public:
     
     friend std::ostream& operator<<(std::ostream& os,SparseGraph& grah) {
         for(int i = 0; i < grah.V(); i++) {
-            os << "vertext " << i << ":\t";
+            os << "vertex " << i << ":\t";
             for (int j = 0; j < grah.g[i].size(); j++) {
                 os << grah.g[i][j] << "\t";
             }
@@ -114,9 +114,10 @@ public:
         /**
          迭代器构造函数
          
+         遍历与顶点v 相邻的顶点
          
          @param graph 图的引用
-         @param v  表示图中顶点v相邻的边
+         @param v  表示图中顶点v
          */
         adjIterator(SparseGraph& graph, int v):G(graph) {
             this->v = v;
