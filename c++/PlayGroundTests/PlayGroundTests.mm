@@ -10,6 +10,7 @@
 #include "SparseGraph.hpp"
 #include "DenseGraph.hpp"
 #include "ReadGraph.hpp"
+#include "Component.hpp"
 
 @interface PlayGroundTests : XCTestCase
 
@@ -91,6 +92,40 @@
     NSString* testG2Path = [currentBuldle pathForResource:@"testG2" ofType:@"txt"];
     ReadGraph<DenseGraph> readGraph2(g2,testG2Path.UTF8String);
     std::cout << g2 << std::endl;
+}
+
+- (void)testComponentSparseGraph_count {
+    SparseGraph g1(13, false);
+    NSBundle* currentBuldle = [NSBundle bundleForClass:PlayGroundTests.class];
+    NSString* testG1Path = [currentBuldle pathForResource:@"testG1" ofType:@"txt"];
+    ReadGraph<SparseGraph> readGraph1(g1,testG1Path.UTF8String);
+    std::cout << g1 << std::endl;
+    
+    Playground::Component<SparseGraph> c1(g1);
+    XCTAssertEqual(c1.count(), 3);
+}
+
+- (void)testComponentDenseGraph_count {
+    DenseGraph g2(6, false);
+    NSBundle* currentBuldle = [NSBundle bundleForClass:PlayGroundTests.class];
+    NSString* testG2Path = [currentBuldle pathForResource:@"testG2" ofType:@"txt"];
+    ReadGraph<DenseGraph> readGraph2(g2,testG2Path.UTF8String);
+    std::cout << g2 << std::endl;
+
+    Playground::Component<DenseGraph> c2(g2);
+    XCTAssertEqual(c2.count(), 1);
+}
+
+- (void)testComponent_isConnected {
+    SparseGraph g1(13, false);
+    NSBundle* currentBuldle = [NSBundle bundleForClass:PlayGroundTests.class];
+    NSString* testG1Path = [currentBuldle pathForResource:@"testG1" ofType:@"txt"];
+    ReadGraph<SparseGraph> readGraph1(g1,testG1Path.UTF8String);
+    std::cout << g1 << std::endl;
+    
+    Playground::Component<SparseGraph> c1(g1);
+    std::cout << c1 << std::endl;
+    XCTAssertEqual(c1.isConnected(7, 8), true);
 }
 
 - (void)testPerformanceExample {
