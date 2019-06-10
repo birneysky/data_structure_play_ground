@@ -11,6 +11,7 @@
 #include "DenseGraph.hpp"
 #include "ReadGraph.hpp"
 #include "Component.hpp"
+#include "Path.hpp"
 
 @interface PlayGroundTests : XCTestCase
 
@@ -126,7 +127,53 @@
     Playground::Component<SparseGraph> c1(g1);
     std::cout << c1 << std::endl;
     XCTAssertEqual(c1.isConnected(7, 8), true);
+    XCTAssertEqual(c1.isConnected(2, 7), false);
+    XCTAssertEqual(c1.isConnected(6, 9), false);
+    XCTAssertEqual(c1.isConnected(9, 11), true);
 }
+
+- (void)testPath_hasPath {
+    SparseGraph g1(13, false);
+    NSBundle* currentBuldle = [NSBundle bundleForClass:PlayGroundTests.class];
+    NSString* testG1Path = [currentBuldle pathForResource:@"testG1" ofType:@"txt"];
+    ReadGraph<SparseGraph> readGraph1(g1,testG1Path.UTF8String);
+    std::cout << g1 << std::endl;
+    
+    Playground::Path<SparseGraph> path(g1,0);
+    XCTAssertEqual(path.hasPath(2), true);
+    XCTAssertEqual(path.hasPath(7), false);
+    XCTAssertEqual(path.hasPath(4), true);
+    XCTAssertEqual(path.hasPath(3), true);
+    XCTAssertEqual(path.hasPath(5), true);
+    XCTAssertEqual(path.hasPath(1), true);
+    
+    
+}
+
+- (void)testPath_showPath {
+    SparseGraph g2(6, false);
+    NSBundle* currentBuldle = [NSBundle bundleForClass:PlayGroundTests.class];
+    NSString* testG1Path = [currentBuldle pathForResource:@"testG2" ofType:@"txt"];
+    ReadGraph<SparseGraph> readGraph1(g2,testG1Path.UTF8String);
+    std::cout << g2 << std::endl;
+    
+    Playground::Path<SparseGraph> p(g2,0);
+    std::cout << "path 0---1 : " << std::endl;
+    p.showPath(1);
+    
+    std::cout << "path 0---2 : " << std::endl;
+    p.showPath(2);
+    
+    std::cout << "path 0---3 : " << std::endl;
+    p.showPath(3);
+    
+    std::cout << "path 0---4 : " << std::endl;
+    p.showPath(4);
+    
+    std::cout << "path 0---5 : " << std::endl;
+    p.showPath(5);
+}
+
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
