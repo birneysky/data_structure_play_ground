@@ -9,6 +9,8 @@
 #ifndef ShortestPath_hpp
 #define ShortestPath_hpp
 #include <cassert>
+#include <stack>
+#include <queue>
 
 namespace Playground {
 
@@ -32,12 +34,29 @@ public:
         for (int i = 0; i < graph.V(); i++) {
             visited[i] = false;
             from[i] = -1;
-            order = -1;
+            order[i] = -1;
         }
         
-        this->source = s;
+        source = s;
         
         /// 广度优先遍历
+        std::queue<int> q;
+        q.push(s);
+        visited[s] = true;
+        order[s] = 0;
+        while(!q.empty()) {
+            int v = q.front();
+            q.pop();
+            typename Graph::adjIterator it(g,v);
+            for (int i = it.begin(); !it.end(); i = it.next()) {
+                if (!visited[i]) {
+                    q.push(i);
+                    visited[i] = true;
+                    from[i] = v;
+                    order[i] = order[v] + 1;
+                }
+            }
+        }
     }
     
     ~ShortestPath() {
@@ -47,18 +66,42 @@ public:
     }
     
     bool hasPath(int w) {
-        return false;
+        assert( w >= 0 && w < g.V());
+        return this->visited[w];
     }
     
     void path(int w, std::vector<int>& vec) {
+        std::stack<int> s;
         
+        int p = w;
+        while (p!= -1) {
+            s.push(p);
+            p = this->from[p];
+        }
+        
+        vec.clear();
+        while(!s.empty()) {
+            vec.push_back(s.top());
+            s.pop();
+        }
     }
     
     void showPath(int w) {
+        std::vector<int> vec;
+        path(w, vec);
         
+        for(int i = 0; i < vec.size(); i++) {
+            std::cout << vec[i];
+            if (i == vec.size() - 1) {
+                std::cout << std::endl;
+            } else {
+                std::cout  << " --> ";
+            }
+        }
     }
     
-    int length() {
+    int length( int w) {
+        assert( w >= 0 && w < g.V());
         return 0;
     }
 };
