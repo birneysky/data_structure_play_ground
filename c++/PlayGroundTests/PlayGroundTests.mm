@@ -12,6 +12,7 @@
 #include "ReadGraph.hpp"
 #include "Component.hpp"
 #include "Path.hpp"
+#include "ShortestPath.hpp"
 
 @interface PlayGroundTests : XCTestCase
 
@@ -174,6 +175,14 @@
     p.showPath(5);
 }
 
+- (void)testShortestPath {
+    SparseGraph g2(6, false);
+    NSBundle* currentBuldle = [NSBundle bundleForClass:PlayGroundTests.class];
+    NSString* testG1Path = [currentBuldle pathForResource:@"testG2" ofType:@"txt"];
+    ReadGraph<SparseGraph> readGraph1(g2,testG1Path.UTF8String);
+
+    Playground::ShortestPath<SparseGraph> p(g2,0);
+}
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
