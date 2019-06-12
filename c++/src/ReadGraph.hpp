@@ -15,6 +15,8 @@
 #include <sstream>
 #include <cassert>
 
+namespace Playground {
+
 template <typename Graph>
 class ReadGraph {
 public:
@@ -44,6 +46,6 @@ public:
     }
 };
 
-
+}
 
 #endif /* ReadGraph_hpp */

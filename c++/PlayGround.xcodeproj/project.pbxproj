@@ -83,6 +83,7 @@
 		74B98E1E21A307250063C05E /* BST.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BST.hpp; sourceTree = "<group>"; };
 		74DE867D22A80ACD0026F9C4 /* Path.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Path.hpp; sourceTree = "<group>"; };
 		74DE868022AEA4880026F9C4 /* ShortestPath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShortestPath.hpp; sourceTree = "<group>"; };
+		74DE868322B143CE0026F9C4 /* Edge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Edge.hpp; sourceTree = "<group>"; };
 		B21055732233C2CF008AD085 /* DenseGraph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DenseGraph.hpp; sourceTree = "<group>"; };
 		B22AA54721AFFE160017DAB1 /* solutions */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = solutions; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22AA55121AFFE540017DAB1 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
@@ -189,6 +190,7 @@
 				74263BAF22A57A75004269E3 /* Component.hpp */,
 				74DE867D22A80ACD0026F9C4 /* Path.hpp */,
 				74DE868022AEA4880026F9C4 /* ShortestPath.hpp */,
+				74DE868322B143CE0026F9C4 /* Edge.hpp */,
 				B262BD6A21E37A3900C4B357 /* FileReader.hpp */,
 				B262BD6921E37A3900C4B357 /* FileReader.cpp */,
 			);

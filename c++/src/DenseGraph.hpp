@@ -13,6 +13,7 @@
 #include <vector>
 #include <cassert>
 
+namespace Playground {
 /*
  * 使用邻接矩阵实现稠密图    dense [dɛns] 
  */
@@ -142,5 +143,6 @@ public:
     };
 };
 
+}
 
 #endif /* DenseGraph_hpp */
