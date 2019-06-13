@@ -176,12 +176,42 @@
 }
 
 - (void)testShortestPath {
-    SparseGraph g2(6, false);
+    SparseGraph g1(13, false);
     NSBundle* currentBuldle = [NSBundle bundleForClass:PlayGroundTests.class];
-    NSString* testG1Path = [currentBuldle pathForResource:@"testG2" ofType:@"txt"];
-    ReadGraph<SparseGraph> readGraph1(g2,testG1Path.UTF8String);
+    NSString* testG1Path = [currentBuldle pathForResource:@"testG3" ofType:@"txt"];
+    ReadGraph<SparseGraph> readGraph1(g1,testG1Path.UTF8String);
 
-    Playground::ShortestPath<SparseGraph> p(g2,0);
+    Playground::ShortestPath<SparseGraph> sp1(g1,0);
+    std::cout << "path 0---12 : ";
+    sp1.showPath(12);
+    std::cout << std::endl;
+    
+    Playground::ShortestPath<SparseGraph> sp2(g1,5);
+    std::cout << "path 5---12 : ";
+    sp2.showPath(12);
+    std::cout << std::endl;
+}
+
+- (void)testShortestPath_length {
+    SparseGraph g1(13, false);
+    NSBundle* currentBuldle = [NSBundle bundleForClass:PlayGroundTests.class];
+    NSString* testG1Path = [currentBuldle pathForResource:@"testG3" ofType:@"txt"];
+    ReadGraph<SparseGraph> readGraph1(g1,testG1Path.UTF8String);
+    
+    Playground::ShortestPath<SparseGraph> sp1(g1,0);
+    XCTAssertEqual(sp1.length(11), 1);
+    XCTAssertEqual(sp1.length(12), 2);
+    XCTAssertEqual(sp1.length(9), 2);
+//    std::cout << "path 0---12 : ";
+//    sp1.showPath(12);
+//    std::cout << std::endl;
+    
+    Playground::ShortestPath<SparseGraph> sp2(g1,5);
+//    std::cout << "path 5---12 : ";
+//    sp2.showPath(12);
+//    std::cout << std::endl;
+
+
 }
 
 - (void)testPerformanceExample {
