@@ -13,6 +13,7 @@
 #include <vector>
 #include <cassert>
 
+namespace Playground {
 /*
  * 邻接表实现稀疏图 sparse [spɑ:rs]
  */
@@ -146,4 +147,5 @@ public:
     };
 };
 
+}
 #endif /* SparseGraph_hpp */
