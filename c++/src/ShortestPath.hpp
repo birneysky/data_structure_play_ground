@@ -102,7 +102,7 @@ public:
     
     int length( int w) {
         assert( w >= 0 && w < g.V());
-        return 0;
+        return this->order[w];
     }
 };
 

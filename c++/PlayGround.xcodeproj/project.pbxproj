@@ -18,6 +18,7 @@
 		B22AA56021AFFEF10017DAB1 /* Solution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22AA55721AFFE540017DAB1 /* Solution.cpp */; };
 		B22AA56121AFFEF10017DAB1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22AA55821AFFE540017DAB1 /* main.cpp */; };
 		B22AA56221AFFEF10017DAB1 /* Solution.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B22AA55921AFFE540017DAB1 /* Solution.hpp */; };
+		B255116722AF5C8C00408CCA /* testG3.txt in Resources */ = {isa = PBXBuildFile; fileRef = B255116622AF5BDF00408CCA /* testG3.txt */; };
 		B25DA65921CCF8F9004F8D58 /* Trie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B25DA65721CCF8F9004F8D58 /* Trie.cpp */; };
 		B262BD6B21E37A3900C4B357 /* FileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B262BD6921E37A3900C4B357 /* FileReader.cpp */; };
 		B293456021F5AA3A00C19F1C /* pride-and-prejudice.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = B293455F21F5AA2100C19F1C /* pride-and-prejudice.txt */; };
@@ -90,6 +91,7 @@
 		B22AA55721AFFE540017DAB1 /* Solution.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Solution.cpp; sourceTree = "<group>"; };
 		B22AA55821AFFE540017DAB1 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B22AA55921AFFE540017DAB1 /* Solution.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Solution.hpp; sourceTree = "<group>"; };
+		B255116622AF5BDF00408CCA /* testG3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testG3.txt; sourceTree = "<group>"; };
 		B25DA65721CCF8F9004F8D58 /* Trie.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Trie.cpp; sourceTree = "<group>"; };
 		B25DA65821CCF8F9004F8D58 /* Trie.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Trie.hpp; sourceTree = "<group>"; };
 		B262BD6921E37A3900C4B357 /* FileReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FileReader.cpp; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				74B379B92234C8DC009D3519 /* testG1.txt */,
 				74B379BA2234C8DC009D3519 /* testG2.txt */,
+				B255116622AF5BDF00408CCA /* testG3.txt */,
 				B293455F21F5AA2100C19F1C /* pride-and-prejudice.txt */,
 			);
 			path = resource;
@@ -350,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B255116722AF5C8C00408CCA /* testG3.txt in Resources */,
 				74263BAD22A565C7004269E3 /* testG2.txt in Resources */,
 				74263BAC22A565C1004269E3 /* testG1.txt in Resources */,
 			);
