@@ -41,5 +41,8 @@ let package = Package(
         .testTarget(
             name: "PlaygroundTests",
             dependencies: ["Playground"]),
+        .testTarget(
+            name: "StdLibraryTests",
+            dependencies: ["Playground"]),
     ]
 )

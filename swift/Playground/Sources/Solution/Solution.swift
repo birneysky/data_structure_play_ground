@@ -791,4 +791,9 @@ extension Character {
         return (self >= "A" && self <= "Z") ||
                (self >= "a" && self <= "z")
     }
+    
+    var isDigit: Bool {
+        return self >= "0" && self <= "9"
+    }
+    
 }
