@@ -218,4 +218,10 @@ final class SolutionTests: XCTestCase {
         XCTAssertEqual(resut3, "sol")
     }
     
+    func testSolution_myAtoi() {
+        let s = Solution()
+        let t1 = s.myAtoi("1234")
+        XCTAssertEqual(t1, 1234)
+        
+    }
 }

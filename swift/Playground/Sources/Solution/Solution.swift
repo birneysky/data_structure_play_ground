@@ -623,6 +623,10 @@ public class Solution {
     /// - Parameter str: str
     /// - Returns: return value description
     public func myAtoi(_ str: String) -> Int {
+        var isPositive: Bool = true
+        for index in str.indices {
+            
+        }
         return 0
     }
 
@@ -796,4 +800,19 @@ extension Character {
         return self >= "0" && self <= "9"
     }
     
+    var isInvisibleASCII: Bool {
+        guard let assciiValue = self.asciiValue else {
+            return false
+        }
+        
+        return assciiValue >= 0 && assciiValue <= 32 || assciiValue == 127
+    }
+ 
+    var isPlusSign: Bool {
+        return self == "+"
+    }
+    
+    var isMinusSign: Bool {
+        return self == "-"
+    }
 }
