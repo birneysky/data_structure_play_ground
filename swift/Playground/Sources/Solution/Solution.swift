@@ -621,13 +621,38 @@ public class Solution {
     ///
     /// ```
     /// - Parameter str: str
-    /// - Returns: return value description
-    public func myAtoi(_ str: String) -> Int {
+    /// - Returns: 由于 swift 现代简洁的语法特性，可以在转化失败后返回 nil，比 c 语言修改全局变量的方式更优雅
+    public func myAtoi(_ str: String) -> Int? {
         var isPositive: Bool = true
-        for index in str.indices {
-            
+        var startIndex = str.startIndex
+        let endIndex = str.endIndex
+        var num: Int = 0
+        let zero: Character = "0"
+        /// 寻找首个有效字符
+        while str[startIndex].isInvisibleASCII {
+            startIndex = str.index(after: startIndex)
         }
-        return 0
+        /// 处理 + -
+        if str[startIndex].isPlusSign {
+            startIndex = str.index(after: startIndex)
+        } else if str[startIndex].isMinusSign {
+            startIndex = str.index(after: startIndex)
+            isPositive = false
+        }
+        
+        /// 计算
+        while startIndex < endIndex {
+
+            if str[startIndex].isDigit {
+                num = num * 10 + Int(str[startIndex].asciiValue! - zero.asciiValue!)
+                startIndex = str.index(after: startIndex)
+            } else {
+                break
+            }
+        }
+        
+        
+        return isPositive ? num : -num
     }
 
     
@@ -791,27 +816,37 @@ public class Solution {
 
 
 extension Character {
+    
+    /// 判断是否是英文字母
     var isEnglishLetter: Bool {
         return (self >= "A" && self <= "Z") ||
                (self >= "a" && self <= "z")
     }
     
+    
+    /// 判断是否是数字
     var isDigit: Bool {
         return self >= "0" && self <= "9"
     }
     
+    
+    /// 判断 是否是不可见的 ascii 字符
     var isInvisibleASCII: Bool {
+        /// 确保是 ascii
         guard let assciiValue = self.asciiValue else {
             return false
         }
         
         return assciiValue >= 0 && assciiValue <= 32 || assciiValue == 127
     }
- 
+    
+    /// 是否为 '+'
     var isPlusSign: Bool {
         return self == "+"
     }
     
+    
+    /// /// 是否为 '-'
     var isMinusSign: Bool {
         return self == "-"
     }

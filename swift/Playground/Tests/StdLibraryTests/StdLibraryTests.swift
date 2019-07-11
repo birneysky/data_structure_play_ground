@@ -13,8 +13,10 @@ final class StdLibraryTests: XCTestCase {
         let t3 = atoi("\t        1234 abc")
         XCTAssertEqual(t3, 1234)
         
+        /// 转化失败时，全局变量 errno 被置为 EINVAL
         let t4 = atoi("abc 1234")
         XCTAssertEqual(t4, 0)
+        XCTAssertEqual(errno, EINVAL)
         
         let t6 = atoi("+1234bac")
         XCTAssertEqual(t6, 1234)
@@ -24,9 +26,10 @@ final class StdLibraryTests: XCTestCase {
         
         let t8 = atoi("- 1234bac")
         XCTAssertEqual(t8, 0)
+        XCTAssertEqual(errno, EINVAL)
         
         let t9 = atoi("-1+234bac")
-        XCTAssertEqual(t9, -1234)
+        XCTAssertEqual(t9, -1)
     }
     
     func test_swift_string_indices() {
