@@ -58,4 +58,12 @@ final class StdLibraryTests: XCTestCase {
         let stra = 0x41
         print(stra)
     }
+    
+    func test_swift_string_index_position() {
+        let stra = "abc"
+        let first = stra.startIndex
+        let last = stra.endIndex
+        print("test_swift_string_index_position first character:\(stra[first])")
+        print("test_swift_string_index_position last character:\(stra[last])")
+    }
 }
