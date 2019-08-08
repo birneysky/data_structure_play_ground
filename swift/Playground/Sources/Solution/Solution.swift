@@ -622,7 +622,7 @@ public class Solution {
     /// ```
     /// - Parameter str: str
     /// - Returns: 由于 swift 现代简洁的语法特性，可以在转化失败后返回 nil，比 c 语言修改全局变量的方式更优雅
-    public func myAtoi(_ str: String) -> Int? {
+    public func myAtoi(_ str: String) -> Int?  {
         var isPositive: Bool = true
         var startIndex = str.startIndex
         let endIndex = str.endIndex
@@ -638,6 +638,8 @@ public class Solution {
         } else if str[startIndex].isMinusSign {
             startIndex = str.index(after: startIndex)
             isPositive = false
+        } else if !str[startIndex].isDigit {
+            return nil
         }
         
         /// 计算

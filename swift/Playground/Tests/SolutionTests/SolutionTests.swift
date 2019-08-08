@@ -220,8 +220,21 @@ final class SolutionTests: XCTestCase {
     
     func testSolution_myAtoi() {
         let s = Solution()
+        print("\t input->string t1: 1234")
         let t1 = s.myAtoi("1234")
+        print("\t output->t1:\(t1!)")
         XCTAssertEqual(t1, 1234)
         
+        print("\t input->string t2: -283")
+        let t2 = s.myAtoi("-483")
+        print("\t output->t2:\(t2!)")
+        XCTAssertEqual(t2, -483)
+        
+        print("\t input->string: a123")
+        if let t3 = s.myAtoi("a123") {
+            print("\t output->t3:\(t3)")
+        } else {
+            print("\t output->t3 is nil")
+        }
     }
 }
