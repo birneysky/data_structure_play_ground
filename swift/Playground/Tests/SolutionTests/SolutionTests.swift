@@ -225,7 +225,7 @@ final class SolutionTests: XCTestCase {
         print("\t output->t1:\(t1!)")
         XCTAssertEqual(t1, 1234)
         
-        print("\t input->string t2: -283")
+        print("\t input->string t2: -483")
         let t2 = s.myAtoi("-483")
         print("\t output->t2:\(t2!)")
         XCTAssertEqual(t2, -483)
@@ -236,5 +236,30 @@ final class SolutionTests: XCTestCase {
         } else {
             print("\t output->t3 is nil")
         }
+        
+        print("\t input->string t4: -  69879 abc")
+        if let t4 = s.myAtoi("-  69879 abc") {
+            print("\t output->t4:\(t4)")
+        } else {
+            print("\t output->t4 is nil")
+        }
+        
+        
+        print("\t input->string t5:      -69879 abc")
+        if let t5 = s.myAtoi("      -69879 abc") {
+            print("\t output->t4:\(t5)")
+            XCTAssertEqual(t5, -69879)
+        } else {
+            print("\t output->t5 is nil")
+        }
+    }
+    
+    func testSolution_strStr() {
+        let s = Solution()
+        
+        let haystack = "hello"
+        let needle = "ll"
+        
+        print(s.strStr(haystack, needle))
     }
 }

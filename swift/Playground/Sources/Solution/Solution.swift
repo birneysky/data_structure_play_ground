@@ -679,7 +679,23 @@ public class Solution {
     ///   - needle: needle description
     /// - Returns: return value description
     public func strStr(_ haystack: String, _ needle: String) -> Int {
-        return 0
+        var hIndex = haystack.startIndex
+        let hEndIndex = haystack.endIndex
+        var nIndex = needle.startIndex
+        let nEndIndex = needle.endIndex
+        var result = -1
+        while hIndex < hEndIndex {
+            if haystack[hIndex] == needle[nIndex] {
+                nIndex = needle.index(after: nIndex)
+            }
+            if nIndex == nEndIndex {
+                let startIndex = haystack.index(hIndex, offsetBy: -needle.count)
+                result = haystack.distance(from: startIndex, to: hIndex)
+                break
+            }
+            hIndex = haystack.index(after: hIndex)
+        }
+        return result
     }
     
     
