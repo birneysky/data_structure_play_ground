@@ -687,7 +687,10 @@ public class Solution {
         while hIndex < hEndIndex {
             if haystack[hIndex] == needle[nIndex] {
                 nIndex = needle.index(after: nIndex)
+            } else {
+                nIndex = needle.startIndex
             }
+            
             if nIndex == nEndIndex {
                 let startIndex = haystack.index(hIndex, offsetBy: -needle.count)
                 result = haystack.distance(from: startIndex, to: hIndex)

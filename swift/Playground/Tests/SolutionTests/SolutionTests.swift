@@ -257,9 +257,16 @@ final class SolutionTests: XCTestCase {
     func testSolution_strStr() {
         let s = Solution()
         
-        let haystack = "hello"
-        let needle = "ll"
+        let haystack1 = "hello"
+        let needle1 = "ll"
+        print("\t input-> haystack1:\(haystack1) needle1:\(needle1)")
+        let result1 = s.strStr(haystack1, needle1)
+        print("\t output->result1: \(result1)")
         
-        print(s.strStr(haystack, needle))
+        let haystack2 = "aaaaa"
+        let needle2 = "bba"
+        print("\t input-> haystack2:\(haystack2) needle2:\(needle2)")
+        let result2 = s.strStr(haystack2, needle2)
+        print("\t output->result1: \(result2)")
     }
 }
