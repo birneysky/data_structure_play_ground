@@ -66,4 +66,25 @@ final class StdLibraryTests: XCTestCase {
         print("test_swift_string_index_position first character:\(stra[first])")
         print("test_swift_string_index_position last character:\(stra[last])")
     }
+    
+    func test_option(){
+        struct Person {
+            var name: String?
+            var sex: Bool
+            init?(name: String?, sex: Bool) {
+                guard let name = name else {
+                    return nil
+                }
+                self.name = name
+                self.sex = sex
+            }
+        }
+        
+        let p = Person(name: nil, sex: true)
+        let name = p?.name
+        let sex = p?.sex
+        print("p:\(p)")
+        print("x:\(name ?? "no name")")
+        print("x:\(sex ?? false)")
+    }
 }

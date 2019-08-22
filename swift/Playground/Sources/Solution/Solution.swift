@@ -796,7 +796,20 @@ public class Solution {
     ///   - target: target description
     
     public func deleteNode(_ head: ListNode, target: Int) {
-        
+        var curNode: ListNode? = head
+        var preNode: ListNode? = nil
+        while curNode?.next != nil {
+            guard let value = curNode?.val else {
+                return;
+            }
+            if value == target {
+                preNode?.next = curNode?.next
+                curNode?.next = nil
+                break;
+            }
+            preNode = curNode
+            curNode = curNode?.next
+        }
     }
     
     
