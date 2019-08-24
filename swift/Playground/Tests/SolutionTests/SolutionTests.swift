@@ -269,4 +269,29 @@ final class SolutionTests: XCTestCase {
         let result2 = s.strStr(haystack2, needle2)
         print("\t output->result1: \(result2)")
     }
+    
+    func testSolution_deleteNode() {
+        let s = Solution()
+        
+        guard let list1 =  ListNode([4,5,1,9]) else {
+            NSLog("list1 init failed")
+            return
+        }
+        
+        var target = 5
+        NSLog("\t input list1:\(list1), delete target:\(target)")
+        s.deleteNode(list1, target: target)
+        NSLog("\t output list1:\(list1)")
+        
+        
+       guard let list2 =  ListNode([4,5,1,9]) else {
+            NSLog("list1 init failed")
+            return
+        }
+        
+        target = 1
+        NSLog("\t input list2:\(list2), delete target:\(target)")
+        s.deleteNode(list2, target: target)
+        NSLog("\t output list2:\(list2)")
+    }
 }

@@ -83,7 +83,9 @@ final class StdLibraryTests: XCTestCase {
         let p = Person(name: nil, sex: true)
         let name = p?.name
         let sex = p?.sex
-        print("p:\(p)")
+        if let ap = p {
+            print("p:\(ap)")
+        }
         print("x:\(name ?? "no name")")
         print("x:\(sex ?? false)")
     }
