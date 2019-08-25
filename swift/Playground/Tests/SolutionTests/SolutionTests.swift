@@ -273,25 +273,38 @@ final class SolutionTests: XCTestCase {
     func testSolution_deleteNode() {
         let s = Solution()
         
-        guard let list1 =  ListNode([4,5,1,9]) else {
+        guard var list1 =  ListNode([4,5,1,9]) else {
             NSLog("list1 init failed")
             return
         }
         
         var target = 5
         NSLog("\t input list1:\(list1), delete target:\(target)")
-        s.deleteNode(list1, target: target)
+        s.deleteNode(&list1, target: target)
         NSLog("\t output list1:\(list1)")
         
         
-       guard let list2 =  ListNode([4,5,1,9]) else {
+       guard var list2 =  ListNode([4,5,1,9]) else {
             NSLog("list1 init failed")
             return
         }
         
-        target = 1
+        target = 4
         NSLog("\t input list2:\(list2), delete target:\(target)")
-        s.deleteNode(list2, target: target)
+        s.deleteNode(&list2, target: target)
         NSLog("\t output list2:\(list2)")
+    }
+    
+    func testSolution_removeNthFromEnd() {
+        let s = Solution()
+        
+        guard let list1 = ListNode([1, 2, 3, 4, 5]) else {
+            NSLog("list1 init failed")
+            return
+        }
+         var n = 5
+        if let result1 = s.removeNthFromEnd(list1, n) {
+            NSLog("\(result1)")
+        }
     }
 }

@@ -821,12 +821,14 @@ public class Solution {
     ///   - head: head description
     ///   - target: target description
     
-    public func deleteNode(_ head: ListNode, target: Int) {
+    public func deleteNode(_ head: inout ListNode, target: Int) {
+        let dummyHead = ListNode(0)
+        dummyHead.next = head
         var curNode: ListNode? = head
-        var preNode: ListNode? = nil
-        while curNode?.next != nil {
+        var preNode: ListNode? = dummyHead
+        while curNode != nil {
             guard let value = curNode?.val else {
-                return;
+                fatalError()
             }
             if value == target {
                 preNode?.next = curNode?.next
@@ -836,6 +838,10 @@ public class Solution {
             preNode = curNode
             curNode = curNode?.next
         }
+        if let finalHead = preNode?.next  {
+            head = finalHead
+        }
+        
     }
     
     
@@ -855,7 +861,25 @@ public class Solution {
     ///   - n: n description
     /// - Returns: return value description
     public func removeNthFromEnd(_ head: ListNode?, _ n: Int) -> ListNode? {
-        return nil
+        let dummyHead = ListNode(0)
+        dummyHead.next = head
+        var frontNode = head
+        var delNode = head
+        var preNode: ListNode? = dummyHead
+        var Nth = 0
+        while frontNode != nil {
+            frontNode = frontNode?.next
+            Nth  = Nth + 1
+            if Nth > n {
+                delNode = delNode?.next
+                preNode = preNode?.next
+            }
+        }
+        
+        preNode?.next = delNode?.next
+        delNode?.next = nil
+        
+        return dummyHead.next
     }
     
     
