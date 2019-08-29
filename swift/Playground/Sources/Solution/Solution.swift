@@ -1,41 +1,5 @@
 import Foundation
 
-
-public class ListNode: CustomStringConvertible{
-    public var val: Int
-    public var next: ListNode?
-    public init(_ val: Int) {
-        self.val = val
-        self.next = nil
-    }
-    
-    public init?(_ values:[Int]) {
-        guard !values.isEmpty else {
-            return nil
-        }
-        
-        self.val = values[0]
-        self.next = nil
-        
-        var cur: ListNode? = self
-        for i in 1..<values.count  {
-            cur?.next = ListNode(values[i])
-            cur = cur?.next
-        }
-    }
-    
-    public var description: String {
-        var cur: ListNode? = self
-        var des: String = String()
-        while let aCur = cur {
-            des.append("\(aCur.val)-->")
-            cur = cur?.next
-        }
-        des.append("Null")
-        return des
-    }
-}
-
 public class Solution {
     public init() {}
 
@@ -922,23 +886,48 @@ public class Solution {
      public func isPalindrome(_ head: ListNode?) -> Bool {
         return false
     }
+    
+    /// 给定一个链表，判断链表中是否有环。
+    /// 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
+    /// 示例 1：
+    /// 输入：head = [3,2,0,-4], pos = 1
+    /// 输出：true
+    /// 解释：链表中有一个环，其尾部连接到第二个节点。
+    /// 3-->2-->0-->-->4
+    ///    |_________|
+    
+    /// 示例 2：
+    /// 输入：head = [1,2], pos = 0
+    /// 输出：true
+    /// 解释：链表中有一个环，其尾部连接到第一个节点。
+    ///    1------>2
+    ///    |______|
+    ///  进阶：
+    /// 你能用 O(1)（即，常量）内存解决此问题吗？
+    
+    public func hasCycle(_ head: ListNode?) -> Bool {
+        return false
+    }
+    
+    // MARK: - Basic Tree
+    
+    public func maxDepth(_ root: TreeNode?) -> Int {
+        return 0
+    }
 }
 
 
 extension Character {
-    
     /// 判断是否是英文字母
     var isEnglishLetter: Bool {
         return (self >= "A" && self <= "Z") ||
                (self >= "a" && self <= "z")
     }
     
-    
     /// 判断是否是数字
     var isDigit: Bool {
         return self >= "0" && self <= "9"
     }
-    
     
     /// 判断 是否是不可见的 ascii 字符
     var isInvisibleASCII: Bool {
@@ -954,7 +943,6 @@ extension Character {
     var isPlusSign: Bool {
         return self == "+"
     }
-    
     
     /// /// 是否为 '-'
     var isMinusSign: Bool {
