@@ -67,6 +67,27 @@ final class StdLibraryTests: XCTestCase {
         print("test_swift_string_index_position last character:\(stra[last])")
     }
     
+    func test_swift_string_unicode_represtation() {
+        let cafe = "Cafe\u{301} du 🌍"
+        print("cafe:\(cafe), count:\(cafe.count)")
+        print("arrayCafe:\(Array(cafe))")
+        
+        print("cafe.unicodeScalars.count:\(cafe.unicodeScalars.count)")
+        print("cafe.unicodeScalars.Array:\(Array(cafe.unicodeScalars))")
+        print("cafe value array:\(cafe.unicodeScalars.map { $0.value })")
+    }
+    
+    
+    func test_swift_string_retrieve_first_world() {
+        let name = "Marie Curie"
+        let firstSpace = name.firstIndex(of: " ") ?? name.endIndex
+        let firstName = name[..<firstSpace]
+        let lastName = name[firstSpace..<name.endIndex]
+        print("fistName:\(firstName)")
+        print("lastName:\(lastName)")
+    }
+
+
     func test_option(){
         struct Person {
             var name: String?
