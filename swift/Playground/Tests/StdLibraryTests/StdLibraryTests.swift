@@ -59,6 +59,19 @@ final class StdLibraryTests: XCTestCase {
         print(stra)
     }
     
+    func test_swift_multiline_string() {
+        let banner = """
+          __,
+         (           o  /) _/_
+          `.  , , , ,  //  /
+        (___)(_(_/_(_ //_ (__
+                     /)
+                    (/
+        """
+        
+        print(banner)
+    }
+    
     func test_swift_string_index_position() {
         let stra = "abc"
         let first = stra.startIndex
