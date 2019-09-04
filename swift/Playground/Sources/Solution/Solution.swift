@@ -824,7 +824,7 @@ public class Solution {
     ///   - head: head description
     ///   - n: n description
     /// - Returns: return value description
-    public func removeNthFromEnd(_ head: ListNode?, _ n: Int) -> ListNode? {
+    public func  removeNthFromEnd(_ head: ListNode?, _ n: Int) -> ListNode? {
         let dummyHead = ListNode(0)
         dummyHead.next = head
         var frontNode = head
@@ -857,7 +857,16 @@ public class Solution {
     /// - Parameter head: head description
     /// - Returns: return value description
     public func reverseList(_ head: ListNode?) -> ListNode? {
-        return nil
+        var pre: ListNode? = nil
+        var cur: ListNode? = head
+        var nex: ListNode? = head?.next
+        while cur != nil {
+            cur?.next = pre
+            pre = cur
+            cur = nex
+            nex = nex?.next
+        }
+        return pre
         
     }
     

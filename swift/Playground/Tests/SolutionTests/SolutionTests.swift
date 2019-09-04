@@ -302,9 +302,38 @@ final class SolutionTests: XCTestCase {
             NSLog("list1 init failed")
             return
         }
-         var n = 5
+        
+        var n = 5
+        NSLog("remove the \(n)th of \"\(list1)\" from end")
         if let result1 = s.removeNthFromEnd(list1, n) {
-            NSLog("\(result1)")
+            NSLog("ouput list \(result1)")
+        } else {
+            NSLog("out put is nil")
+        }
+        
+        n = 2
+        guard let list2 = ListNode([1, 2, 3, 4, 5]) else {
+            NSLog("list1 init failed")
+            return
+        }
+        NSLog("remove the \(n)th of \"\(list2)\" from end")
+        if let result2 = s.removeNthFromEnd(list2, n) {
+            NSLog("ouput list \(result2)")
+        } else {
+            NSLog("out put is nil")
+        }
+    }
+    
+    func testSolution_reverseList() {
+        let s = Solution()
+        
+        guard let list1 = ListNode([1, 2, 3, 4, 5]) else {
+            NSLog("list1 init failed")
+            return
+        }
+        
+        if let newHead = s.reverseList(list1) {
+            NSLog("\(newHead)")
         }
     }
 }
