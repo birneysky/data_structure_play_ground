@@ -335,5 +335,14 @@ final class SolutionTests: XCTestCase {
         if let newHead = s.reverseList(list1) {
             NSLog("\(newHead)")
         }
+        
+        guard let list2 = ListNode([1]) else {
+            NSLog("list1 init failed")
+            return
+        }
+        
+        if let newHead = s.reverseList(list2) {
+            NSLog("\(newHead)")
+        }
     }
 }
