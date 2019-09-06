@@ -8,10 +8,10 @@
 import Foundation
 
 public class BufferArray {
-    internal var _buffer: UnsafeMutablePointer<Int>
-    internal var _capacity: Int
-    internal var _size: Int
-    internal static let defaultCapacity = 10
+    fileprivate var _buffer: UnsafeMutablePointer<Int>
+    fileprivate var _capacity: Int
+    fileprivate var _size: Int
+    fileprivate static let defaultCapacity = 10
     
     public var isEmpty: Bool  {
         return _size == 0
@@ -31,6 +31,18 @@ public class BufferArray {
     public convenience init() {
         self.init(capacity: BufferArray.defaultCapacity)
     }
+    
+    public func insert(_ element: Int, at index: Int) {
+        guard _size < _capacity else {
+            fatalError("AddLast failed. Array is full.")
+        }
+        
+    }
+    
+    public func append(_ element: Int) {
+        
+    }
+    
     
     public func addLast(e: Int) {
         guard _size < _capacity else {

@@ -47,6 +47,12 @@ final class CollectionsTests: XCTestCase {
         }
 
     }
+    
+    func testBufferArray() {
+        let array = BufferArray(capacity: 3)
+        array.insert(3, at: 0)
+        
+    }
  
     
 
