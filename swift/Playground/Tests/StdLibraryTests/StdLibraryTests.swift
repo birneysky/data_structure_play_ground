@@ -123,4 +123,26 @@ final class StdLibraryTests: XCTestCase {
         print("x:\(name ?? "no name")")
         print("x:\(sex ?? false)")
     }
+    
+    func test_for_stride_through() {
+        for i in stride(from: 10, through: 3, by: -1)  {
+            print("stride index:\(i)")
+        }
+    }
+    
+    func test_for_stide_to() {
+        for i in stride(from: 10, to: 3, by: -1) {
+            print("stride index:\(i)")
+        }
+    }
+    
+    func test_UnsafeMutablePointer() {
+        let buffer = UnsafeMutablePointer<Int>.allocate(capacity: 10)
+        //buffer.initialize(to: 0)
+        buffer.initialize(repeating: 0, count: 10)
+        buffer[9] = 10
+        for i in 0..<10 {
+            print("unsafe mutable pointer buffer[\(i)]:\(buffer[i])")
+        }
+    }
 }

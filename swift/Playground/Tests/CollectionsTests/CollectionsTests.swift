@@ -48,12 +48,36 @@ final class CollectionsTests: XCTestCase {
 
     }
     
-    func testBufferArray() {
+    func testBufferArray_insert() {
         let array = BufferArray(capacity: 3)
-        array.insert(3, at: 0)
-        
+        array.insert(1, at: 0)
+        array.insert(2, at: 1)
+        array.insert(3, at: 2)
+        print(array)
     }
  
+    func testBufferArray_append() {
+        let array = BufferArray(capacity: 20)
+        for i in 0...10 {
+            array.append(i)
+        }
+        print(array)
+        
+        array.insert(100, at: 1)
+        print(array)
+    }
     
+    func testBufferArray_subscript() {
+        let array = BufferArray(capacity: 20)
+        for i in 0...10 {
+            array.append(i)
+        }
+        print(array)
+        array.insert(100, at: 1)
+        print(array[1])
+        
+        array[2] = 200
+        print(array)
+    }
 
 }
