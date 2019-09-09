@@ -3,6 +3,7 @@ import Foundation
 
 final class StdLibraryTests: XCTestCase {
 
+    // MARK: - c atoi
     func test_c_atoi() {
         let t1 = atoi("1234")
         XCTAssertEqual(t1, 1234)
@@ -32,6 +33,7 @@ final class StdLibraryTests: XCTestCase {
         XCTAssertEqual(t9, -1)
     }
     
+    // MARK: - String
     func test_swift_string_indices() {
         /// 遍历字符串
         let stra = "flower"
@@ -100,7 +102,7 @@ final class StdLibraryTests: XCTestCase {
         print("lastName:\(lastName)")
     }
 
-
+    // MARK: - Option
     func test_option(){
         struct Person {
             var name: String?
@@ -124,6 +126,7 @@ final class StdLibraryTests: XCTestCase {
         print("x:\(sex ?? false)")
     }
     
+    // MARK: - for in stride
     func test_for_stride_through() {
         for i in stride(from: 10, through: 3, by: -1)  {
             print("stride index:\(i)")
@@ -135,7 +138,8 @@ final class StdLibraryTests: XCTestCase {
             print("stride index:\(i)")
         }
     }
-    
+   
+    // MARK: - UnsafeMutablePointer
     func test_UnsafeMutablePointer() {
         let buffer = UnsafeMutablePointer<Int>.allocate(capacity: 10)
         //buffer.initialize(to: 0)
@@ -143,6 +147,25 @@ final class StdLibraryTests: XCTestCase {
         buffer[9] = 10
         for i in 0..<10 {
             print("unsafe mutable pointer buffer[\(i)]:\(buffer[i])")
+        }
+        buffer.deinitialize(count: 10)
+        buffer.deallocate()
+    }
+    
+    func test_UnsafeMutablePointer_copy() {
+        let buffer = UnsafeMutablePointer<Int>.allocate(capacity: 10)
+        let bcopy = buffer
+        //buffer.initialize(to: 0)
+        buffer.initialize(repeating: 0, count: 10)
+        buffer[9] = 10
+        for i in 0..<10 {
+            print("unsafe mutable pointer buffer[\(i)]:\(buffer[i])")
+        }
+        buffer.deinitialize(count: 10)
+        buffer.deallocate()
+        
+        for i in 0..<10 {
+            print("unsafe mutable pointer bcopy[\(i)]:\(bcopy[i])")
         }
     }
 }

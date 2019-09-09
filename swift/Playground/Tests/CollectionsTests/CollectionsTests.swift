@@ -3,6 +3,7 @@ import Collections
 
 final class CollectionsTests: XCTestCase {
     
+    // MARK: - MaxHeap
     func testMaxHeapInsert() {
         let array = [8,9,10,2,4,5,6,3,21,100]
         print("\t input->array:\(array)")
@@ -38,7 +39,7 @@ final class CollectionsTests: XCTestCase {
         print("\t output->heap:\(heap),size:\(heap.size())")
     }
     
-    
+    // MARK: - Stack
     func testStack() {
         let stack = Stack<Int>()
         let array = [8,9,10,2,4,5,6,3,21,100]
@@ -47,9 +48,9 @@ final class CollectionsTests: XCTestCase {
         }
 
     }
-    
+    // MARK: - Buffer Array
     func testBufferArray_insert() {
-        let array = BufferArray(capacity: 3)
+        let array = BufferArray<Int>(capacity: 3)
         array.insert(1, at: 0)
         array.insert(2, at: 1)
         array.insert(3, at: 2)
@@ -57,7 +58,7 @@ final class CollectionsTests: XCTestCase {
     }
  
     func testBufferArray_append() {
-        let array = BufferArray(capacity: 20)
+        let array = BufferArray<Int>(capacity: 20)
         for i in 0...10 {
             array.append(i)
         }
@@ -68,7 +69,7 @@ final class CollectionsTests: XCTestCase {
     }
     
     func testBufferArray_subscript() {
-        let array = BufferArray(capacity: 20)
+        let array = BufferArray<Int>(capacity: 20)
         for i in 0...10 {
             array.append(i)
         }

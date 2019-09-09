@@ -7,22 +7,32 @@
 
 import Foundation
 
-public class BufferArray: CustomStringConvertible {
-    fileprivate var _buffer: UnsafeMutablePointer<Int>
+public class BufferArray<Element: Comparable>: CustomStringConvertible {
+    fileprivate var _buffer: UnsafeMutablePointer<Element>
     fileprivate var _capacity: Int
     fileprivate var _size: Int
-    fileprivate static let defaultCapacity = 10
+
+    fileprivate static var defaultCapacity: Int {
+        return 10
+    }
     
     // MARK: - Creating an Array
     public init(capacity c: Int) {
         _capacity = c
         _size = 0
-        _buffer = UnsafeMutablePointer<Int>.allocate(capacity: c)
-        _buffer.initialize(repeating: 0, count: c)
+        _buffer = UnsafeMutablePointer<Element>.allocate(capacity: c)
+        //_buffer.initialize(repeating: E(), count: c)
     }
     
     public convenience init() {
-        self.init(capacity: BufferArray.defaultCapacity)
+        self.init(capacity: BufferArray<Element>.defaultCapacity)
+    }
+    
+    init(repeating repeatedValue: Element, count: Int) {
+        _capacity = count + 1
+        _size = 0
+        _buffer = UnsafeMutablePointer<Element>.allocate(capacity: count)
+        _buffer.initialize(repeating: repeatedValue, count: count)
     }
     
     deinit {
@@ -55,7 +65,7 @@ public class BufferArray: CustomStringConvertible {
 
     
     // MARK: - Adding elements
-    public func insert(_ element: Int, at index: Int) {
+    public func insert(_ element: Element, at index: Int) {
         guard _size < _capacity else {
             fatalError("AddLast failed. Array is full.")
         }
@@ -72,12 +82,34 @@ public class BufferArray: CustomStringConvertible {
         _size = _size + 1
     }
     
-    public func append(_ element: Int) {
+    public func append(_ element: Element) {
         insert(element, at: _size)
+    }
+    
+    // MARK: - Removing Elements
+    public func remove(at index: Int) -> Element {
+        guard index >= 0 && index < _size else {
+            fatalError("remove failed, index is illegal")
+        }
+        
+        let result = _buffer[index]
+        for i in index + 1 ..< _size {
+            _buffer[i - 1] = _buffer[i]
+        }
+        _size = _size - 1
+        return result
+    }
+    
+    public func removeFirst() -> Element {
+        return remove(at: 0)
+    }
+    
+    public func removeLast() -> Element {
+        return remove(at: _size - 1)
     }
 
     // MARK: - Accessing elements
-    public subscript(index: Int) -> Int {
+    public subscript(index: Int) -> Element {
         get {
             guard index >= 0 && index < _size else {
                 fatalError("Get failed, index is illegal")
@@ -88,11 +120,32 @@ public class BufferArray: CustomStringConvertible {
         
         set {
             guard index >= 0 && index < _size else {
-                fatalError("Get failed, index is illegal")
+                fatalError("Set failed, index is illegal")
             }
             
             _buffer[index] = newValue
         }
 
     }
+    
+    // MARK: - Finding Elements
+    public func contains(element: Element) -> Bool {
+        for i in 0 ..< _size {
+            if element == _buffer[i] {
+                return true
+            }
+        }
+        return false
+    }
+    
+    public func firstIndex(of element: Element) -> Int? {
+        for i in 0 ..< _size {
+            if element == _buffer[i] {
+                return i
+            }
+        }
+        return nil
+    }
+    
+    
 }
