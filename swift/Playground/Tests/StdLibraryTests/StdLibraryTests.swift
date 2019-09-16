@@ -102,7 +102,7 @@ final class StdLibraryTests: XCTestCase {
         print("lastName:\(lastName)")
     }
 
-    // MARK: - Option
+    // MARK: - Optional
     func test_option(){
         struct Person {
             var name: String?
@@ -124,6 +124,25 @@ final class StdLibraryTests: XCTestCase {
         }
         print("x:\(name ?? "no name")")
         print("x:\(sex ?? false)")
+    }
+    
+    func ttt(_ aValue: Int?, _ bValue: Int?) -> Int? {
+        guard let aVal = aValue,
+              let bVal = bValue else {
+                 return aValue ?? bValue
+          }
+        if aVal <= bVal {
+            return aVal
+        } else {
+            return bVal
+        }
+    }
+    
+    func test_option_chanin() {
+        print(ttt(3, nil))
+        print(ttt(nil, 5))
+        print(ttt(4, 5))
+        print(ttt(nil, nil))
     }
     
     // MARK: - for in stride
@@ -167,5 +186,47 @@ final class StdLibraryTests: XCTestCase {
         for i in 0..<10 {
             print("unsafe mutable pointer bcopy[\(i)]:\(bcopy[i])")
         }
+        
+        //bcopy.deinitialize(count: 10)
+        //bcopy.deallocate()
     }
+    
+    func test_UnsafeMutablePointer_copy_reinit() {
+        let buffer = UnsafeMutablePointer<Int>.allocate(capacity: 10)
+        let bcopy = buffer
+        //buffer.initialize(to: 0)
+        buffer.initialize(repeating: 0, count: 10)
+        buffer[9] = 10
+        for i in 0..<10 {
+            print("unsafe mutable pointer buffer[\(i)]:\(buffer[i])")
+        }
+        buffer.deinitialize(count: 10)
+        buffer.deallocate()
+        
+        bcopy.initialize(repeating: 1000, count: 10)
+
+        for i in 0..<10 {
+            print("unsafe mutable pointer bcopy[\(i)]:\(bcopy[i])")
+        }
+    }
+    
+    func test_UnsafeMutablePointer_copy_reinit_2() {
+            let buffer = UnsafeMutablePointer<Int>.allocate(capacity: 10)
+            let bcopy = buffer
+            //buffer.initialize(to: 0)
+            buffer.initialize(repeating: 0, count: 10)
+            buffer[9] = 10
+            for i in 0..<10 {
+                print("unsafe mutable pointer buffer[\(i)]:\(buffer[i])")
+            }
+            buffer.deinitialize(count: 10)
+            buffer.deallocate()
+            
+            for i in 0 ..< 10 {
+                bcopy[i] = i
+            }
+            for i in 0..<10 {
+                print("unsafe mutable pointer bcopy[\(i)]:\(bcopy[i])")
+            }
+        }
 }

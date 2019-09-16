@@ -345,4 +345,42 @@ final class SolutionTests: XCTestCase {
             NSLog("\(newHead)")
         }
     }
+    
+    func testSolution_mergeTwoLists() {
+        let s = Solution()
+        
+        guard let list1 = ListNode([1,2,4]) else {
+            NSLog("list1 init failed")
+            return
+        }
+        
+        guard let list2 = ListNode([1,3,4]) else {
+            NSLog("list2 init failed")
+            return
+        }
+        
+        guard let r1 = s.mergeTwoLists(list1, list2) else {
+            NSLog("r is nil")
+            return
+        }
+        NSLog("\(r1)")
+        
+        
+        guard let list3 = ListNode([1,2]) else {
+            NSLog("list1 init failed")
+            return
+        }
+        
+        guard let list4 = ListNode([3,4,5,6,7]) else {
+            NSLog("list2 init failed")
+            return
+        }
+        
+        guard let r2 = s.mergeTwoLists(list3, list4) else {
+            NSLog("r is nil")
+            return
+        }
+        NSLog("\(r2)")
+        
+    }
 }

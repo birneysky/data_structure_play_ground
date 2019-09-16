@@ -876,7 +876,36 @@ public class Solution {
     /// 输入：1->2->4, 1->3->4
     /// 输出：1->1->2->3->4->4
     public func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
-        return nil
+        var aCur: ListNode? = l1
+        var aNext: ListNode? = l1?.next
+        var bCur: ListNode? = l2
+        var bNext: ListNode? = l2?.next
+        while aCur != nil || bCur != nil {
+            guard let aVal = aCur?.val,
+                  let bValue = bCur?.val else {
+                break
+            }
+            if aVal <= bValue {
+                aCur?.next = bCur
+                aCur = aNext
+                aNext = aNext?.next
+            } else {
+                bCur?.next = aCur
+                bCur = bNext
+                bNext = bNext?.next
+            }
+        }
+        
+        guard let aVal = l1?.val,
+              let bVal = l2?.val else {
+               return l1 ?? l2
+        }
+        
+        if aVal <= bVal {
+            return l1
+        } else {
+            return l2
+        }
     }
     
     
