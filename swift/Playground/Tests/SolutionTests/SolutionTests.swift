@@ -3,6 +3,7 @@ import Solution
 
 final class SolutionTests: XCTestCase {
     
+    // MARK: - Array Test
     func testSolution_removeDuplicates() {
         var nums1 = [1,1,2]
         let solution = Solution()
@@ -159,6 +160,7 @@ final class SolutionTests: XCTestCase {
         print("\t output->matrix2:\(matrix2)")
     }
     
+    // MARK: - Sring Test
     func testSolution_reverseString () {
         let s = Solution()
         
@@ -270,6 +272,7 @@ final class SolutionTests: XCTestCase {
         print("\t output->result1: \(result2)")
     }
     
+    // MARK: - List test
     func testSolution_deleteNode() {
         let s = Solution()
         
@@ -366,12 +369,12 @@ final class SolutionTests: XCTestCase {
         NSLog("\(r1)")
         
         
-        guard let list3 = ListNode([1,2]) else {
+        guard let list3 = ListNode([1,2,8,9,10,12,13,14,16,17,18]) else {
             NSLog("list1 init failed")
             return
         }
         
-        guard let list4 = ListNode([3,4,5,6,7]) else {
+        guard let list4 = ListNode([3,4,5,6,7,11,15,19,20,21]) else {
             NSLog("list2 init failed")
             return
         }

@@ -876,36 +876,52 @@ public class Solution {
     /// 输入：1->2->4, 1->3->4
     /// 输出：1->1->2->3->4->4
     public func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
-        var aCur: ListNode? = l1
-        var aNext: ListNode? = l1?.next
-        var bCur: ListNode? = l2
-        var bNext: ListNode? = l2?.next
-        while aCur != nil || bCur != nil {
-            guard let aVal = aCur?.val,
-                  let bValue = bCur?.val else {
-                break
-            }
-            if aVal <= bValue {
-                aCur?.next = bCur
-                aCur = aNext
-                aNext = aNext?.next
-            } else {
-                bCur?.next = aCur
-                bCur = bNext
-                bNext = bNext?.next
-            }
-        }
-        
-        guard let aVal = l1?.val,
-              let bVal = l2?.val else {
-               return l1 ?? l2
-        }
-        
-        if aVal <= bVal {
-            return l1
-        } else {
+        if l1 == nil {
             return l2
         }
+        
+        if l2 == nil {
+            return l1
+        }
+                
+        /// k 表示已合并的最后一个节点，k 之前的节点，已经按照顺序合并好了
+        /// k 初始时，不确定指向哪个节点
+        var k: ListNode? = nil
+        var head: ListNode? = nil
+        var i: ListNode? = l1
+        var j: ListNode? = l2
+        while i != nil || j != nil {
+            if let lVal = i?.val, let rVal = j?.val {
+                if lVal <= rVal {
+                    if k == nil {
+                        head = i
+                        k = i
+                    } else {
+                        k?.next = i
+                        k = i
+                    }
+                    i = i?.next
+                } else {
+                    if k == nil {
+                        head = j
+                        k = j
+                    } else {
+                        k?.next = j
+                        k = j
+                    }
+                    j = j?.next
+                }
+            } else {
+                if i == nil {
+                  k?.next = j
+                } else {
+                    k?.next = j
+                }
+                break
+            }
+   
+        }
+        return head
     }
     
     
