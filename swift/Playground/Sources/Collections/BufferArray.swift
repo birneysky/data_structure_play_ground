@@ -16,6 +16,17 @@ public class BufferArray<Element: Comparable>: CustomStringConvertible {
         return 10
     }
     
+    fileprivate func resize(_ newCapacity: Int) {
+        let bufferCopy = _buffer
+        _buffer = UnsafeMutablePointer<Element>.allocate(capacity: newCapacity)
+        for i in 0 ..< _size {
+            _buffer[i] = bufferCopy[i]
+        }
+        bufferCopy.deinitialize(count: _capacity)
+        bufferCopy.deallocate()
+        _capacity = newCapacity
+    }
+    
     // MARK: - Creating an Array
     public init(capacity c: Int) {
         _capacity = c
@@ -66,12 +77,13 @@ public class BufferArray<Element: Comparable>: CustomStringConvertible {
     
     // MARK: - Adding elements
     public func insert(_ element: Element, at index: Int) {
-        guard _size < _capacity else {
-            fatalError("AddLast failed. Array is full.")
-        }
         
         guard index >= 0 && index <= _size else {
             fatalError("AddLast failed. Require index >=0 and index <= _size .")
+        }
+        
+        if _size == _capacity {
+            resize( 2 * _size)
         }
         
         for i in stride(from: _size - 1, through: index, by: -1) {
@@ -87,6 +99,7 @@ public class BufferArray<Element: Comparable>: CustomStringConvertible {
     }
     
     // MARK: - Removing Elements
+    @discardableResult 
     public func remove(at index: Int) -> Element {
         guard index >= 0 && index < _size else {
             fatalError("remove failed, index is illegal")
@@ -97,13 +110,19 @@ public class BufferArray<Element: Comparable>: CustomStringConvertible {
             _buffer[i - 1] = _buffer[i]
         }
         _size = _size - 1
+        
+        if _size == _capacity / 4 && _capacity / 2 != 0 {
+            resize(_capacity / 2)
+        }
         return result
     }
     
+    @discardableResult
     public func removeFirst() -> Element {
         return remove(at: 0)
     }
     
+    @discardableResult 
     public func removeLast() -> Element {
         return remove(at: _size - 1)
     }

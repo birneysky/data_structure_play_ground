@@ -180,15 +180,16 @@ final class StdLibraryTests: XCTestCase {
         for i in 0..<10 {
             print("unsafe mutable pointer buffer[\(i)]:\(buffer[i])")
         }
-        buffer.deinitialize(count: 10)
-        buffer.deallocate()
+
+//        buffer.deinitialize(count: 10)
+//        buffer.deallocate()
         
         for i in 0..<10 {
             print("unsafe mutable pointer bcopy[\(i)]:\(bcopy[i])")
         }
         
-        //bcopy.deinitialize(count: 10)
-        //bcopy.deallocate()
+        bcopy.deinitialize(count: 10)
+        bcopy.deallocate()
     }
     
     func test_UnsafeMutablePointer_copy_reinit() {

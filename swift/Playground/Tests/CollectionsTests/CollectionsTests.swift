@@ -80,5 +80,31 @@ final class CollectionsTests: XCTestCase {
         array[2] = 200
         print(array)
     }
+    
+    func testBufferArray_append_no_limit_capacity() {
+        let array = BufferArray<Int>()
+        for i in 0 ... 9 {
+            array.append(i)
+        }
+        print(array)
+        
+        array.insert(100, at: 1)
+        array.insert(-1, at: 0)
+        print(array)
+  
+        array.removeLast()
+        array.removeLast()
+        array.remove(at: 0)
+        
+//        _ = array.removeLast()
+//        _ = array.removeLast()
+//        _ = array.remove(at: 0)
+        print(array)
+        
+        
+        var a  = [3,4,5,6]
+        a.removeLast()
+        print(a)
+    }
 
 }
