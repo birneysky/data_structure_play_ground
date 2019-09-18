@@ -386,4 +386,30 @@ final class SolutionTests: XCTestCase {
         NSLog("\(r2)")
         
     }
+    
+    func testSolution_list_isPalindrome() {
+        let s = Solution()
+        
+        guard let list1 = ListNode([1,2,2,1]) else {
+            NSLog("list1 init failed")
+            return
+        }
+        
+        XCTAssertEqual(s.isPalindrome(list1), true)
+        
+        
+        guard let list2 = ListNode([1,2,3,2,1]) else {
+            NSLog("list1 init failed")
+            return
+        }
+        
+        XCTAssertEqual(s.isPalindrome(list2), true)
+        
+        guard let list3 = ListNode([1,2,3,2,3]) else {
+             NSLog("list1 init failed")
+             return
+         }
+         
+         XCTAssertEqual(s.isPalindrome(list3), false)
+    }
 }

@@ -884,7 +884,7 @@ public class Solution {
             return l1
         }
                 
-        /// k 表示已合并的最后一个节点，k 之前的节点，已经按照顺序合并好了
+        /// k 表示已合并的最后一个节点，k 之前的节点(包括k)，已经按照顺序合并好了
         /// k 初始时，不确定指向哪个节点
         var k: ListNode? = nil
         var head: ListNode? = nil
@@ -938,7 +938,36 @@ public class Solution {
     /// 进阶：
     /// 你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？
      public func isPalindrome(_ head: ListNode?) -> Bool {
-        return false
+        
+        var front: ListNode? = head
+        var back: ListNode? = head
+        var count = 0
+        while front != nil {
+            if count == 2 {
+                back = back?.next
+                count = 0
+            }
+            front = front?.next
+            count = count + 1
+        }
+        
+        var left = head
+        var righ =  reverseList(back?.next)
+        var result: Bool = righ == nil ? false : true
+        while righ != nil {
+            guard let lVal = left?.val, let rVal = righ?.val else {
+                fatalError()
+            }
+            
+            if lVal != rVal {
+                result = false
+                break
+            }
+            left = left?.next
+            righ = righ?.next
+        }
+        
+        return result
     }
     
     /// 给定一个链表，判断链表中是否有环。
