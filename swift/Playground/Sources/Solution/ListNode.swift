@@ -5,7 +5,7 @@
 //  Created by birneysky on 2019/8/30.
 //
 
-public class ListNode: CustomStringConvertible{
+public class ListNode{
     public var val: Int
     public var next: ListNode?
     public init(_ val: Int) {
@@ -27,7 +27,10 @@ public class ListNode: CustomStringConvertible{
             cur = cur?.next
         }
     }
-    
+}
+
+// MARK: - Debug
+extension ListNode: CustomStringConvertible {
     public var description: String {
         var cur: ListNode? = self
         var des: String = String()

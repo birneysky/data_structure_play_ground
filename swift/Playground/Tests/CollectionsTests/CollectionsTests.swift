@@ -39,9 +39,9 @@ final class CollectionsTests: XCTestCase {
         print("\t output->heap:\(heap),size:\(heap.size())")
     }
     
-    // MARK: - Stack
-    func testStack() {
-        let stack = Stack<Int>()
+    // MARK: - CStack
+    func testCStack() {
+        let stack = CStack<Int>()
         let array = [8,9,10,2,4,5,6,3,21,100]
         for item in array {
             stack.push(element: item)

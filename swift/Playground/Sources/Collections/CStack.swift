@@ -1,4 +1,5 @@
-open class Stack<T> {
+
+open class CStack<T> {
     private var data: [T]
     open  var isEmpty: Bool {
         return data.isEmpty
@@ -24,3 +25,5 @@ open class Stack<T> {
         return data.last
     }
 }
+
+
