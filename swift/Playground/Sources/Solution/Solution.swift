@@ -1009,7 +1009,13 @@ public class Solution {
     /// 返回它的最大深度 3 。
     /// ```
     public func maxDepth(_ root: TreeNode?) -> Int {
-        return 0
+        guard let node = root else {
+            return 0
+        }
+        
+        let leftMaxDepth = maxDepth(node.left)
+        let rightMaxDepth = maxDepth(node.right)
+        return max(leftMaxDepth, rightMaxDepth) + 1
     }
 
     /// 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
