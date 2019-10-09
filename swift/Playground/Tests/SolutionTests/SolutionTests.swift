@@ -425,4 +425,20 @@ final class SolutionTests: XCTestCase {
         XCTAssertEqual(depath1, 3)
         
     }
+    
+    func testSolution_tree_isValidBST() {
+        let s = Solution()
+        
+        guard let root1 = TreeNode.createTree(with: [2,1,3], from: 0) else {
+            return NSLog("root init failed")
+        }
+        
+        XCTAssertEqual(s.isValidBST(root1), true)
+        
+        guard let root2 = TreeNode.createTree(with: [5,1,4,nil,nil,3,6], from: 0) else {
+            return NSLog("root init failed")
+        }
+        
+        XCTAssertEqual(s.isValidBST(root2), false)
+    }
 }

@@ -15,7 +15,7 @@ final class CollectionsTests: XCTestCase {
     }
 
     
-    func testMaxHeapExtractMax() throws {
+    func testMaxHeapExtractMax() /*throws*/ {
         
         let array = [8,9,10,2,4,5,6,3,21,100]
         let heap = MaxHeap<Int>()
@@ -26,7 +26,8 @@ final class CollectionsTests: XCTestCase {
         for _ in 0...heap.size() {
             guard let max = heap.extractMax()  else {
                 print("heap is empty:\(heap.isEmpty())")
-                throw NSError()
+                //throw NSError()
+                return
             }
             print("\t max:\(max), heap:\(heap),size:\(heap.size())")
         }

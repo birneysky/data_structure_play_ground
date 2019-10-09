@@ -77,9 +77,9 @@ final class StdLibraryTests: XCTestCase {
     func test_swift_string_index_position() {
         let stra = "abc"
         let first = stra.startIndex
-        let last = stra.endIndex
+        //let last = stra.endIndex
         print("test_swift_string_index_position first character:\(stra[first])")
-        print("test_swift_string_index_position last character:\(stra[last])")
+        //print("test_swift_string_index_position last character:\(stra[last])")
     }
     
     func test_swift_string_unicode_represtation() {
@@ -126,24 +126,6 @@ final class StdLibraryTests: XCTestCase {
         print("x:\(sex ?? false)")
     }
     
-    func ttt(_ aValue: Int?, _ bValue: Int?) -> Int? {
-        guard let aVal = aValue,
-              let bVal = bValue else {
-                 return aValue ?? bValue
-          }
-        if aVal <= bVal {
-            return aVal
-        } else {
-            return bVal
-        }
-    }
-    
-    func test_option_chanin() {
-        print(ttt(3, nil))
-        print(ttt(nil, 5))
-        print(ttt(4, 5))
-        print(ttt(nil, nil))
-    }
     
     // MARK: - for in stride
     func test_for_stride_through() {

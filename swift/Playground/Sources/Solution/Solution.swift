@@ -1046,7 +1046,21 @@ public class Solution {
     /// 根节点的值为 5 ，但是其右子节点值为 4 。
     /// ```
     public func isValidBST(_ root: TreeNode?) -> Bool {
-        return false
+        guard let node = root else {
+            return true
+        }
+        
+        if let left = node.left,
+           left.val >= node.val {
+           return false
+        }
+        
+        if let right = node.right,
+           right.val <= node.val {
+            return false
+        }
+        
+        return isValidBST(node.left) && isValidBST(node.right)
     }
     
     
