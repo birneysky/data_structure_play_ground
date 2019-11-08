@@ -1084,7 +1084,39 @@ public class Solution {
     /// ```
     /// - 说明: 如果你可以运用递归和迭代两种方法解决这个问题，会很加分。
     public func isSymmetric(_ root: TreeNode?) -> Bool {
-        return false
+		guard let aNode = root else {
+			return true
+		}
+
+		guard let aLeft = aNode.left,
+			  let aRight = aNode.right else {
+			return false
+		}
+
+		if aLeft.val != aRight.val {
+			return false
+		}
+        return isSymmetric(aLeft, aRight)
+    }
+    
+    private func isSymmetric(_ node1: TreeNode?, _ node2: TreeNode?) -> Bool {
+        if node1 == nil && node2 == nil {
+            return true
+        }
+        
+        guard let aNode1 = node1 else {
+            return false
+        }
+    
+        guard let aNode2 = node2 else {
+            return false
+        }
+    
+        if aNode1.val != aNode2.val {
+            return false
+        }
+
+        return isSymmetric(aNode1.left, aNode2.right) && isSymmetric(aNode1.right, aNode2.left)
     }
     
     

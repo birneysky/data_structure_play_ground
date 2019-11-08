@@ -441,4 +441,19 @@ final class SolutionTests: XCTestCase {
         
         XCTAssertEqual(s.isValidBST(root2), false)
     }
+
+	func testSolution_tree_isSymmetric() {
+		let s = Solution()	
+
+		guard let tree1 = TreeNode.createTree(with: [1,2,2,3,4,4,3], from: 0) else {
+			return NSLog("tree1 init failed")
+		}
+
+		guard let tree2 = TreeNode.createTree(with: [1,2,2,nil,3,nil,3], from: 0) else {
+			return NSLog("tree2 init failed")
+		}
+
+		XCTAssertEqual(s.isSymmetric(tree1), true )
+		XCTAssertEqual(s.isSymmetric(tree2), false )
+	}
 }
