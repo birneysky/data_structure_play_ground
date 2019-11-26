@@ -352,94 +352,84 @@ final class SolutionTests: XCTestCase {
     func testSolution_mergeTwoLists() {
         let s = Solution()
         
-        guard let list1 = ListNode([1,2,4]) else {
-            NSLog("list1 init failed")
-            return
+        if let list1 =  ListNode([1,2,4]),
+           let list2 = ListNode([1,3,4]),
+           let r1 = s.mergeTwoLists(list1, list2) {
+            NSLog("\(r1)")
         }
         
-        guard let list2 = ListNode([1,3,4]) else {
-            NSLog("list2 init failed")
-            return
+        if let list3 = ListNode([1,2,8,9,10,12,13,14,16,17,18]),
+           let list4 = ListNode([3,4,5,6,7,11,15,19,20,21]),
+           let r2 = s.mergeTwoLists(list3, list4) {
+            NSLog("\(r2)")
+        }
+    }
+    
+    
+    func testSolution_mergeLists() {
+        let s = Solution()
+        
+        if let list1 =  ListNode([1,2,4]),
+           let list2 = ListNode([1,3,4]),
+           let r1 = s.mergeLists(list1, list2) {
+            NSLog("r1: \(r1)")
         }
         
-        guard let r1 = s.mergeTwoLists(list1, list2) else {
-            NSLog("r is nil")
-            return
-        }
-        NSLog("\(r1)")
-        
-        
-        guard let list3 = ListNode([1,2,8,9,10,12,13,14,16,17,18]) else {
-            NSLog("list1 init failed")
-            return
+        if let list3 = ListNode([1,2,8,9,10,12,13,14,16,17,18]),
+           let list4 = ListNode([3,4,5,6,7,11,15,19,20,21]),
+           let r2 = s.mergeLists(list3, list4) {
+            NSLog("r2: \(r2)")
         }
         
-        guard let list4 = ListNode([3,4,5,6,7,11,15,19,20,21]) else {
-            NSLog("list2 init failed")
-            return
+        if let list5 =  ListNode([1,2,4]),
+           let r3 = s.mergeLists(list5, nil) {
+            NSLog("r3: \(r3)")
         }
         
-        guard let r2 = s.mergeTwoLists(list3, list4) else {
-            NSLog("r is nil")
+        guard let _ = s.mergeLists(nil, nil) else {
+            NSLog("r4: NULL")
             return
         }
-        NSLog("\(r2)")
-        
     }
     
     func testSolution_list_isPalindrome() {
         let s = Solution()
         
-        guard let list1 = ListNode([1,2,2,1]) else {
-            NSLog("list1 init failed")
-            return
+        if let list1 = ListNode([1,2,2,1])  {
+            XCTAssertEqual(s.isPalindrome(list1), true)
         }
         
-        XCTAssertEqual(s.isPalindrome(list1), true)
-        
-        
-        guard let list2 = ListNode([1,2,3,2,1]) else {
-            NSLog("list1 init failed")
-            return
+        if let list2 = ListNode([1,2,3,2,1]) {
+            XCTAssertEqual(s.isPalindrome(list2), true)
         }
         
-        XCTAssertEqual(s.isPalindrome(list2), true)
-        
-        guard let list3 = ListNode([1,2,3,2,3]) else {
-             NSLog("list1 init failed")
-             return
+        if let list3 = ListNode([1,2,3,2,3])  {
+            XCTAssertEqual(s.isPalindrome(list3), false)
          }
-         
-         XCTAssertEqual(s.isPalindrome(list3), false)
     }
     
     // MARK: - Tree Test
     func testSolution_tree_maxDepth() {
         let s = Solution()
         
-        guard let root1 = TreeNode.createTree(with: [3, 9, 20, nil, nil, 15, 7], from: 0) else {
-            return NSLog("root init failed")
+        if let root1 = TreeNode.createTree(with: [3, 9, 20, nil, nil, 15, 7], from: 0) {
+            let depath1 = s.maxDepth(root1)
+            XCTAssertEqual(depath1, 3)
         }
-        
-        let depath1 = s.maxDepth(root1)
-        XCTAssertEqual(depath1, 3)
-        
     }
     
     func testSolution_tree_isValidBST() {
         let s = Solution()
         
-        guard let root1 = TreeNode.createTree(with: [2,1,3], from: 0) else {
-            return NSLog("root init failed")
+        if let root1 = TreeNode.createTree(with: [2,1,3], from: 0) {
+            XCTAssertEqual(s.isValidBST(root1), true)
         }
         
-        XCTAssertEqual(s.isValidBST(root1), true)
         
-        guard let root2 = TreeNode.createTree(with: [5,1,4,nil,nil,3,6], from: 0) else {
-            return NSLog("root init failed")
+        if let root2 = TreeNode.createTree(with: [5,1,4,nil,nil,3,6], from: 0) {
+            XCTAssertEqual(s.isValidBST(root2), false)
         }
         
-        XCTAssertEqual(s.isValidBST(root2), false)
     }
 
 	func testSolution_tree_isSymmetric() {

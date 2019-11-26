@@ -2,7 +2,9 @@ import Foundation
 
 public class Solution {
     public init() {}
-
+    
+    /// for https://leetcode-cn.com/explore/featured/card/top-interview-questions-easy/24/design/58/
+    public init(_ nums: [Int]) {}
     // MARK: - Basic array
     
     /// 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
@@ -924,6 +926,30 @@ public class Solution {
         return head
     }
     
+    /// 将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+     /// 示例：
+
+     /// 输入：1->2->4, 1->3->4
+     /// 输出：1->1->2->3->4->4
+    
+    public func mergeLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
+        
+        guard let aL1 = l1,let aL2 = l2 else {
+            return l1 != nil ? l1 : l2
+        }
+        
+        var head: ListNode! = nil
+        if aL1.val < aL2.val {
+            head = aL1
+            head.next = mergeLists(aL1.next, aL2)
+        } else {
+            head = aL2
+            head.next = mergeLists(aL1, aL2.next);
+        }
+        
+        return head
+    }
+    
     
     /// 请判断一个链表是否为回文链表。
     /// 示例 1:
@@ -1119,7 +1145,198 @@ public class Solution {
         return isSymmetric(aNode1.left, aNode2.right) && isSymmetric(aNode1.right, aNode2.left)
     }
     
+    /// 给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。
+    /// ```
+    /// 例如:
+    /// 给定二叉树: [3,9,20,null,null,15,7],
+    ///   3
+    ///  / \
+    /// 9  20
+    ///   /  \
+    ///  15   7
+    ///
+    /// 返回其层次遍历结果：
+    /// [
+    ///  [3],
+    ///  [9,20],
+    ///  [15,7]
+    /// ]
+    /// ```
+    public func levelOrder(_ root: TreeNode?) -> [[Int]] {
+        return []
+    }
     
+    ///  将有序数组转换为二叉搜索树
+    ///  将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。
+    ///  本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1。
+    /// ```
+    /// 示例:
+    /// 给定有序数组: [-10,-3,0,5,9],
+    /// 一个可能的答案是：[0,-3,9,-10,null,5]，它可以表示下面这个高度平衡二叉搜索树：
+    ///
+    ///     0
+    ///    / \
+    ///  -3   9
+    ///  /   /
+    /// -10  5
+    /// ```
+    func sortedArrayToBST(_ nums: [Int]) -> TreeNode? {
+        return nil
+    }
+    
+    
+    // MARK: - Basic sorted and search
+    
+    /// 合并两个有序数组
+    /// 给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。
+    ///
+    /// 说明:
+    /// - 初始化 nums1 和 nums2 的元素数量分别为 m 和 n。
+    /// - 你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
+    /// ```
+    /// 输入:
+    /// nums1 = [1,2,3,0,0,0], m = 3
+    /// nums2 = [2,5,6],       n = 3
+    /// 输出: [1,2,2,3,5,6]
+    /// ```
+    func merge(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
+        
+    }
+    
+    /// 你是产品经理，目前正在带领一个团队开发新的产品。不幸的是，你的产品的最新版本没有通过质量检测。由于每个版本都是基于之前的版本开发的，所以错误的版本之后的所有版本都是错的。
+    /// 假设你有 n 个版本 [1, 2, ..., n]，你想找出导致之后所有版本出错的第一个错误的版本。
+    /// 你可以通过调用 bool isBadVersion(version) 接口来判断版本号 version 是否在单元测试中出错。实现一个函数来查找第一个错误的版本。你应该尽量减少对调用 API 的次数。
+    /// 示例:
+    /// ```
+    /// 给定 n = 5，并且 version = 4 是第一个错误的版本。
+    ///
+    /// 调用 isBadVersion(3) -> false
+    /// 调用 isBadVersion(5) -> true
+    /// 调用 isBadVersion(4) -> true
+
+    /// 所以，4 是第一个错误的版本。
+    /// ```
+    
+    // MARK: - Basic Dynamic Programming
+    
+    /// 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+    /// 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+    /// 注意：给定 n 是一个正整数。
+    ///
+    /// 示例 1：
+    ///  ```
+    /// 输入： 2
+    /// 输出： 2
+    /// 解释： 有两种方法可以爬到楼顶。
+    /// 1.  1 阶 + 1 阶
+    /// 2.  2 阶
+    /// 示例 2：
+    /// 输入： 3
+    /// 输出： 3
+    /// 解释： 有三种方法可以爬到楼顶。
+    /// 1.  1 阶 + 1 阶 + 1 阶
+    /// 2.  1 阶 + 2 阶
+    /// 3.  2 阶 + 1 阶
+    
+    public func climbStairs(_ n: Int) -> Int {
+        return 0
+    }
+    
+    
+    /// 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
+    /// 如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。
+    /// 注意你不能在买入股票前卖出股票。
+    /// ```
+    /// 示例 1:
+
+    /// 输入: [7,1,5,3,6,4]
+    /// 输出: 5
+    /// 解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+    ///     注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格。
+    ///
+    /// 示例 2:
+    ///
+    /// 输入: [7,6,4,3,1]
+    /// 输出: 0
+    /// 解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
+    /// ```
+    
+    public func maxProfit_1(_ prices: [Int]) -> Int {
+        return 0
+    }
+    
+    /// 给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+    ///  ```
+    /// 示例:
+    /// 输入: [-2,1,-3,4,-1,2,1,-5,4],
+    /// 输出: 6
+    /// 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
+    ///  ```
+    public func maxSubArray(_ nums: [Int]) -> Int {
+        return 0
+    }
+    
+    /// 你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
+    /// 给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。
+    /// ```
+    /// 示例 1:
+    /// 输入: [1,2,3,1]
+    /// 输出: 4
+    /// 解释: 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。
+    ///      偷窃到的最高金额 = 1 + 3 = 4 。
+    /// 示例 2:
+    /// 输入: [2,7,9,3,1]
+    /// 输出: 12
+    /// 解释: 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。
+    /// 偷窃到的最高金额 = 2 + 9 + 1 = 12 。
+    /// ```
+    public func rob(_ nums: [Int]) -> Int {
+        return 0
+    }
+    
+    
+    // MARK: - Basic mathematics
+    
+    /// 写一个程序，输出从 1 到 n 数字的字符串表示。
+    /// 1. 如果 n 是3的倍数，输出“Fizz”；
+    /// 2. 如果 n 是5的倍数，输出“Buzz”；
+    /// 3.如果 n 同时是3和5的倍数，输出 “FizzBuzz”。
+    /// ```
+    /// 示例：
+    /// n = 15,
+    /// 返回:
+    /// [
+    ///     "1",
+    ///     "2",
+    ///     "Fizz",
+    ///     "4",
+    ///     "Buzz",
+    ///     "Fizz",
+    ///     "7",
+    ///     "8",
+    ///     "Fizz",
+    ///     "Buzz",
+    ///     "11",
+    ///     "Fizz",
+    ///     "13",
+    ///     "14",
+    ///     "FizzBuzz"
+    /// ]
+    /// ```
+    public func fizzBuzz(_ n: Int) -> [String] {
+        return []
+    }
+    
+    /// 统计所有小于非负整数 n 的质数的数量。
+    /// ```
+    /// 示例:
+    /// 输入: 10
+    /// 输出: 4
+    /// 解释: 小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。
+    /// ```
+     public func countPrimes(_ n: Int) -> Int {
+        return 0
+    }
 }
 
 
@@ -1153,5 +1370,81 @@ extension Character {
     /// /// 是否为 '-'
     var isMinusSign: Bool {
         return self == "-"
+    }
+}
+
+
+// MARK: - Basic Design
+extension Solution {
+    /// https://leetcode-cn.com/explore/featured/card/top-interview-questions-easy/24/design/58/
+    /// 打乱一个没有重复元素的数组。
+    /// ```
+    /// 示例:
+
+    /// // 以数字集合 1, 2 和 3 初始化数组。
+    /// int[] nums = {1,2,3};
+    /// Solution solution = new Solution(nums);
+
+    // 打乱数组 [1,2,3] 并返回结果。任何 [1,2,3]的排列返回的概率应该相同。
+    /// solution.shuffle();
+
+    // 重设数组到它的初始状态[1,2,3]。
+    /// solution.reset();
+
+    // 随机返回数组[1,2,3]打乱后的结果。
+    /// solution.shuffle();
+    
+    /** Resets the array to its original configuration and return it. */
+    func reset() -> [Int] {
+        return []
+    }
+    
+    /** Returns a random shuffling of the array. */
+    func shuffle() -> [Int] {
+        return []
+    }
+}
+
+/// 设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。
+
+/// push(x) -- 将元素 x 推入栈中。
+/// pop() -- 删除栈顶的元素。
+/// top() -- 获取栈顶元素。
+/// getMin() -- 检索栈中的最小元素。
+///
+/// ```
+/// 示例:
+///
+/// MinStack minStack = new MinStack();
+/// minStack.push(-2);
+/// minStack.push(0);
+/// minStack.push(-3);
+/// minStack.getMin();   --> 返回 -3.
+/// minStack.pop();
+/// minStack.top();      --> 返回 0.
+/// minStack.getMin();   --> 返回 -2.
+/// ```
+
+class MinStack {
+
+    /** initialize your data structure here. */
+    init() {
+        
+    }
+    
+    func push(_ x: Int) {
+        
+    }
+    
+    func pop() {
+        
+    }
+    
+    func top() -> Int {
+        return 0
+    }
+    
+    func getMin() -> Int {
+        return 0
     }
 }

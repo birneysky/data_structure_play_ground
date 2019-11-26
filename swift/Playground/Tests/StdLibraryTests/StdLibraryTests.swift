@@ -208,6 +208,7 @@ final class StdLibraryTests: XCTestCase {
             for i in 0 ..< 10 {
                 bcopy[i] = i
             }
+            /// dangerous   it's likely to crash
             for i in 0..<10 {
                 print("unsafe mutable pointer bcopy[\(i)]:\(bcopy[i])")
             }
