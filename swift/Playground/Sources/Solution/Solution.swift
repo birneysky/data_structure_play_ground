@@ -1163,7 +1163,30 @@ public class Solution {
     /// ]
     /// ```
     public func levelOrder(_ root: TreeNode?) -> [[Int]] {
-        return []
+        var queue = [(node: TreeNode, deepth: Int)]();
+        guard let aRoot = root else {
+            return [];
+        }
+        
+        var result = [[Int]]()
+        queue.append((aRoot, 0))
+        
+        while !queue.isEmpty {
+            let pair = queue.removeFirst()
+            if let left = pair.node.left {
+                queue.append((left, pair.deepth + 1))
+            }
+            
+            if let right = pair.node.right {
+                queue.append((right, pair.deepth + 1))
+            }
+            
+            if pair.deepth >= result.count {
+                result.append([]);
+            }
+            result[pair.deepth].append(pair.node.val)
+        }
+        return result
     }
     
     ///  将有序数组转换为二叉搜索树
@@ -1180,10 +1203,29 @@ public class Solution {
     ///  /   /
     /// -10  5
     /// ```
-    func sortedArrayToBST(_ nums: [Int]) -> TreeNode? {
-        return nil
+    public func sortedArrayToBST(_ nums: [Int]) -> TreeNode? {
+        if nums.count == 0 {
+            return nil
+        }
+        return arrayToBST(nums, l: 0, r: nums.count - 1)
     }
     
+    /// 将一个有序数组 nums ，生成一颗平衡的二分搜索树，返回该二分搜索树的根节点。
+    /// 这里平衡的定义是  整个树种，每个节点的左右子树高度差不超过 1
+    private func arrayToBST(_ nums: [Int], l: Int, r: Int) -> TreeNode? {
+        if l > r {
+            return nil
+        } else if l == r {
+            return TreeNode(nums[l])
+        }
+        
+        let m = l + (r - l + 1) / 2
+        let node = TreeNode(nums[m])
+        
+        node.left = arrayToBST(nums, l: l, r: m-1)
+        node.right = arrayToBST(nums, l: m+1, r: r)
+        return node
+    }
     
     // MARK: - Basic sorted and search
     
@@ -1199,8 +1241,32 @@ public class Solution {
     /// nums2 = [2,5,6],       n = 3
     /// 输出: [1,2,2,3,5,6]
     /// ```
-    func merge(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
+    public func merge(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
+        let aux = nums1
+        if nums1.count < m + n {
+            nums1.append(contentsOf: Array(repeating: 0, count: m + n - nums1.count))
+        }
         
+        var l = 0
+        var r = 0
+        
+        for k in 0...nums1.count {
+            if l >= m, r >= n {
+                break
+            } else if l >= m, r < n {
+                nums1[k] = nums2[r]
+                r = r + 1
+            } else if r >= n, l < m {
+                nums1[k] = aux[l]
+                l = l + 1
+            } else if aux[l] < nums2[r] {
+                nums1[k] = aux[l]
+                l = l + 1
+            } else {
+                nums1[k] = nums2[r]
+                r = r + 1
+            }
+        }
     }
     
     /// 你是产品经理，目前正在带领一个团队开发新的产品。不幸的是，你的产品的最新版本没有通过质量检测。由于每个版本都是基于之前的版本开发的，所以错误的版本之后的所有版本都是错的。

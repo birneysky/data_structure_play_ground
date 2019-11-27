@@ -435,15 +435,63 @@ final class SolutionTests: XCTestCase {
 	func testSolution_tree_isSymmetric() {
 		let s = Solution()	
 
-		guard let tree1 = TreeNode.createTree(with: [1,2,2,3,4,4,3], from: 0) else {
-			return NSLog("tree1 init failed")
+		if let tree1 = TreeNode.createTree(with: [1,2,2,3,4,4,3], from: 0)  {
+            XCTAssertEqual(s.isSymmetric(tree1), true )
 		}
 
-		guard let tree2 = TreeNode.createTree(with: [1,2,2,nil,3,nil,3], from: 0) else {
-			return NSLog("tree2 init failed")
+		if let tree2 = TreeNode.createTree(with: [1,2,2,nil,3,nil,3], from: 0) {
+			XCTAssertEqual(s.isSymmetric(tree2), false )
 		}
-
-		XCTAssertEqual(s.isSymmetric(tree1), true )
-		XCTAssertEqual(s.isSymmetric(tree2), false )
 	}
+    
+    func testSolution_tree_levelOrder() {
+        let s = Solution()
+        
+        if let root1 = TreeNode.createTree(with: [3,9,20,nil,nil,15,7], from: 0) {
+            let result1 = s.levelOrder(root1)
+            print(result1)
+        }
+        
+        let result = s.levelOrder(nil)
+        print(result)
+    }
+    
+    func testSolution_tree_sortedArrayToBST() {
+        let s = Solution()
+        
+        let tree1 =  s.sortedArrayToBST([])
+        XCTAssertNil(tree1)
+        
+            
+        if let tree2 = s.sortedArrayToBST([-10,-3,0,5,9]) {
+            print(tree2)
+        }
+        
+        if let tree3 = s.sortedArrayToBST([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+            print(tree3)
+        }
+    }
+    
+    
+    // MARK: - sorted and search
+    func testSolution_merge() {
+        let s = Solution()
+        var nums1 = [1,2,3,0,0,0]
+        let  m = 3
+        var nums2 = [2,5,6]
+        let  n = 3
+        s.merge(&nums1, m, nums2, n)
+        print(nums1)
+        
+        nums1 = [2, 3, 6, 9, 10, 20]
+        nums2 = [1, 4, 5, 7, 11, 12, 13, 14, 15, 16, 22, 23, 24, 25]
+        s.merge(&nums1, nums1.count, nums2, nums2.count)
+        print(nums1)
+        
+        
+        nums2 = [2, 3, 6, 9, 10, 20]
+        nums1 = [1, 4, 5, 7, 11, 12, 13, 14, 15, 16, 22, 23, 24, 25]
+        s.merge(&nums1, nums1.count, nums2, nums2.count)
+        print(nums1)
+    }
 }
