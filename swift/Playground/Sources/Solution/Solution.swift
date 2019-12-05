@@ -1305,7 +1305,16 @@ public class Solution {
     /// 3.  2 阶 + 1 阶
     
     public func climbStairs(_ n: Int) -> Int {
-        return 0
+        
+        if n == 0 {
+            return 1
+        }
+        
+        if n == 1 {
+            return 1
+        }
+        
+        return climbStairs(n-1) + climbStairs(n-2)
     }
     
     

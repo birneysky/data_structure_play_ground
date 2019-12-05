@@ -494,4 +494,13 @@ final class SolutionTests: XCTestCase {
         s.merge(&nums1, nums1.count, nums2, nums2.count)
         print(nums1)
     }
+    
+    // MARK: - Basic Dynamic Programming
+    func testSolution_climbStairs() {
+        let s = Solution()
+        
+        XCTAssertEqual(s.climbStairs(3), 3)
+        print(s.climbStairs(10))
+        print(s.climbStairs(20))
+    }
 }
