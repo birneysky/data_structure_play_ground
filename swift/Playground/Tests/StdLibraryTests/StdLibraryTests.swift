@@ -212,5 +212,34 @@ final class StdLibraryTests: XCTestCase {
             for i in 0..<10 {
                 print("unsafe mutable pointer bcopy[\(i)]:\(bcopy[i])")
             }
-        }
+    }
+    
+    func test_type_of() {
+        print(type(of: self))
+        print(type(of: self.test_type_of))
+        print(type(of: StdLibraryTests.test_type_of))
+    }
+    
+    func test_mirror() {
+        print(Mirror(reflecting: self))
+        print(Mirror(reflecting: self.test_mirror))
+        print(Mirror(reflecting: StdLibraryTests.test_mirror))
+    }
+    
+    func test_literal_expression() {
+        // keywords: Literal Expression in page https://docs.swift.org/swift-book/ReferenceManual/Expressions.html
+        print(#function)
+        print(#file)
+        print(#line)
+        print(#column)
+        print(#dsohandle)
+    }
+    
+    func test_overflow() {
+        /// overflow
+//        var a = 4660046610375530309
+//        var b = 7540113804746346429
+//        a = a - 10000;
+//        let c = a + b
+    }
 }

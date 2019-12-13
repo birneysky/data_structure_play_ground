@@ -498,9 +498,43 @@ final class SolutionTests: XCTestCase {
     // MARK: - Basic Dynamic Programming
     func testSolution_climbStairs() {
         let s = Solution()
+        dumpMeasureInfo("climbStairs(3)" ) {
+            XCTAssertEqual(s.climbStairs(3), 3)
+        }
         
-        XCTAssertEqual(s.climbStairs(3), 3)
-        print(s.climbStairs(10))
-        print(s.climbStairs(20))
+        dumpMeasureInfo("climbStairs(10)" ) {
+            XCTAssertEqual(s.climbStairs(10), 89)
+        }
+        
+        dumpMeasureInfo("climbStairs(20)" ) {
+            XCTAssertEqual(s.climbStairs(20), 10946)
+        }
+        
+        dumpMeasureInfo("climbStairs(40)" ) {
+            XCTAssertEqual(s.climbStairs(40), 165580141)
+        }
+    }
+    
+    func testSolution_climbStairs1() {
+        let s = Solution()
+        dumpMeasureInfo("climbStairs(3)" ) {
+            XCTAssertEqual(s.climbStairs1(3), 3)
+        }
+        
+        dumpMeasureInfo("climbStairs(10)" ) {
+            XCTAssertEqual(s.climbStairs1(10), 89)
+        }
+        
+        dumpMeasureInfo("climbStairs(20)" ) {
+            XCTAssertEqual(s.climbStairs1(20), 10946)
+        }
+        
+        dumpMeasureInfo("climbStairs(40)" ) {
+            XCTAssertEqual(s.climbStairs1(40), 165580141)
+        }
+        
+        dumpMeasureInfo("climbStairs(91)" ) {
+            XCTAssertEqual(s.climbStairs1(91), 7540113804746346429)
+        }
     }
 }

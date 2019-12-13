@@ -1303,7 +1303,6 @@ public class Solution {
     /// 1.  1 阶 + 1 阶 + 1 阶
     /// 2.  1 阶 + 2 阶
     /// 3.  2 阶 + 1 阶
-    
     public func climbStairs(_ n: Int) -> Int {
         
         if n == 0 {
@@ -1315,6 +1314,25 @@ public class Solution {
         }
         
         return climbStairs(n-1) + climbStairs(n-2)
+    }
+    
+    fileprivate var memo: [Int]!
+    
+    private func caluStairs(_ n : Int) -> Int {
+        memo[0] = 1
+        memo[1] = 1
+        if memo[n] == -1 {
+            memo[n] = caluStairs(n-1) + caluStairs(n-2)
+        }
+        
+        return memo[n]
+    }
+    
+    public func climbStairs1(_ n: Int) -> Int {
+        
+        memo  = Array(repeating: -1, count: n + 1)
+
+        return caluStairs( n )
     }
     
     
