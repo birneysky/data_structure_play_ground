@@ -20,6 +20,8 @@
 #include "SparseGraph.hpp"
 #include "ReadGraph.hpp"
 
+using namespace Playground;
+
 struct student {
     std::string name = "liuhua";
     int age = 0;
@@ -77,7 +79,7 @@ void testGraph() {
     int n = 20; /// 20个节点
     int m = 100; /// 100 条边
     
-    srand(time(nullptr));
+    srand((unsigned int)time(nullptr));
     
     SparseGraph g1(n, false);
     for (int i = 0; i < m; i++) {
