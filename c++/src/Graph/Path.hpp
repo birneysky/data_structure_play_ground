@@ -13,7 +13,7 @@
 #include <stack>
 
 namespace Playground {
-
+/// 求图中任意两个节点的路径
 template <typename Graph>
 class Path {
 private:
@@ -39,6 +39,10 @@ private:
         }
     }
 public:
+    
+    /// 从某一个点 s 到任意其他店的路径
+    /// @param graph 图对象
+    /// @param s 源点
     Path(Graph& graph, int s): g(graph) {
         assert(s >= 0 && s < graph.V());
         visited = new bool[graph.V()];
